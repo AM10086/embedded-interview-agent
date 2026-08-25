@@ -212,6 +212,7 @@
   .iv-b.iv-me{align-self:flex-end;background:linear-gradient(135deg,rgba(56,189,248,.22),rgba(99,102,241,.20));border:1px solid rgba(56,189,248,.35);border-bottom-right-radius:4px}
   .iv-b.iv-iv{align-self:flex-start;background:var(--panel2);border:1px solid var(--line);border-bottom-left-radius:4px}
   .iv-b.iv-note{align-self:flex-start;background:rgba(99,102,241,.10);border:1px solid rgba(99,102,241,.35);border-bottom-left-radius:4px}
+  .iv-b.iv-ref{align-self:flex-start;background:rgba(52,211,153,.06);border:1px dashed rgba(52,211,153,.35);border-bottom-left-radius:4px;font-size:13px;color:var(--sub)}
   .iv-b .iv-who{display:block;font-size:12px;color:var(--sub);margin-bottom:5px}
   .iv-b.iv-me .iv-who{color:#a5b4fc}
   .iv-answer{margin-top:14px;border-top:1px dashed var(--line);padding-top:14px}
@@ -251,6 +252,7 @@
       <div class="mini"><span>📚 题库</span><b id="miniTotal">0</b></div>
       <div class="mini"><span>🗂 分类</span><b id="miniCats">0</b></div>
       <a class="gh" href="https://github.com/AM10086/embedded-interview-agent" target="_blank">⭐ Star on GitHub</a>
+      <div id="userBox"></div>
     </div>
   </aside>
 
@@ -354,8 +356,8 @@
           <div>
             <label class="iv-lab">📄 简历内容</label>
             <textarea id="ivResume" placeholder="把简历文字粘贴到这里，或点下方按钮上传 .txt / .md 文件"></textarea>
-            <label class="iv-file btn btn-g" for="ivFile">📁 上传简历文件</label>
-            <input type="file" id="ivFile" accept=".txt,.md,text/plain,text/markdown" class="hidden">
+            <label class="iv-file btn btn-g" for="ivFile">📁 上传简历文件（支持 .txt / .md / .pdf）</label>
+            <input type="file" id="ivFile" accept=".txt,.md,.pdf,text/plain,text/markdown,application/pdf" class="hidden">
           </div>
           <div>
             <label class="iv-lab">🎯 应聘岗位</label>
@@ -393,7 +395,9 @@
   </main>
 </div>
 
+<script src="auth.js"></script>
 <script src="questions.js"></script>
+<script src="vendor/pdf.min.js"></script>
 <script src="interview.js"></script>
 <script>
 var QS = window.QUESTIONS || [];

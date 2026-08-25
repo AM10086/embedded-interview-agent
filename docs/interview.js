@@ -150,19 +150,44 @@ function buildPool(skills){
 
 /* ---------- 离线审问式评分与点评 ---------- */
 var VAGUE=/大概|可能|差不多|应该|忘了|不记得|不清楚|不太|了解一点|用过一下|没做过|不会|不确定|也许|记不清|好像|吧/;
+function parseJudge(ans){
+  var a=(ans||'').trim();
+  if(/^对[，。,.！!？?]|^对的|^正确|^是的|^是[，。,.！!？?]|^√|^✓|^T[，。,.！!？?]/.test(a)) return '对';
+  if(/^错[，。,.！!？?]|^错的|^错误|^不对|^不正确|^×|^✗|^F[，。,.！!？?]/.test(a)) return '错';
+  // 中置表达：这句话是正确的 / 我认为是错的 等（注意“不正确”含“正确”子串，否定词优先）
+  var cuo2=/不正确|不对|错误|错的/.test(a);
+  var dui2=(/正确|对的|是的/.test(a)) && !cuo2;
+  if(cuo2) return '错';
+  if(dui2) return '对';
+  return null;
+}
 function scoreAnswer(ans, q){
   if(!ans) return 0;
   var a=ans;
-  var lenScore=Math.min(4, a.length/40);
+  var score=0;
   var cat=q?q.category:'通用';
+  // 1) 核心概念覆盖（正确使用术语才给分）
   var concepts=CONCEPTS[cat]||[];
   var hits=0;
   concepts.forEach(function(c){ if(a.indexOf(c)>=0) hits++; });
-  var covScore=Math.min(4, hits*0.9);
-  var specific=/\d/.test(a)?1:0;
-  var total=lenScore+covScore+specific;
-  if(VAGUE.test(a)) total-=2;
-  return Math.max(0, Math.min(10, Math.round(total)));
+  score+=Math.min(5, hits);
+  // 2) 判断/选择类题目：真正判断对错
+  if(q && q.type==='judge'){
+    var j=parseJudge(a);
+    if(j===q.answer) score+=3; else if(j) score-=3;
+  } else if(q && q.type==='single' && q.options){
+    var ci=('ABCD').indexOf(q.answer||'');
+    if(ci>=0){
+      var opt=String(q.options[ci]||'').replace(/^[A-D][.、]\s*/,'');
+      if(opt && (a.indexOf(opt)>=0 || a.indexOf(q.answer)>=0)) score+=3;
+    }
+  }
+  // 3) 表达质量：长度 + 结论先行 + 讲取舍/数据
+  score+=Math.min(2, a.length/60);
+  if(/^(首先|核心|本质|因为|所以|答|我认为|关键|是的|不是|对|错)/.test(a.trim())) score+=1;
+  if(/取舍|权衡|为什么|原因|代价|性能|延迟|内存|复杂度|数据|比如|例如|测试/.test(a)) score+=1;
+  if(VAGUE.test(a)) score-=2;
+  return Math.max(0, Math.min(10, Math.round(score)));
 }
 function scoreIntro(ans){
   var a=ans||'';
@@ -183,10 +208,33 @@ function extractZhuiWen(q){
 }
 function interviewerNote(q, ans, sc){
   var fw=pickFollowUp(ans)||extractZhuiWen(q);
-  if(sc>=8) return {t:'ok', text:'回答要点清晰'+(/\d/.test(ans)?'、还有数据支撑':'')+'，这一题过关。', fw:fw?('追问：'+fw):''};
-  if(sc>=5) return {t:'mid', text:'答到了一些要点，但不够深入、缺少细节。', fw:fw?('追问：'+fw):'追问：能结合具体实现和数据再讲一遍吗？'};
-  if(VAGUE.test(ans)) return {t:'no', text:'回答太模糊了。真实面试官会立刻挑战你："别用「大概/可能」，说清楚具体怎么实现的、数据是多少。"', fw:fw?('追问：'+fw):'追问：请重新组织语言，讲清原理与数据。'};
-  return {t:'no', text:'这个回答没有抓住核心考点，需要补强。', fw:fw?('追问：'+fw):'追问：核心要点是什么？请补充。'};
+  var jn='';
+  if(q && q.type==='judge'){
+    var j=parseJudge(ans);
+    if(j && j!==q.answer) jn='<br>❌ <b>你的判断错了</b>，正确答案是「'+q.answer+'」。判断类题目要先给结论（对/错），再用原理支撑。';
+    else if(j) jn='<br>✅ 判断正确。';
+  }
+  var scTxt='本题得分 <b>'+sc+'/10</b>，';
+  if(sc>=8) return {t:'ok', text:scTxt+'回答要点清晰'+(/\d/.test(ans)?'、有数据支撑':'')+'，过关。'+jn, fw:fw?('追问：'+fw):''};
+  if(sc>=5) return {t:'mid', text:scTxt+'答到了一些要点，但不够深入、缺少细节。'+jn, fw:fw?('追问：'+fw):'追问：能结合具体实现和数据再讲一遍吗？'};
+  if(VAGUE.test(ans)) return {t:'no', text:scTxt+'回答太模糊了。真实面试官会立刻挑战你："别用「大概/可能」，说清楚具体怎么实现的、数据是多少。"'+jn, fw:fw?('追问：'+fw):'追问：请重新组织语言，讲清原理与数据。'};
+  return {t:'no', text:scTxt+'没有抓住核心考点，需要补强。'+jn, fw:fw?('追问：'+fw):'追问：核心要点是什么？请补充。'};
+}
+function refAnswer(q){
+  if(!q) return '';
+  var s='';
+  if(q.type==='single' && q.options){
+    var ci=('ABCD').indexOf(q.answer||'');
+    var opt=ci>=0?String(q.options[ci]||'').replace(/^[A-D][.、]\s*/,''):'';
+    s+='正确选项：'+q.answer+' '+(opt||'')+'\n';
+  } else if(q.type==='judge'){
+    s+='正确答案：'+q.answer+'\n';
+  } else {
+    s+='参考答案要点：'+String(q.answer||'')+'\n';
+  }
+  var e=String(q.explanation||'').split('【易错点】')[0].replace('【解析】','').trim();
+  if(e) s+=e;
+  return s;
 }
 
 /* ---------- 在线 AI 客户端（OpenAI 兼容协议） ---------- */
@@ -338,6 +386,7 @@ function submit(){
   } else {
     var note=interviewerNote(q,ans,sc);
     addBubble('iv','<span class="iv-who">📝 面试官点评</span>'+esc(note.text));
+    addBubble('iv-ref','<span class="iv-who">📖 参考答案要点</span>'+esc(refAnswer(q)).replace(/\n/g,'<br>'));
     if(note.fw) addBubble('iv','<span class="iv-who">🔍 面试官追问</span>'+esc(note.fw));
     advance();
   }
@@ -473,11 +522,47 @@ function init(){
     var p=localStorage.getItem('iv_provider'); if(p&&PROVIDERS[p]) sel.value=p;
     var k=localStorage.getItem('iv_key'); if(k) $('ivKey').value=k;
   }catch(e){}
+  function parsePdf(file){
+    return new Promise(function(resolve, reject){
+      if(!window.pdfjsLib){ reject(new Error('PDF 解析库未加载')); return; }
+      try{ window.pdfjsLib.GlobalWorkerOptions.workerSrc='vendor/pdf.worker.min.js'; }catch(e){}
+      var rd=new FileReader();
+      rd.onload=function(){
+        window.pdfjsLib.getDocument({data: rd.result}).promise.then(function(pdf){
+          var tasks=[];
+          for(var i=1;i<=pdf.numPages;i++){
+            (function(pageNum){
+              tasks.push(pdf.getPage(pageNum).then(function(page){
+                return page.getTextContent().then(function(tc){
+                  return tc.items.map(function(it){ return it.str; }).join(' ');
+                });
+              }));
+            })(i);
+          }
+          Promise.all(tasks).then(function(parts){ resolve(parts.join('\n')); }, reject);
+        }, reject);
+      };
+      rd.onerror=reject;
+      rd.readAsArrayBuffer(file);
+    });
+  }
+  function loadResumeFile(file){
+    var name=(file.name||'').toLowerCase();
+    if(name.slice(-4)==='.pdf'){
+      $('ivResume').value='（正在解析 PDF，请稍候...）';
+      parsePdf(file).then(function(text){
+        if(!text || !text.trim()){ $('ivResume').value=''; alert('未能从该 PDF 提取到文字（可能是扫描件/图片型 PDF），请手动复制粘贴简历内容。'); }
+        else $('ivResume').value=text.trim();
+      }).catch(function(){ $('ivResume').value=''; alert('PDF 解析失败（可能是扫描件或加密文件），请手动复制粘贴简历文字。'); });
+    } else {
+      var rd=new FileReader();
+      rd.onload=function(){ $('ivResume').value=rd.result; };
+      rd.readAsText(file,'utf-8');
+    }
+  }
   $('ivFile').addEventListener('change', function(){
     var f=this.files&&this.files[0]; if(!f) return;
-    var rd=new FileReader();
-    rd.onload=function(){ $('ivResume').value=rd.result; };
-    rd.readAsText(f,'utf-8');
+    loadResumeFile(f);
     this.value='';
   });
   document.addEventListener('keydown', function(e){

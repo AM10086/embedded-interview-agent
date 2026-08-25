@@ -20,19 +20,19 @@ var SYSTEM_PROMPT='你是资深大厂嵌入式软件面试官（华为/大疆/�
 
 /* ---------- 简历技能识别表 ---------- */
 var SKILL_DEFS=[
-  {cat:'C 语言',name:'C/C++ 基础',keys:['C语言','c语言','C/C++','c/c++','C++','c++','C基础','嵌入式C','汇编']},
-  {cat:'C 语言',name:'指针与内存',keys:['指针','内存管理','malloc','野指针','内存池','链表']},
-  {cat:'驱动与外设',name:'STM32/单片机',keys:['stm32','STM32','单片机','MCU','esp32','ESP32','msp430','51单片机','51 单片机','arduino','ARM','Cortex']},
-  {cat:'驱动与外设',name:'外设与驱动',keys:['gpio','GPIO','i2c','I2C','spi','SPI','uart','UART','串口','can','CAN','pwm','PWM','adc','ADC','dma','DMA','定时器','中断','看门狗','寄存器','蜂鸣器','按键','电机','舵机']},
-  {cat:'RTOS',name:'RTOS/多任务',keys:['freertos','FreeRTOS','rtos','RTOS','uc/os','UCOS','rt-thread','RT-Thread','实时系统','多任务','嵌入式实时']},
-  {cat:'RTOS',name:'任务与同步',keys:['信号量','互斥量','消息队列','队列','任务调度','优先级','死锁','临界区','事件组','任务栈']},
-  {cat:'嵌入式 Linux',name:'Linux 基础',keys:['linux','Linux','嵌入式linux','嵌入式 Linux','ubuntu','Ubuntu','shell','Shell','vim']},
-  {cat:'嵌入式 Linux',name:'驱动与内核',keys:['设备树','内核','字符设备','platform','platform 总线','交叉编译','uboot','U-Boot','文件系统','mmap','内核模块','busybox']},
-  {cat:'网络与协议',name:'网络编程',keys:['tcp','TCP','udp','UDP','socket','Socket','网络编程','TCP/IP','tcp/ip','http','HTTP','mqtt','MQTT','lwip','LWIP','modbus','Modbus','485','rs485','RS485','CANopen']},
-  {cat:'数据结构与算法',name:'数据结构',keys:['链表','队列','栈','二叉树','树','排序','哈希','递归','算法','复杂度']},
-  {cat:'Git 与工具链',name:'Git/构建',keys:['git','Git','GitHub','github','gitee','makefile','Makefile','cmake','CMake','gcc','GCC','keil','Keil','iar','IAR','jlink','J-Link','st-link']},
-  {cat:'驱动与外设',name:'硬件调试',keys:['示波器','逻辑分析仪','万用表','串口调试','openmv','OpenMV']},
-  {cat:'C 语言',name:'嵌入式 AI',keys:['tinyml','TinyML','tensorflow','TensorFlow','神经网络','python','Python','模型量化','推理']}
+  {category:'C 语言',name:'C/C++ 基础',keys:['C语言','c语言','C/C++','c/c++','C++','c++','C基础','嵌入式C','汇编']},
+  {category:'C 语言',name:'指针与内存',keys:['指针','内存管理','malloc','野指针','内存池','链表']},
+  {category:'驱动与外设',name:'STM32/单片机',keys:['stm32','STM32','单片机','MCU','esp32','ESP32','msp430','51单片机','51 单片机','arduino','ARM','Cortex']},
+  {category:'驱动与外设',name:'外设与驱动',keys:['gpio','GPIO','i2c','I2C','spi','SPI','uart','UART','串口','can','CAN','pwm','PWM','adc','ADC','dma','DMA','定时器','中断','看门狗','寄存器','蜂鸣器','按键','电机','舵机']},
+  {category:'RTOS',name:'RTOS/多任务',keys:['freertos','FreeRTOS','rtos','RTOS','uc/os','UCOS','rt-thread','RT-Thread','实时系统','多任务','嵌入式实时']},
+  {category:'RTOS',name:'任务与同步',keys:['信号量','互斥量','消息队列','队列','任务调度','优先级','死锁','临界区','事件组','任务栈']},
+  {category:'嵌入式 Linux',name:'Linux 基础',keys:['linux','Linux','嵌入式linux','嵌入式 Linux','ubuntu','Ubuntu','shell','Shell','vim']},
+  {category:'嵌入式 Linux',name:'驱动与内核',keys:['设备树','内核','字符设备','platform','platform 总线','交叉编译','uboot','U-Boot','文件系统','mmap','内核模块','busybox']},
+  {category:'网络与协议',name:'网络编程',keys:['tcp','TCP','udp','UDP','socket','Socket','网络编程','TCP/IP','tcp/ip','http','HTTP','mqtt','MQTT','lwip','LWIP','modbus','Modbus','485','rs485','RS485','CANopen']},
+  {category:'数据结构与算法',name:'数据结构',keys:['链表','队列','栈','二叉树','树','排序','哈希','递归','算法','复杂度']},
+  {category:'Git 与工具链',name:'Git/构建',keys:['git','Git','GitHub','github','gitee','makefile','Makefile','cmake','CMake','gcc','GCC','keil','Keil','iar','IAR','jlink','J-Link','st-link']},
+  {category:'驱动与外设',name:'硬件调试',keys:['示波器','逻辑分析仪','万用表','串口调试','openmv','OpenMV']},
+  {category:'C 语言',name:'嵌入式 AI',keys:['tinyml','TinyML','tensorflow','TensorFlow','神经网络','python','Python','模型量化','推理']}
 ];
 
 /* ---------- 各分类核心概念词（用于离线评分） ---------- */
@@ -47,7 +47,10 @@ var CONCEPTS={
   '代码判断':['越界','溢出','野指针','未初始化','malloc','free','NULL','悬空','strcpy','缓冲区','除零','释放','栈','数组','越界'],
   'Linux 命令':['chmod','find','grep','ps','gcc','dmesg','ifconfig','tar','管道','权限','进程','编译','日志','网络','命令'],
   '代码分析':['指针','sizeof','strlen','对齐','递归','宏','static','输出','地址','结构体','数组','填充','\0'],
-  '代码写作':['指针','malloc','free','NULL','循环','while','return','strlen','链表','位操作','二分','交换','边界','实现']
+  '代码写作':['指针','malloc','free','NULL','循环','while','return','strlen','链表','位操作','二分','交换','边界','实现'],
+  '项目深挖':['STAR','项目','调试','问题','解决','优化','测试','架构','选型','数据','方案','负责','根因','验证'],
+  '通信协议对比':['SPI','I2C','UART','CAN','USB','串口','速率','引脚','主从','多机','仲裁','全双工','校验','波特率','时序'],
+  '项目排障':['排查','日志','复位','看门狗','内存','栈','溢出','丢包','调试','定位','现象','根因','验证','滤波','崩溃']
 };
 
 /* ---------- 面试官追问模板（回答命中关键词即深挖） ---------- */
@@ -100,6 +103,50 @@ var DESIGN_QUESTIONS=[
 ﻿/* 代码类面试题（代码判断 / Linux 命令 / 代码分析 / 代码写作）来自 code_questions.js（200 题） */
 var CODE_QUESTIONS = window.CODE_QUESTIONS || [];
 
+/* ---------- 通信协议对比（面试高频） ---------- */
+var PROTOCOL_QUESTIONS=[
+{category:'通信协议对比',q:'SPI 和 I2C 的主要区别？各自适合什么场景？',answer:'SPI：4 线（SCLK/MOSI/MISO/CS）、全双工、速度快（几十 MHz）、一主多从靠片选；I2C：2 线（SCL/SDA）、半双工、带地址、可挂多从机、速度慢（100k/400k/1M）。高速大数据选 SPI，多从机省引脚选 I2C。',explain:'协议对比必考题，先列维度再结论。',code_ans:''},
+{category:'通信协议对比',q:'UART 和 SPI 的区别？',answer:'UART：2 线（TX/RX）、异步（靠波特率对齐）、点对点、全双工、速率一般 <几 Mbps；SPI：同步（有时钟线）、可多从机、全双工、速率高。UART 简单省线用于调试/短距点对点，SPI 用于高速外设（Flash/屏/传感器）。',explain:'异步 vs 同步是核心。',code_ans:''},
+{category:'通信协议对比',q:'UART 和 I2C 的区别？',answer:'UART 异步点对点 2 线；I2C 同步 2 线带地址总线式，可挂多从机。I2C 需正确时序（起始/停止/应答），UART 只需波特率一致。',explain:'总线式 vs 点对点。',code_ans:''},
+{category:'通信协议对比',q:'CAN 和 RS485 的区别？各用在什么场景？',answer:'CAN：差分 2 线、多主、带仲裁与错误检测、速度最高 1Mbps（经典）/更高（CAN FD）、抗干扰强，用于汽车/工业；RS485：差分半双工、主从轮询、无仲裁，速度可达 10Mbps+，成本低用于工业总线/Modbus。',explain:'CAN 有协议栈，RS485 只是物理层。',code_ans:''},
+{category:'通信协议对比',q:'I2C 为什么适合挂多个从设备？地址怎么处理？',answer:'I2C 是总线式，每个从机有唯一 7 位（或 10 位）地址，主机通过地址寻址，所有从机并联在 SCL/SDA 上即可，省引脚。需处理地址冲突、上拉电阻。',explain:'地址寻址是 I2C 多从机关键。',code_ans:''},
+{category:'通信协议对比',q:'SPI 是全双工吗？I2C、UART 呢？',answer:'SPI 和 UART 都是全双工（可同时收发）；I2C 是半双工（同一根数据线分时收发）。',explain:'全/半双工区分。',code_ans:''},
+{category:'通信协议对比',q:'SPI 有哪四种模式？CPOL/CPHA 怎么区分？',answer:'CPOL 决定时钟空闲电平（0/1），CPHA 决定数据在时钟上升沿还是下降沿采样。4 种组合：模式0（CPOL0 CPHA0）最常用。主从必须配置一致。',explain:'SPI 模式 0-3，模式 0 最常用。',code_ans:''},
+{category:'通信协议对比',q:'I2C 的起始、停止、应答时序是怎样的？',answer:'起始：SCL 高电平时 SDA 由高变低；停止：SCL 高电平时 SDA 由低变高；应答：接收方在第 9 个时钟拉低 SDA（ACK），不拉低为 NACK。',explain:'时序是 I2C 手写驱动必考。',code_ans:''},
+{category:'通信协议对比',q:'I2C 多主机冲突怎么解决？',answer:'I2C 有仲裁机制：多个主机同时发数据时，检测 SDA 与自己发送不一致即让出总线；加上时钟同步（低电平保持）。通常用主从模式避免冲突。',explain:'仲裁 = 发送时检测冲突。',code_ans:''},
+{category:'通信协议对比',q:'串口波特率误差怎么算？误差太大会怎样？',answer:'误差 = |实际波特率-目标|/目标。一般 <2% 可用，误差太大会采样错位导致乱码。STM32 用 BRR 分频，选时钟使误差尽量小。',explain:'波特率误差导致乱码。',code_ans:''},
+{category:'通信协议对比',q:'实际项目中怎么选 UART/SPI/I2C？举例说明。',answer:'按需求：调试日志/点对点低速→UART；接 Flash/屏/高速传感器→SPI；挂多个 I2C 传感器/EEPROM→I2C；汽车/长距离抗干扰→CAN。讲清速率、引脚、多机、距离、成本。',explain:'选型题：先给维度再下结论。',code_ans:''},
+{category:'通信协议对比',q:'CAN 报文的仲裁机制？',answer:'CAN 是多主总线，节点同时发送时按标识符逐位仲裁：显性位（0）优先，ID 小的先发送；仲裁失败自动转接收，不破坏数据。',explain:'CAN 优先级由 ID 决定。',code_ans:''},
+{category:'通信协议对比',q:'CAN 和以太网的区别？',answer:'CAN：短帧（8 字节数据）、多主、确定性仲裁、抗干扰、速率低（最高几 Mbps），适合实时控制；以太网：帧大、速率高（100M/1G）、需交换/协议栈（TCP/IP），适合大数据传输。',explain:'实时性 vs 吞吐量。',code_ans:''},
+{category:'通信协议对比',q:'USB 和 UART 的区别？USB 枚举是什么？',answer:'USB：主从（Host/Device）、差分、速率高（12M~20G）、需枚举（设备接入后主机发配置请求、分配地址、加载驱动）；UART：简单点对点、无枚举。USB 用于大容量/高速外设，UART 用于简单调试。',explain:'枚举 = USB 设备初始化的握手过程。',code_ans:''},
+{category:'通信协议对比',q:'Modbus RTU 帧格式？和 Modbus TCP 的区别？',answer:'RTU：地址(1)+功能码(1)+数据(N)+CRC16(2)，基于串口 RS485，二进制紧凑；Modbus TCP 基于以太网，去掉 CRC 换成 MBAP 头。',explain:'工业通信常考。',code_ans:''},
+{category:'通信协议对比',q:'RS485 和 RS232 的区别？',answer:'RS232：单端、±12V 电平、点对点、距离短（~15m）；RS485：差分、半双工/全双工、可多机（128 节点）、距离长（1200m）、抗干扰强。工业现场用 RS485。',explain:'差分 vs 单端。',code_ans:''},
+{category:'通信协议对比',q:'蓝牙和 WiFi 的区别？各适合什么场景？',answer:'蓝牙：短距（~10m）、低功耗、速率低（经典 2Mbps，BLE 更低）、组网简单（一对多广播/连接）；WiFi：速率高（百 Mbps）、距离远、功耗大、需接入点。传感器穿戴用 BLE，数据传输用 WiFi。',explain:'功耗/速率/距离权衡。',code_ans:''},
+{category:'通信协议对比',q:'常用嵌入式总线的速度大致是多少？',answer:'UART 几 Mbps 以内；I2C 标准 100k/400k/1M（FM+）；SPI 可达几十 MHz（按分频）；CAN 最高 1Mbps（FD 更高）；USB2.0 480Mbps；以太网 10/100/1000M。',explain:'数量级记住即可。',code_ans:''},
+{category:'通信协议对比',q:'串口通信粘包/半包怎么解决？',answer:'定长帧、或帧头+长度+校验+超时判帧；接收用环形缓冲+状态机解析，按帧处理，超时判断半包。',explain:'拆包是嵌入式网络/串口高频题。',code_ans:''},
+{category:'通信协议对比',q:'怎么保证通信可靠性？',answer:'物理层校验（CRC/校验和）、应答（ACK/NACK）、超时重传、帧序号去重、心跳保活、看门狗兜底。',explain:'可靠通信四要素。',code_ans:''}
+];
+
+/* ---------- 项目排障（遇到问题怎么解决） ---------- */
+var PROBLEM_QUESTIONS=[
+{category:'项目排障',q:'你项目里遇到最难解决的 bug 是什么？怎么定位和解决的？',answer:'用「现象→排查→根因→解决→验证」讲一个真实故事，最好带数据（如"排查了 3 天，最后定位到 DMA 未等待传输完成"）。',explain:'问题解决能力是面试重点。',code_ans:''},
+{category:'项目排障',q:'系统在现场偶发死机/复位，你怎么排查？',answer:'复现→查看门狗复位标志/内核日志→排查电源纹波、内存越界、栈溢出、干扰、任务卡死→用示波器/逻辑分析仪抓现场→逐步隔离。',explain:'偶发问题定位方法论。',code_ans:''},
+{category:'项目排障',q:'程序卡死（任务不运行）怎么定位？',answer:'看所有任务状态（是否阻塞等锁）、是否死锁/优先级反转、中断是否死循环、栈是否溢出；用调试器挂起看当前执行点。',explain:'卡死 = 调度/锁/中断/栈问题。',code_ans:''},
+{category:'项目排障',q:'通信丢包/数据错乱怎么解决？',answer:'先确认物理层（波形/电平/干扰），再查波特率/时序/校验；加 CRC、应答重传、帧同步；用逻辑分析仪抓波形对比。',explain:'丢包分层排查。',code_ans:''},
+{category:'项目排障',q:'内存泄漏怎么发现和定位？',answer:'监控内存占用曲线持续增长→检查 malloc/free 是否配对、错误路径是否释放→用工具（如统计分配）定位泄漏点。',explain:'泄漏 = 只分配不释放。',code_ans:''},
+{category:'项目排障',q:'栈溢出有什么征兆？怎么检测？',answer:'征兆：莫名崩溃、变量被改、函数返回异常；检测：用栈高水位（如 FreeRTOS uxTaskGetStackHighWaterMark）、栈填充标记、MPU 栈保护。',explain:'栈溢出检测手段。',code_ans:''},
+{category:'项目排障',q:'传感器数据跳动/不稳定怎么处理？',answer:'先查硬件（供电/干扰/接线），再软件滤波：多次采样取平均/中值、滑动滤波、限幅滤波；确认采样时序与数据手册一致。',explain:'滤波是嵌入式基本功。',code_ans:''},
+{category:'项目排障',q:'电机/PWM 出现抖动震荡怎么调？',answer:'检查 PWM 频率是否在可听/合适范围、死区设置、PID 参数是否过大（比例过大震荡）、编码器反馈是否稳定、机械间隙。',explain:'控制环调参思路。',code_ans:''},
+{category:'项目排障',q:'出现优先级反转导致的异常，怎么处理？',answer:'识别：高优先级任务被中优先级任务间接阻塞。解决：优先级继承、优先级天花板、或避免共享资源长时间占用。',explain:'RTOS 经典问题。',code_ans:''},
+{category:'项目排障',q:'你常用的调试手段有哪些？',answer:'串口日志（分级打印）、调试器断点/单步/看变量、示波器/逻辑分析仪看波形时序、状态机打印、看门狗+复位标志。',explain:'调试工具链越全越好。',code_ans:''},
+{category:'项目排障',q:'系统长时间运行后越来越慢/卡顿，怎么排查？',answer:'查内存泄漏（可用内存持续下降）、句柄/任务堆积、队列积压、缓存未释放、碎片化；用工具监控 CPU 占用和内存曲线。',explain:'资源泄漏导致变慢。',code_ans:''},
+{category:'项目排障',q:'中断里出现的问题怎么排查？',answer:'确认 ISR 是否过长/调用不可重入函数；用示波器看中断响应是否及时；检查中断优先级与共享变量；加调试计数。',explain:'ISR 常见坑。',code_ans:''},
+{category:'项目排障',q:'怎么保证代码健壮性（异常输入/极端情况）？',answer:'入口参数校验、指针判空、数组边界检查、看门狗、异常捕获、压力/边界测试、防御式编程。',explain:'健壮性意识。',code_ans:''},
+{category:'项目排障',q:'遇到没见过的技术问题，你的处理思路？',answer:'先查资料（手册/文档/社区）→搭最小复现环境→分而治之排除变量→动手验证假设→记录总结。',explain:'学习与排障方法论。',code_ans:''},
+{category:'项目排障',q:'项目进度紧张/需求变化时你怎么处理？',answer:'先和负责人对齐优先级，砍掉非核心功能保主线；关键路径先做最小可用版本再迭代；及时同步风险。',explain:'软技能也重要。',code_ans:''}
+];
+
+
 
 
 /* ---------- 基础工具 ---------- */
@@ -139,32 +186,60 @@ function analyzeResume(text){
 }
 
 /* ---------- 题库抽取（Q2-Q19 共 18 道 + Q20 综合题） ---------- */
-function buildPool(skills){
+function detectProjects(text){
+  var hasProject=/项目|实习|毕设|课程设计|大赛|竞赛|作品|开发了|实现了|设计了|负责/.test(text);
+  var protocols=[];
+  ['串口','UART','SPI','I2C','CAN','USB','RS485','Modbus','蓝牙','WiFi','以太网','TCP','UDP','MQTT','LORA','LoRa'].forEach(function(p){
+    if(text.indexOf(p)>=0) protocols.push(p);
+  });
+  var techs=[];
+  ['STM32','单片机','MCU','FreeRTOS','RTOS','Linux','驱动','PID','PWM','编码器','DMA','中断','传感器','OLED','电机','TinyML','OpenMV','摄像头','循迹','温湿度'].forEach(function(t){
+    if(text.indexOf(t)>=0) techs.push(t);
+  });
+  return {hasProject:hasProject, protocols:protocols, techs:techs};
+}
+function buildProjectQuestions(ri){
+  var qs=[];
+  if(!ri || !ri.hasProject) return qs;
+  var tech=(ri.techs.length?('（如 '+ri.techs.slice(0,5).join('/')+'）'):'');
+  qs.push({category:'项目深挖',q:'请用 STAR（情境→任务→行动→结果）介绍你简历里的一个项目：你负责什么、用了哪些技术、最终量化成果是什么？',answer:'用 STAR 结构讲：背景→你的任务→技术方案与行动→量化结果（性能/时间/精度）。',explain:'先验证项目真实性和表达能力。',code_ans:''});
+  qs.push({category:'项目深挖',q:'这个项目里你遇到的最大技术难点是什么？你是怎么一步步解决的？'+tech,answer:'讲一个具体问题：现象→排查步骤→根因→解决方案→验证数据。',explain:'问题解决能力是面试核心。',code_ans:''});
+  qs.push({category:'项目深挖',q:'项目里用到的关键技术'+tech+'，你具体怎么实现的？数据/参数是多少？',answer:'讲清原理+实现细节+关键数据（如 PID 周期、PWM 频率、通信波特率）。',explain:'深挖技术真实性，含糊会被挑战。',code_ans:''});
+  qs.push({category:'项目深挖',q:'如果让你重新做这个项目，你会怎么改进架构、选型或流程？为什么？',answer:'指出可改进点（模块化/选型/测试/性能），给出取舍理由。',explain:'考察反思与工程思维。',code_ans:''});
+  qs.push({category:'项目深挖',q:'你怎么验证项目功能正常？有没有做可靠性测试（长时间运行/异常输入/边界）？',answer:'说明测试方法：功能用例、边界测试、长时间跑机、异常注入。',explain:'考察测试与质量意识。',code_ans:''});
+  if(ri.protocols.length){
+    qs.push({category:'通信协议对比',q:'你项目里用了 '+ri.protocols.join('/')+'，为什么选它？和替代方案相比有什么取舍？',answer:'结合场景说明选型理由：速率、距离、引脚、多机、可靠性、成本。',explain:'协议选型是加分项。',code_ans:''});
+  }
+  return qs;
+}
+function buildPool(skills, resumeInfo){
   var boost={};
   skills.forEach(function(s){ boost[s.cat]=(boost[s.cat]||0)+1; });
-  var plan=[['C 语言',5],['驱动与外设',4],['RTOS',4],['嵌入式 Linux',3],['网络与协议',2],['数据结构与算法',1],['Git 与工具链',1]];
-  var pool=[];
+  var plan=[['C 语言',4],['驱动与外设',3],['RTOS',3],['嵌入式 Linux',2],['网络与协议',2],['数据结构与算法',1],['Git 与工具链',1]];
+  var bank=[];
   plan.forEach(function(p){
     var cat=p[0], n=p[1]+Math.min(2,boost[cat]||0);
     var arr=QS.filter(function(q){return q.category===cat;});
     shuffle(arr);
-    pool=pool.concat(arr.slice(0,Math.min(n,arr.length)));
+    bank=bank.concat(arr.slice(0,Math.min(n,arr.length)));
   });
-  // 代码类面试题：代码判断 / Linux 命令 / 代码分析 / 代码写作，每类抽 3 题（共 12 道）
-  var CODE_CATS=['代码判断','Linux 命令','代码分析','代码写作'];
-  var codePool=[];
-  CODE_CATS.forEach(function(ct){
+  // 面试重点：简历项目 STAR 深挖 + 问题排障 + 协议对比 + 少量代码/基础题
+  var extras=[];
+  if(resumeInfo && resumeInfo.hasProject) extras=extras.concat(buildProjectQuestions(resumeInfo)); // 项目深挖 5-6 题
+  var pa=shuffle(PROTOCOL_QUESTIONS.slice()).slice(0,3);  extras=extras.concat(pa);   // 协议对比 3 题
+  var pb=shuffle(PROBLEM_QUESTIONS.slice()).slice(0,2);   extras=extras.concat(pb);   // 项目排障 2 题
+  ['代码判断','Linux 命令','代码分析','代码写作'].forEach(function(ct){              // 代码题 4 题
     var arr=CODE_QUESTIONS.filter(function(cq){return cq.category===ct;});
     shuffle(arr);
-    codePool=codePool.concat(arr.slice(0,3));
+    extras=extras.concat(arr.slice(0,1));
   });
-  shuffle(pool);
-  pool=pool.slice(0,6);            // 6 道基础题库
-  shuffle(codePool);
-  pool=pool.concat(codePool.slice(0,12)); // 12 道代码题
+  shuffle(extras);
+  shuffle(bank);
+  var need=18-extras.length; if(need<0) need=0;
+  var pool=bank.slice(0,need).concat(extras);
   shuffle(pool);
   var design=DESIGN_QUESTIONS[Math.floor(Math.random()*DESIGN_QUESTIONS.length)];
-  pool.push(design);                // 1 道综合压力题（共 19 题，Q2~Q20）
+  pool.push(design);   // 1 道综合压力题（共 19 题，Q2~Q20）
   return pool;
 }
 
@@ -360,15 +435,22 @@ function start(){
   try{ localStorage.setItem('iv_provider',prov); if(key) localStorage.setItem('iv_key',key); else localStorage.removeItem('iv_key'); }catch(e){}
   var an=analyzeResume(text);
   S.skills=an.skills; S.risks=an.risks;
-  S.pool=buildPool(an.skills);
+  var ri=detectProjects(text);
+  S.resumeInfo=ri;
+  S.pool=buildPool(an.skills, ri);
   setPhase('session');
   $('ivChat').innerHTML='';
   $('ivAnswer').value='';
   $('ivModeTag').textContent=S.mode==='ai'?('🤖 '+PROVIDERS[prov].name):'⚙️ 内置审问引擎';
-  addBubble('iv','<span class="iv-who">🤖 面试官</span>你好，我是今天的面试官。已收到你的简历，目标岗位：<b>'+esc(pos)+'</b>。本次面试共 <b>20 题</b>：自我介绍 → 基础到进阶 → 代码判断/代码分析/Linux 命令/代码写作 → 结合简历项目深挖（STAR）→ 综合压力题。<br>'+ (S.mode==='ai'?'本场由 <b>'+PROVIDERS[prov].name+'</b> 大模型全真驱动。':'本场由 <b>内置审问引擎</b> 驱动（配置 API Key 可升级为大模型真面试）。'));
+  addBubble('iv','<span class="iv-who">🤖 面试官</span>你好，我是今天的面试官。已收到你的简历，目标岗位：<b>'+esc(pos)+'</b>。本次面试共 <b>20 题</b>：自我介绍 → <b>简历项目深挖（STAR）</b> → 遇到的问题怎么解决 → 通信协议对比 → 基础与代码题 → 综合压力题。<br>'+ (S.mode==='ai'?'本场由 <b>'+PROVIDERS[prov].name+'</b> 大模型全真驱动。':'本场由 <b>内置审问引擎</b> 驱动（配置 API Key 可升级为大模型真面试）。'));
   var sk=an.skills.map(function(s){return s.name;});
   var risk=an.risks.map(function(r){return r.text;});
-  addBubble('iv','<span class="iv-who">📋 简历速览</span>检测到技能：<b>'+(sk.length?esc(sk.join('、')):'未识别到明显技术关键词')+'</b><br>⚠️ 面试官重点考察：'+esc(risk.length?risk.join('；'):'围绕你简历里的项目和技能展开深挖'));
+  var ri=detectProjects(text);
+  var projHtml = ri.hasProject
+    ? '✅ <b>项目经历</b>：已检测到，将重点 STAR 深挖'+(ri.techs.length?'（'+esc(ri.techs.slice(0,5).join('/'))+'）':'')
+    : '⚠️ <b>项目经历</b>：未检测到项目/实习关键词，建议尽快补充';
+  var protHtml = ri.protocols.length ? '✅ <b>通信协议</b>：'+esc(ri.protocols.slice(0,6).join('/'))+'（将重点考察协议区别与选型）' : '⚠️ <b>通信协议</b>：简历未提及，建议补充（SPI/I2C/UART/CAN 等）';
+  addBubble('iv','<span class="iv-who">📋 简历速览</span>检测到技能：<b>'+(sk.length?esc(sk.join('、')):'未识别到明显技术关键词')+'</b><br>'+projHtml+'<br>'+protHtml);
   if(S.mode==='ai'){
     S.ai=[{role:'system',content:SYSTEM_PROMPT},{role:'user',content:'应聘者简历：\n'+text.slice(0,3000)+'\n目标岗位：'+pos}];
     var ld=showLoading('AI 正在分析简历...');
@@ -494,7 +576,10 @@ var FIX_PLAN={
   '代码判断':['数组越界与缓冲区溢出（strcpy/strncpy/snprintf）','指针与内存（野指针/悬空指针/重复 free）','未初始化/返回局部地址/除零等 C 陷阱'],
   'Linux 命令':['文件与权限（chmod/chown/ls -l）','查找与过滤（find/grep/管道）','进程与调试（ps/top/kill/gdb/dmesg）','编译构建（gcc -Wall/-O2、Makefile、交叉编译）'],
   '代码分析':['sizeof/strlen 与指针运算','结构体对齐与内存布局','宏与预处理陷阱','递归/循环/static 作用域'],
-  '代码写作':['字符串与内存操作（strlen/strcpy/反转/安全复制）','链表与指针操作','位操作与寄存器','二分查找/排序实现']
+  '代码写作':['字符串与内存操作（strlen/strcpy/反转/安全复制）','链表与指针操作','位操作与寄存器','二分查找/排序实现'],
+  '项目深挖':['用 STAR 结构准备 5 个完整项目故事（情境/任务/行动/结果+数据）','每个项目技术点逐条深挖（原理+选型+数据）','提前预演面试官追问（为什么/怎么实现/如果…会怎样）'],
+  '通信协议对比':['SPI/I2C/UART/CAN/USB 对比表（速度/引脚/主从/多机/距离）','各协议时序、帧格式与校验方式','根据场景讲选型思路（速率/距离/可靠性/成本）'],
+  '项目排障':['常见问题定位方法论（死机/卡死/丢包/内存泄漏/栈溢出）','调试工具链（日志/调试器/示波器/逻辑分析仪）','可靠性设计（看门狗/异常处理/边界测试）']
 };
 
 function renderReport(rep){
@@ -522,7 +607,7 @@ function renderReport(rep){
   resumeHtml+='<li>项目描述模板：<b>「使用 X 技术，解决了 Y 问题，使 Z 指标提升 N%」</b>，一段话不超过 3 行。</li>';
   resumeHtml+='<li>把开源项目「嵌入式面试 AI Agent」写进项目经历，作为工具 / 效率 / 学习能力的证明（附 GitHub 链接）。</li></ul>';
   var wk1='<ul>', wk2='<ul>', wk3='<ul>';
-  (rep.weak.length?rep.weak:[{cat:'C 语言'}]).forEach(function(w,i){
+  (rep.weak.length?rep.weak:[{category:'C 语言'}]).forEach(function(w,i){
     var t=(FIX_PLAN[w.cat]||[]).slice(0,2).join('、');
     if(i===0){ wk1+='<li>补强 <b>'+w.cat+'</b>：'+t+'</li>'; wk2+='<li>每天 20 题专项练习（'+w.cat+' 分类），正确率 80% 以上</li>'; wk3+='<li>把 '+w.cat+' 相关考点整理成自己的「面试笔记」（原理 + 代码 + 数据）</li>'; }
     else if(i===1){ wk1+='<li>补强 <b>'+w.cat+'</b>：'+t+'</li>'; wk2+='<li>针对 '+w.cat+' 写 3 个小工程验证理解</li>'; wk3+='<li>模拟面试复测，确保 '+w.cat+' 不再丢分</li>'; }

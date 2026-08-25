@@ -219,6 +219,7 @@
   .iv-b.iv-no{align-self:flex-start;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.4);border-bottom-left-radius:4px}
   .iv-b.iv-warn{align-self:flex-start;background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.4);border-bottom-left-radius:4px}
   .iv-code{background:#0a0f1c;border:1px solid rgba(148,163,184,.18);border-radius:10px;padding:12px 14px;font-family:Consolas,'Courier New',monospace;font-size:12.5px;line-height:1.6;overflow-x:auto;white-space:pre;color:#9fd0ff;margin-top:8px}
+  .quiz-code{background:#0a0f1c;border:1px solid rgba(148,163,184,.18);border-radius:10px;padding:10px 12px;font-family:Consolas,'Courier New',monospace;font-size:12.5px;line-height:1.6;overflow-x:auto;white-space:pre;color:#9fd0ff;margin-top:10px}
   .iv-b.iv-ref{align-self:flex-start;background:rgba(52,211,153,.06);border:1px dashed rgba(52,211,153,.35);border-bottom-left-radius:4px;font-size:13px;color:var(--sub)}
   .iv-b .iv-who{display:block;font-size:12px;color:var(--sub);margin-bottom:5px}
   .iv-b.iv-me .iv-who{color:#a5b4fc}
@@ -294,6 +295,7 @@
         </div>
         <span class="qtag" id="qCat"></span>
         <div class="qtext" id="qText"></div>
+        <pre id="qCode" class="quiz-code hidden"></pre>
         <div class="opts" id="qOpts"></div>
         <div class="jbtn hidden" id="qJudge"></div>
         <div class="hidden" id="qShort">
@@ -409,10 +411,17 @@
 <script src="interview.js"></script>
 <script>
 var QS = window.QUESTIONS || [];
+if(window.CODE_QUESTIONS && window.CODE_QUESTIONS.length){
+  window.CODE_QUESTIONS.forEach(function(cq){
+    QS.push({question: cq.q||'', category: cq.category||'代码题', type: 'short',
+             code: cq.code||'', answer: cq.answer||'', explanation: cq.explain||'', code_ans: cq.code_ans||''});
+  });
+}
 var CATS = [...new Set(QS.map(q => q.category))];
 var state = {mode:'practice', cat:'all', pool:[], idx:0, score:0, streak:0, best:0, timer:null, timeLeft:0};
 var current = null;
 var bankCat = 'all';
+function escHtml(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 /* ---------- storage ---------- */
 function stats(){ try{return JSON.parse(localStorage.getItem('agent_stats')||'{}');}catch(e){return {};} }
@@ -489,6 +498,9 @@ function showQuestion(){
   document.getElementById('pbar').style.width=(state.idx/state.pool.length*100)+'%';
   document.getElementById('qCat').textContent='['+current.category+']';
   document.getElementById('qText').textContent=current.question;
+  var qc=document.getElementById('qCode');
+  if(current.code){ qc.textContent=current.code; qc.classList.remove('hidden'); }
+  else { qc.classList.add('hidden'); }
   var fb=document.getElementById('feedback'); fb.className='feedback hidden';
   document.getElementById('nextBtn').style.display='none';
   document.getElementById('qShort').classList.add('hidden');
@@ -530,7 +542,8 @@ function submitShort(g){
   var ok=g>=4;
   var fb=document.getElementById('feedback');
   fb.className='feedback '+(ok?'ok':'no');
-  fb.innerHTML='<b>[参考答案]</b> '+(current.answer||'')+'<br><b>[讲解]</b> '+(current.explanation||'');
+  var extra=current.code_ans?('<pre class="quiz-code">'+escHtml(current.code_ans)+'</pre>'):'';
+  fb.innerHTML='<b>[参考答案]</b> '+(current.answer||'')+'<br><b>[讲解]</b> '+(current.explanation||'')+extra;
   record(current.category,ok); state.score+=ok?1:0; if(ok) state.streak++; else state.streak=0;
   endCheck();
 }
@@ -611,7 +624,7 @@ function renderBank(){
   var groups={};
   QS.forEach(function(q){
     if(bankCat!=='all' && q.category!==bankCat) return;
-    if(kw){ var hay=(q.question+' '+(q.explanation||'')).toLowerCase(); if(hay.indexOf(kw)<0) return; }
+    if(kw){ var hay=(q.question+' '+(q.explanation||'')+' '+(q.code||'')+' '+(q.answer||'')).toLowerCase(); if(hay.indexOf(kw)<0) return; }
     (groups[q.category]=groups[q.category]||[]).push(q);
   });
   var html='';
@@ -621,7 +634,9 @@ function renderBank(){
     items.forEach(function(q){
       html+='<div class="bank-item" onclick="toggleBank(this)"><div class="qt"><span>'+q.question+'</span></div>'+
         '<div class="detail">'+(q.options?'<div style="margin-bottom:4px">'+q.options.join('<br>')+'</div>':'')+
+        (q.code?'<pre class="quiz-code">'+escHtml(q.code)+'</pre>':'')+
         '<div class="ans">答案：'+(q.answer||'')+'</div>'+
+        (q.code_ans?'<pre class="quiz-code">参考代码：\n'+escHtml(q.code_ans)+'</pre>':'')+
         '<div class="exp" style="margin-top:4px">'+(q.explanation||'')+'</div></div></div>';
     });
     html+='</div>';

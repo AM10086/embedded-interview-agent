@@ -1,0 +1,57 @@
+﻿{
+  "category": "网络与协议",
+  "questions": [
+    {
+      "type": "single",
+      "question": "TCP 建立连接的三次握手顺序是？",
+      "options": ["A. SYN → SYN+ACK → ACK", "B. SYN → ACK → SYN", "C. ACK → SYN → ACK", "D. FIN → ACK → FIN"],
+      "answer": "A",
+      "explanation": "客户端发 SYN，服务端回 SYN+ACK，客户端再回 ACK，连接建立。"
+    },
+    {
+      "type": "single",
+      "question": "TCP 和 UDP 的主要区别？",
+      "options": ["A. TCP 无连接，UDP 有连接", "B. TCP 可靠有序，UDP 不可靠但快", "C. 两者一样", "D. UDP 保证不丢包"],
+      "answer": "B",
+      "explanation": "TCP 面向连接、可靠、有序、有流量/拥塞控制；UDP 无连接、尽力而为、开销小、低延迟。"
+    },
+    {
+      "type": "short",
+      "question": "什么是 TCP 粘包？如何解决？",
+      "answer": "TCP 是字节流，多个应用报文可能被合并/拆分，接收方无法区分边界（粘包/拆包）。解决：固定长度、分隔符、或自定义协议头（长度字段 + 校验）。",
+      "explanation": "嵌入式通信同理：你项目里的 UART 协议（帧头+长度+数据+校验和）就是解决边界问题。"
+    },
+    {
+      "type": "short",
+      "question": "如何设计一个可靠的串口（UART）通信协议？",
+      "answer": "帧格式：帧头（如 0xAA 0x55）+ 长度 + 命令/数据 + 校验和（或 CRC）+ 帧尾。接收端按状态机解析，校验失败丢弃或请求重发。",
+      "explanation": "对应你简历里的自定义串口协议（帧头+手势ID+置信度+校验和）。"
+    },
+    {
+      "type": "single",
+      "question": "MQTT 协议基于哪种传输层协议？",
+      "options": ["A. UDP", "B. TCP", "C. ICMP", "D. 直接基于 IP"],
+      "answer": "B",
+      "explanation": "MQTT 基于 TCP，采用发布/订阅模型，适合物联网低带宽场景。"
+    },
+    {
+      "type": "single",
+      "question": "网络字节序是大端还是小端？",
+      "options": ["A. 大端", "B. 小端", "C. 由 CPU 决定", "D. 随机"],
+      "answer": "A",
+      "explanation": "网络字节序统一为大端（big-endian），发送前用 htonl/htons 转换，接收用 ntohl/ntohs。"
+    },
+    {
+      "type": "short",
+      "question": "DHCP 的作用是什么？",
+      "answer": "动态主机配置协议：自动为设备分配 IP 地址、子网掩码、网关、DNS 等网络参数，无需手动配置。",
+      "explanation": "物联网设备接入局域网常用 DHCP 自动获取 IP。"
+    },
+    {
+      "type": "judge",
+      "question": "HTTP 基于 TCP，所以 HTTP 传输一定是可靠的。",
+      "answer": "对",
+      "explanation": "HTTP 跑在 TCP 之上，TCP 的可靠传输保证了 HTTP 数据不丢不错（但应用层超时/断连仍可能发生）。"
+    }
+  ]
+}

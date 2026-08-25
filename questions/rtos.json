@@ -1,0 +1,56 @@
+﻿{
+  "category": "RTOS",
+  "questions": [
+    {
+      "type": "single",
+      "question": "FreeRTOS 默认的调度方式是？",
+      "options": ["A. 时间片轮询", "B. 抢占式调度", "C. 协作式调度", "D. 随机调度"],
+      "answer": "B",
+      "explanation": "FreeRTOS 是抢占式实时内核：高优先级任务就绪时会立即抢占低优先级任务。"
+    },
+    {
+      "type": "short",
+      "question": "信号量（Semaphore）和互斥量（Mutex）的区别？",
+      "answer": "信号量用于同步或资源计数，二值信号量常做任务/中断同步；互斥量用于保护共享资源，具有优先级继承、递归获取、必须由持有者释放等特点，能缓解优先级反转。",
+      "explanation": "经典面试题：同步用信号量，保护共享资源用互斥量。"
+    },
+    {
+      "type": "short",
+      "question": "什么是优先级反转？如何解决？",
+      "answer": "低优先级任务持有资源时，高优先级任务等待该资源，导致高优先级任务被低优先级任务阻塞的现象。解决：互斥量的优先级继承（Priority Inheritance）或优先级天花板。",
+      "explanation": "对应你项目里的互斥量保护串口打印。"
+    },
+    {
+      "type": "single",
+      "question": "需要把一个任务的数据传给另一个任务，最合适用？",
+      "options": ["A. 全局变量", "B. 消息队列", "C. 软件定时器", "D. 看门狗"],
+      "answer": "B",
+      "explanation": "消息队列实现任务间数据解耦传递，带缓冲，避免直接用全局变量的竞态问题。这就是你项目一里的设计。"
+    },
+    {
+      "type": "short",
+      "question": "临界区如何保护？RTOS 里有哪些手段？",
+      "answer": "① 关中断（最短临界区）；② 调度器上锁（vTaskSuspendAll）；③ 互斥量/信号量（可阻塞等待）。原则：临界区越短越好。",
+      "explanation": "保护共享资源访问的原子性，防止任务切换/中断打断。"
+    },
+    {
+      "type": "single",
+      "question": "FreeRTOS 中查看任务栈剩余空间用哪个 API？",
+      "options": ["A. vTaskDelay", "B. uxTaskGetStackHighWaterMark", "C. xPortGetFreeHeapSize", "D. vTaskStartScheduler"],
+      "answer": "B",
+      "explanation": "uxTaskGetStackHighWaterMark() 返回任务栈历史最小剩余空间（高水位），用于栈溢出监测；xPortGetFreeHeapSize() 查堆剩余。"
+    },
+    {
+      "type": "short",
+      "question": "死锁产生的四个必要条件是什么？如何避免？",
+      "answer": "互斥、持有并等待、不可剥夺、循环等待。避免：统一加锁顺序、加锁超时、尽量只持有一个锁。",
+      "explanation": "面试常考；回答时说出四个条件即可拿分。"
+    },
+    {
+      "type": "judge",
+      "question": "中断服务函数里可以直接调用 vTaskDelay() 让任务延时。",
+      "answer": "错",
+      "explanation": "ISR 里必须使用带 FromISR 后缀的 API（如 xQueueSendFromISR），vTaskDelay 是阻塞函数不能在中断里调用。"
+    }
+  ]
+}

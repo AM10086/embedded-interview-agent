@@ -1,0 +1,57 @@
+﻿{
+  "category": "驱动与外设",
+  "questions": [
+    {
+      "type": "single",
+      "question": "以下哪个是异步串行通信协议？",
+      "options": ["A. SPI", "B. I2C", "C. UART", "D. CAN"],
+      "answer": "C",
+      "explanation": "UART 是异步的（靠起始位/波特率同步，无时钟线）；SPI/I2C 是同步的（有 SCK/SCL 时钟线）。"
+    },
+    {
+      "type": "single",
+      "question": "I2C 总线通常需要几根信号线？",
+      "options": ["A. 1 根", "B. 2 根（SCL + SDA）", "C. 4 根", "D. 8 根"],
+      "answer": "B",
+      "explanation": "I2C = SCL（时钟）+ SDA（数据），需要上拉电阻。SPI 是 4 根（SCK/MOSI/MISO/CS）。"
+    },
+    {
+      "type": "short",
+      "question": "中断、轮询、DMA 三种方式有什么区别？什么时候用 DMA？",
+      "answer": "轮询：CPU 一直查询状态，简单但浪费 CPU。中断：外设事件触发 CPU 处理，实时性好。DMA：外设与内存直接搬运数据，无需 CPU 逐字节干预。大量数据（如 ADC 连续采样、串口批量收发）适合 DMA。",
+      "explanation": "面试常考三者的取舍：实时性 vs CPU 占用 vs 复杂度。"
+    },
+    {
+      "type": "single",
+      "question": "GPIO 开漏输出（Open-Drain）的特点？",
+      "options": ["A. 能主动输出高电平", "B. 只能拉低，高电平需要外部上拉", "C. 只能输出低电平", "D. 支持双向传输"],
+      "answer": "B",
+      "explanation": "开漏输出只能输出低电平，高电平靠外部上拉电阻提供，常用于 I2C、电平转换。"
+    },
+    {
+      "type": "short",
+      "question": "编写中断服务函数（ISR）有哪些注意事项？",
+      "answer": "① 尽量短小，不做耗时操作；② 不调用阻塞函数（如 printf、malloc）；③ 共享变量用 volatile；④ RTOS 中用 ISR 专用 API；⑤ 避免在 ISR 里做浮点运算。",
+      "explanation": "ISR 会打断主流程，耗时过长会导致实时性下降甚至丢中断。"
+    },
+    {
+      "type": "single",
+      "question": "12 位 ADC 的转换结果范围是？",
+      "options": ["A. 0-255", "B. 0-1023", "C. 0-4095", "D. 0-65535"],
+      "answer": "C",
+      "explanation": "12 位 = 2^12 = 4096 个档位，即 0~4095。"
+    },
+    {
+      "type": "short",
+      "question": "PWM 是如何控制电机转速的？",
+      "answer": "PWM 通过改变占空比（高电平时间比例）改变平均电压，从而控制电机转速；配合 H 桥（如 L298N）控制方向和启停。",
+      "explanation": "对应你简历里的循迹小车项目：定时器 PWM 输出 + 占空比调速。"
+    },
+    {
+      "type": "judge",
+      "question": "看门狗（Watchdog）超时未喂狗会导致 MCU 复位。",
+      "answer": "对",
+      "explanation": "看门狗用于检测程序跑飞/死循环，必须在超时前喂狗，否则复位系统。"
+    }
+  ]
+}

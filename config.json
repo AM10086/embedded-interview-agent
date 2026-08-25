@@ -1,0 +1,9 @@
+﻿{
+  "questions_per_session": 10,
+  "ai": {
+    "enabled": false,
+    "api_key": "",
+    "base_url": "https://api.deepseek.com/v1/chat/completions",
+    "model": "deepseek-chat"
+  }
+}

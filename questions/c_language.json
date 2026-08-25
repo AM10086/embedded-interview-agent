@@ -1,0 +1,57 @@
+﻿{
+  "category": "C 语言",
+  "questions": [
+    {
+      "type": "single",
+      "question": "volatile 关键字的作用是什么？",
+      "options": ["A. 修饰的变量只能读不能写", "B. 防止编译器优化，每次使用都从内存重新读取", "C. 让变量变成全局变量", "D. 保证多线程安全"],
+      "answer": "B",
+      "explanation": "volatile 告诉编译器该变量可能被硬件/中断/其他任务修改，禁止缓存优化。典型场景：寄存器状态读取、中断共享标志。注意它不保证原子性。"
+    },
+    {
+      "type": "single",
+      "question": "const int *p 和 int * const p 的区别是？",
+      "options": ["A. 前者指针不能改指向，后者值不能改", "B. 前者值不能改，后者指针不能改指向", "C. 两者完全一样", "D. 都是不能修改的变量"],
+      "answer": "B",
+      "explanation": "const 修饰谁谁就不能变：const int *p 修饰指向的数据（值不可改），int * const p 修饰指针本身（指向不可改）。"
+    },
+    {
+      "type": "single",
+      "question": "在 32 位系统上，指针变量占用多少字节？",
+      "options": ["A. 1", "B. 2", "C. 4", "D. 8"],
+      "answer": "C",
+      "explanation": "指针大小取决于地址总线宽度：32 位系统 4 字节，64 位系统 8 字节。"
+    },
+    {
+      "type": "judge",
+      "question": "malloc 分配的内存 free 之后，指针变量会被自动置为 NULL。",
+      "answer": "错",
+      "explanation": "free 只释放内存，指针仍指向已释放的地址（悬空指针）。需要手动置 NULL，否则可能重复 free 或误用。"
+    },
+    {
+      "type": "single",
+      "question": "把变量 x 的第 n 位（从 0 开始）置 1 的正确写法是？",
+      "options": ["A. x |= (1 << n)", "B. x &= (1 << n)", "C. x ^= (1 << n)", "D. x = (1 << n)"],
+      "answer": "A",
+      "explanation": "置位用 |=，清位用 &= ~(1<<n)，翻转用 ^= (1<<n)。这是寄存器操作的基本功。"
+    },
+    {
+      "type": "short",
+      "question": "如何判断系统是大端还是小端？请写出思路（可用 union）。",
+      "answer": "用 union 共享同一段内存：union { uint32_t i; uint8_t c[4]; } u; u.i = 0x12345678; 若 c[0]==0x78 是小端（低字节在低地址），c[0]==0x12 是大端。",
+      "explanation": "大小端影响多字节数据的存储顺序，通信协议跨平台时必须统一字节序（通常转网络序）。"
+    },
+    {
+      "type": "short",
+      "question": "static 修饰局部变量、全局变量、函数分别有什么作用？",
+      "answer": "局部变量：生命周期延长到整个程序，只初始化一次，作用域不变。全局变量：仅本文件可见（internal 链接）。函数：仅本文件可见。",
+      "explanation": "static 在嵌入式模块化开发中用于信息隐藏，配合头文件只暴露接口。"
+    },
+    {
+      "type": "short",
+      "question": "什么是野指针和悬空指针？如何避免？",
+      "answer": "野指针：未初始化的指针，指向随机地址。悬空指针：指向已释放/失效内存的指针。避免：定义时初始化 NULL；free 后置 NULL；不返回局部变量地址。",
+      "explanation": "面试高频题，回答时一定要提到 free 后置 NULL 和指针初始化。"
+    }
+  ]
+}

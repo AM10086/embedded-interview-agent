@@ -13,10 +13,10 @@ def load_all_questions():
             continue
         path = os.path.join(QUESTIONS_DIR, fname)
         try:
-            with open(path, "r", encoding="utf-8") as f:
+            with open(path, "r", encoding="utf-8-sig") as f:
                 data = json.load(f)
         except Exception as e:
-            print(f"⚠️ 题库加载失败 {fname}: {e}")
+            print(f"[!] 题库加载失败 {fname}: {e}")
             continue
         for q in data.get("questions", []):
             q["category"] = data.get("category", fname)
@@ -81,10 +81,10 @@ def run_quiz(questions, history, count=10, category=None, mock=False):
         result = check_answer(q, ans)
         if result is None:  # 简答题
             total += 1
-            print("\n📖 参考答案：")
+            print("\n[答案] 参考答案：")
             print("  " + q.get("answer", ""))
             if q.get("explanation"):
-                print("💡 讲解：")
+                print("[讲解] 讲解：")
                 print("  " + q["explanation"])
             if mock:
                 ok = True
@@ -104,11 +104,12 @@ def run_quiz(questions, history, count=10, category=None, mock=False):
             ok = result
             if result:
                 score += 1
-                print("✅ 正确！")
+                print("[OK] 正确！")
             else:
-                print(f"❌ 正确答案：{q.get('answer')}")
+                print(f"[X] 正确答案：{q.get('answer')}")
             if q.get("explanation"):
-                print("💡 讲解：" + q["explanation"])
+                print("[讲解] 讲解：" + q["explanation"])
         history.record(q["category"], ok)
     print("\n" + "=" * 52)
-    print(f"🎯 本轮得分：{score}/{total}")
+    print(f"[得分] 本轮得分：{score}/{total}")
+

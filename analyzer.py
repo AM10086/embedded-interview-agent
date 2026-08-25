@@ -51,10 +51,11 @@ class History:
             rate = correct / total
             rows.append((cat, correct, total, rate))
         if not rows:
-            return "📊 暂无答题记录，先去练几题吧！"
+            return "[分析] 暂无答题记录，先去练几题吧！"
         rows.sort(key=lambda r: r[3])
-        lines = ["📊 薄弱点分析（正确率从低到高）："]
+        lines = ["[分析] 薄弱点分析（正确率从低到高）："]
         for cat, correct, total, rate in rows:
-            bar = "█" * int(rate * 10) + "░" * (10 - int(rate * 10))
+            bar = "#" * int(rate * 10) + "." * (10 - int(rate * 10))
             lines.append(f"  {cat:<12} {bar} {rate * 100:.0f}%  （{correct}/{total}）")
         return "\n".join(lines)
+

@@ -63,20 +63,20 @@ def mock_interview(questions, history, count=10):
         result = check_answer(q, ans)
         if result is True:
             score += 1
-            print("✅ 正确")
+            print("[OK] 正确")
         elif result is False:
-            print(f"❌ 参考答案：{q.get('answer')}")
+            print(f"[X] 参考答案：{q.get('answer')}")
         else:
-            print(f"📖 参考答案：{q.get('answer')}")
+            print(f"[答案] 参考答案：{q.get('answer')}")
         if q.get("explanation"):
-            print("💡 讲解：" + q["explanation"])
+            print("[讲解] 讲解：" + q["explanation"])
         history.record(q["category"], result is not False)
     print("\n" + "=" * 52)
-    print(f"🎯 模拟得分：{score}/{len(pool)}")
+    print(f"[得分] 模拟得分：{score}/{len(pool)}")
 
 
 def menu(categories):
-    print("\n===== 🤖 嵌入式面试 AI Agent =====")
+    print("\n===== [AI] 嵌入式面试 AI Agent =====")
     print("1. 开始练习（按薄弱点智能出题）")
     print("2. 专项练习（按知识点）")
     print("3. 面试模拟（随机题连答）")
@@ -91,7 +91,7 @@ def main():
     cfg = load_config()
     questions = load_all_questions()
     if not questions:
-        print("⚠️ 题库为空，请检查 questions/ 目录。")
+        print("[!] 题库为空，请检查 questions/ 目录。")
         return
     history = History()
     categories = sorted(set(q["category"] for q in questions))
@@ -124,11 +124,11 @@ def main():
                 cfg,
             )
             if ans is None:
-                print("⚠️ 未启用 AI。请在 config.json 里配置 api_key 并把 enabled 改为 true。")
+                print("[!] 未启用 AI。请在 config.json 里配置 api_key 并把 enabled 改为 true。")
             else:
-                print("\n🤖 AI 回答：\n" + ans)
+                print("\n[AI] AI 回答：\n" + ans)
         elif choice == "0":
-            print("加油，祝你面试顺利！👋")
+            print("加油，祝你面试顺利！bye")
             break
         else:
             print("无效选择")
@@ -136,3 +136,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

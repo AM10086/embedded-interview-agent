@@ -5,282 +5,404 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>嵌入式面试 AI Agent · 网页版</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:"Microsoft YaHei","PingFang SC",sans-serif; background:#0f172a; color:#e2e8f0; min-height:100vh; }
-  .wrap { max-width:760px; margin:0 auto; padding:20px 16px 60px; }
-  header { text-align:center; padding:24px 0 16px; }
-  header h1 { font-size:24px; color:#38bdf8; }
-  header .sub { color:#94a3b8; font-size:13px; margin-top:6px; }
-  .stats { display:flex; justify-content:center; gap:24px; margin:14px 0; flex-wrap:wrap; }
-  .stat { background:#1e293b; border:1px solid #334155; border-radius:10px; padding:8px 18px; text-align:center; }
-  .stat b { display:block; font-size:20px; color:#38bdf8; }
-  .stat span { font-size:12px; color:#94a3b8; }
-  .cats { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:16px 0; }
-  .chip { background:#1e293b; border:1px solid #334155; color:#cbd5e1; border-radius:999px; padding:6px 14px; font-size:13px; cursor:pointer; }
-  .chip.active { background:#0ea5e9; border-color:#0ea5e9; color:#fff; }
-  .actions { display:flex; gap:12px; justify-content:center; margin:14px 0 20px; flex-wrap:wrap; }
-  .btn { border:none; border-radius:10px; padding:10px 22px; font-size:15px; cursor:pointer; font-weight:600; }
-  .btn-primary { background:#0ea5e9; color:#fff; }
-  .btn-secondary { background:#334155; color:#e2e8f0; }
-  .card { background:#1e293b; border:1px solid #334155; border-radius:14px; padding:22px; }
-  .qhead { display:flex; justify-content:space-between; font-size:13px; color:#94a3b8; margin-bottom:10px; }
-  .qtext { font-size:16px; line-height:1.7; margin-bottom:16px; }
-  .opts { display:flex; flex-direction:column; gap:10px; }
-  .opt { background:#0f172a; border:1px solid #334155; border-radius:10px; padding:12px 16px; cursor:pointer; font-size:15px; }
-  .opt:hover { border-color:#38bdf8; }
-  .opt.correct { border-color:#22c55e; background:#14532d; }
-  .opt.wrong { border-color:#ef4444; background:#7f1d1d; }
-  .opt.disabled { pointer-events:none; }
-  .jbtn { display:flex; gap:14px; justify-content:center; }
-  .jbtn button { flex:1; padding:14px; border-radius:10px; font-size:16px; cursor:pointer; border:1px solid #334155; background:#0f172a; color:#e2e8f0; }
-  textarea { width:100%; min-height:80px; background:#0f172a; border:1px solid #334155; border-radius:10px; color:#e2e8f0; padding:12px; font-size:14px; font-family:inherit; }
-  .grade { display:flex; gap:8px; justify-content:center; margin-top:12px; }
-  .grade button { width:44px; height:44px; border-radius:50%; border:1px solid #334155; background:#0f172a; color:#e2e8f0; font-size:15px; cursor:pointer; }
-  .grade button.sel { background:#0ea5e9; border-color:#0ea5e9; }
-  .feedback { margin-top:14px; padding:12px; border-radius:10px; font-size:14px; line-height:1.7; }
-  .feedback.ok { background:#052e16; border:1px solid #22c55e; }
-  .feedback.no { background:#450a0a; border:1px solid #ef4444; }
-  .next { margin-top:16px; text-align:right; }
-  .bar { height:10px; background:#0f172a; border-radius:5px; overflow:hidden; margin-top:4px; }
-  .bar > div { height:100%; background:#0ea5e9; }
-  .weak { display:flex; flex-direction:column; gap:12px; margin-top:8px; }
-  .weak .row { font-size:14px; }
-  .weak .row .lbl { display:flex; justify-content:space-between; margin-bottom:2px; }
-  .hidden { display:none; }
-  footer { text-align:center; color:#475569; font-size:12px; margin-top:30px; }
-  a { color:#38bdf8; text-decoration:none; }
+  :root{
+    --bg:#0b1120; --bg2:#111a2e; --card:rgba(30,41,59,.6); --card2:rgba(15,23,42,.7);
+    --line:rgba(148,163,184,.15); --txt:#e2e8f0; --sub:#94a3b8;
+    --acc:#38bdf8; --acc2:#0ea5e9; --ok:#22c55e; --err:#ef4444; --warn:#f59e0b;
+    --r:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+    color:var(--txt); background:var(--bg); min-height:100vh; line-height:1.6;
+    background-image:
+      radial-gradient(800px 400px at 15% -10%, rgba(56,189,248,.14), transparent 60%),
+      radial-gradient(700px 400px at 90% 0%, rgba(14,165,233,.10), transparent 60%),
+      radial-gradient(600px 500px at 50% 110%, rgba(34,211,238,.08), transparent 60%);
+  }
+  ::selection{background:rgba(56,189,248,.3)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 18px 70px}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(11,17,32,.7);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:860px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px}
+  .logo .dot{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:grid;place-items:center;font-size:14px}
+  .nav-in a{color:var(--sub);font-size:13px;text-decoration:none;border:1px solid var(--line);padding:6px 13px;border-radius:999px;transition:.2s}
+  .nav-in a:hover{color:#fff;border-color:var(--acc)}
+
+  /* Hero */
+  .hero{text-align:center;padding:46px 0 14px;animation:fadeUp .6s ease}
+  .hero .tag{display:inline-block;font-size:12px;color:var(--acc);border:1px solid rgba(56,189,248,.35);background:rgba(56,189,248,.08);padding:4px 13px;border-radius:999px;margin-bottom:16px}
+  .hero h1{font-size:34px;letter-spacing:.5px;background:linear-gradient(120deg,#fff,var(--acc));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p{color:var(--sub);font-size:14px;margin-top:10px}
+  .stats{display:flex;justify-content:center;gap:14px;margin:26px 0 8px;flex-wrap:wrap}
+  .stat{min-width:110px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 18px;backdrop-filter:blur(8px)}
+  .stat b{display:block;font-size:26px;color:var(--acc);font-weight:800}
+  .stat span{font-size:12px;color:var(--sub)}
+
+  /* Mode cards */
+  .modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:22px 0}
+  .mode{position:relative;overflow:hidden;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;cursor:pointer;transition:.25s;backdrop-filter:blur(8px)}
+  .mode:hover{transform:translateY(-3px);border-color:var(--acc);box-shadow:0 12px 32px rgba(56,189,248,.15)}
+  .mode .ic{font-size:26px;margin-bottom:8px}
+  .mode h3{font-size:16px;margin-bottom:4px}
+  .mode p{font-size:12.5px;color:var(--sub)}
+  .mode .go{position:absolute;right:16px;bottom:16px;color:var(--acc);font-size:18px;opacity:0;transition:.25s}
+  .mode:hover .go{opacity:1}
+
+  /* Chips */
+  .cats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:6px 0 30px}
+  .chip{background:var(--card);border:1px solid var(--line);color:var(--sub);border-radius:999px;padding:7px 15px;font-size:13px;cursor:pointer;transition:.2s}
+  .chip:hover{color:#fff;border-color:var(--acc)}
+  .chip.active{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(56,189,248,.35)}
+
+  /* Card */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;backdrop-filter:blur(10px);animation:fadeUp .4s ease}
+  .hidden{display:none!important}
+
+  /* Quiz */
+  .qbar{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+  .qbar .meta{font-size:12px;color:var(--sub);white-space:nowrap}
+  .track{flex:1;height:8px;background:rgba(148,163,184,.15);border-radius:99px;overflow:hidden}
+  .track>div{height:100%;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:99px;transition:width .4s ease}
+  .timer{font-size:13px;color:var(--sub);font-variant-numeric:tabular-nums}
+  .timer.warn{color:var(--err);font-weight:700}
+  .qtag{display:inline-block;font-size:11.5px;background:rgba(56,189,248,.12);color:var(--acc);border-radius:6px;padding:2px 9px;margin-bottom:10px}
+  .qtext{font-size:17px;line-height:1.75;margin-bottom:18px;font-weight:500}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{display:flex;align-items:center;gap:12px;background:rgba(15,23,42,.55);border:1px solid var(--line);border-radius:12px;padding:13px 16px;cursor:pointer;transition:.18s;font-size:15px}
+  .opt .k{width:26px;height:26px;flex:none;border-radius:7px;background:rgba(148,163,184,.12);display:grid;place-items:center;font-size:13px;color:var(--sub)}
+  .opt:hover{border-color:var(--acc);transform:translateX(3px)}
+  .opt.correct{border-color:var(--ok);background:rgba(34,197,94,.12)}
+  .opt.correct .k{background:var(--ok);color:#fff}
+  .opt.wrong{border-color:var(--err);background:rgba(239,68,68,.12)}
+  .opt.wrong .k{background:var(--err);color:#fff}
+  .opt.locked{pointer-events:none}
+  .jbtn{display:flex;gap:12px}
+  .jbtn button{flex:1;padding:14px;border-radius:12px;font-size:16px;cursor:pointer;border:1px solid var(--line);background:rgba(15,23,42,.55);color:var(--txt);transition:.18s}
+  .jbtn button:hover{border-color:var(--acc)}
+  .jbtn button:disabled{opacity:.5;cursor:default}
+  textarea{width:100%;min-height:90px;background:rgba(15,23,42,.55);border:1px solid var(--line);border-radius:12px;color:var(--txt);padding:12px;font-size:14px;font-family:inherit;resize:vertical}
+  .grade{display:flex;gap:8px;justify-content:center;margin-top:12px}
+  .grade button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(15,23,42,.55);color:var(--txt);font-size:15px;cursor:pointer;transition:.15s}
+  .grade button:hover{border-color:var(--acc)}
+  .grade button.sel{background:var(--acc2);border-color:var(--acc2);color:#fff}
+  .feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-size:14px;line-height:1.8;animation:fadeUp .3s ease}
+  .feedback.ok{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.4)}
+  .feedback.no{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.4)}
+  .feedback b{font-size:14.5px}
+  .next{margin-top:18px;text-align:right}
+  .btn{border:none;border-radius:11px;padding:11px 24px;font-size:15px;cursor:pointer;font-weight:600;transition:.2s}
+  .btn-p{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;box-shadow:0 6px 18px rgba(56,189,248,.3)}
+  .btn-p:hover{filter:brightness(1.1);transform:translateY(-1px)}
+  .btn-g{background:rgba(148,163,184,.12);color:var(--txt);border:1px solid var(--line)}
+  .btn-g:hover{border-color:var(--acc)}
+
+  /* Result */
+  .res-wrap{display:flex;flex-direction:column;align-items:center;gap:18px;padding:14px 0}
+  .ring{--p:0;width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--acc) calc(var(--p)*1%),rgba(148,163,184,.12) 0);display:grid;place-items:center;position:relative;transition:.6s}
+  .ring::after{content:"";position:absolute;inset:12px;border-radius:50%;background:var(--bg2)}
+  .ring .val{position:relative;z-index:2;text-align:center}
+  .ring .val b{font-size:32px;color:#fff}
+  .ring .val span{display:block;font-size:12px;color:var(--sub)}
+  .res-stats{display:flex;gap:22px;text-align:center}
+  .res-stats div b{display:block;font-size:22px}
+  .res-stats div span{font-size:12px;color:var(--sub)}
+  .res-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+
+  /* Weak */
+  .weak-list{display:flex;flex-direction:column;gap:16px;margin-top:8px}
+  .weak-row .lbl{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+  .weak-row .lbl span:first-child{color:var(--txt)}
+  .weak-row .lbl span:last-child{color:var(--sub);font-variant-numeric:tabular-nums}
+  .bar{height:12px;background:rgba(148,163,184,.12);border-radius:99px;overflow:hidden}
+  .bar>div{height:100%;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:99px;transition:width 1s ease}
+  .tip{background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.25);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--sub);margin-top:18px;line-height:1.8}
+
+  /* footer */
+  footer{text-align:center;color:#475569;font-size:12px;margin-top:44px}
+  footer a{color:var(--acc);text-decoration:none}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @media(max-width:560px){.hero h1{font-size:26px}.modes{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<nav><div class="nav-in">
+  <div class="logo"><span class="dot">⚡</span>嵌入式面试 AI Agent</div>
+  <a href="https://github.com/AM10086/embedded-interview-agent" target="_blank">GitHub ⭐</a>
+</div></nav>
+
 <div class="wrap">
-  <header>
-    <h1>🤖 嵌入式面试 AI Agent</h1>
-    <div class="sub">按薄弱点智能出题 · 自动判分 · 讲解 · 网页版</div>
-    <div class="stats" id="stats"></div>
-  </header>
 
-  <div class="cats" id="cats"></div>
+  <!-- HOME -->
+  <section id="home">
+    <div class="hero">
+      <div class="tag">🎯 求职冲刺 · 智能出题 · 薄弱点分析</div>
+      <h1>嵌入式面试 AI Agent</h1>
+      <p>按你的薄弱点智能出题 · 自动判分讲解 · 为工作与面试做好准备</p>
+      <div class="stats" id="stats"></div>
+    </div>
+    <div class="modes">
+      <div class="mode" onclick="startQuiz('practice')"><div class="ic">🧠</div><h3>智能练习</h3><p>按历史正确率加权出题，专攻薄弱点</p><span class="go">→</span></div>
+      <div class="mode" onclick="startQuiz('mock')"><div class="ic">⏱️</div><h3>面试模拟</h3><p>限时 60 秒/题，还原真实面试节奏</p><span class="go">→</span></div>
+      <div class="mode" onclick="showWeak()"><div class="ic">📊</div><h3>薄弱点分析</h3><p>查看各知识点正确率与建议</p><span class="go">→</span></div>
+    </div>
+    <div class="cats" id="cats"></div>
+  </section>
 
-  <div class="actions">
-    <button class="btn btn-primary" onclick="startQuiz('practice')">▶ 开始练习（智能出题）</button>
-    <button class="btn btn-secondary" onclick="startQuiz('mock')">🎯 面试模拟（10题）</button>
-    <button class="btn btn-secondary" onclick="showWeak()">📊 薄弱点分析</button>
-  </div>
-
-  <div class="card hidden" id="quizCard">
-    <div class="qhead"><span id="qCat"></span><span id="qIdx"></span></div>
+  <!-- QUIZ -->
+  <section id="quiz" class="card hidden">
+    <div class="qbar">
+      <span class="meta" id="qMeta"></span>
+      <div class="track"><div id="pbar"></div></div>
+      <span class="timer" id="qTimer"></span>
+    </div>
+    <span class="qtag" id="qCat"></span>
     <div class="qtext" id="qText"></div>
     <div class="opts" id="qOpts"></div>
     <div class="jbtn hidden" id="qJudge"></div>
     <div class="hidden" id="qShort">
-      <textarea id="shortInput" placeholder="输入你的答案..."></textarea>
+      <textarea id="shortInput" placeholder="输入你的答案，尽量用要点作答..."></textarea>
       <div class="grade" id="gradeBox"></div>
     </div>
     <div class="feedback hidden" id="feedback"></div>
-    <div class="next"><button class="btn btn-primary" id="nextBtn" onclick="next()">下一题 →</button></div>
-  </div>
+    <div class="next"><button class="btn btn-g" onclick="quitQuiz()" style="margin-right:10px">退出</button><button class="btn btn-p" id="nextBtn" onclick="next()" style="display:none">下一题 →</button></div>
+  </section>
 
-  <div class="card hidden" id="weakCard">
-    <h2 style="font-size:17px;margin-bottom:10px;">📊 薄弱点分析（正确率从低到高）</h2>
-    <div class="weak" id="weakList"></div>
-    <div class="actions"><button class="btn btn-secondary" onclick="backHome()">← 返回</button></div>
-  </div>
+  <!-- RESULT -->
+  <section id="result" class="card hidden">
+    <div class="res-wrap">
+      <div class="ring" id="ring"><div class="val"><b id="rScore">0</b><span id="rPct"></span></div></div>
+      <div class="res-stats">
+        <div><b id="rCorrect">0</b><span>答对</span></div>
+        <div><b id="rTotal">0</b><span>总题数</span></div>
+        <div><b id="rStreak">0</b><span>最佳连续</span></div>
+      </div>
+      <div class="res-actions">
+        <button class="btn btn-p" onclick="startQuiz('practice')">再来一轮</button>
+        <button class="btn btn-g" onclick="showWeak()">查看薄弱点</button>
+        <button class="btn btn-g" onclick="backHome()">返回首页</button>
+      </div>
+    </div>
+  </section>
 
-  <footer>开源项目：<a href="https://github.com/AM10086/embedded-interview-agent" target="_blank">github.com/AM10086/embedded-interview-agent</a></footer>
+  <!-- WEAK -->
+  <section id="weak" class="card hidden">
+    <h2 style="font-size:18px;margin-bottom:6px">📊 薄弱点分析</h2>
+    <p style="color:var(--sub);font-size:13px;margin-bottom:14px">正确率从低到高 · 数据保存在本机浏览器</p>
+    <div class="weak-list" id="weakList"></div>
+    <div class="tip" id="weakTip"></div>
+    <div class="next"><button class="btn btn-g" onclick="backHome()">← 返回首页</button></div>
+  </section>
+
 </div>
+
+<footer>开源项目 · <a href="https://github.com/AM10086/embedded-interview-agent" target="_blank">github.com/AM10086/embedded-interview-agent</a> · 祝你面试顺利 🚀</footer>
 
 <script src="questions.js"></script>
 <script>
 var QS = window.QUESTIONS || [];
-var CATS = [...new Set(QS.map(function(q){return q.category;}))];
-var state = { mode:'practice', cat:'all', pool:[], idx:0, score:0, total:0 };
+var CATS = [...new Set(QS.map(q => q.category))];
+var state = {mode:'practice', cat:'all', pool:[], idx:0, score:0, streak:0, best:0, timer:null, timeLeft:0};
 var current = null;
 
-function stats(){ try { return JSON.parse(localStorage.getItem('agent_stats')||'{}'); } catch(e){ return {}; } }
+/* ---------- storage ---------- */
+function stats(){ try{return JSON.parse(localStorage.getItem('agent_stats')||'{}');}catch(e){return {};} }
 function saveStats(s){ localStorage.setItem('agent_stats', JSON.stringify(s)); }
+function meta(){ try{return JSON.parse(localStorage.getItem('agent_meta')||'{}');}catch(e){return {};} }
+function saveMeta(m){ localStorage.setItem('agent_meta', JSON.stringify(m)); }
 function record(cat, ok){
-  var s = stats();
-  s[cat] = s[cat] || {correct:0, total:0};
-  s[cat].total++; if(ok) s[cat].correct++;
-  saveStats(s);
+  var s = stats(); s[cat] = s[cat] || {correct:0,total:0}; s[cat].total++; if(ok) s[cat].correct++; saveStats(s);
 }
-function catWeight(c){
-  var s = stats()[c];
-  if(!s || !s.total) return 1;
-  return 1 + (1 - s.correct/s.total) * 2;
-}
+function catWeight(c){ var s=stats()[c]; if(!s||!s.total) return 1; return 1+(1-s.correct/s.total)*2; }
 
+/* ---------- home ---------- */
 function init(){
-  var st = document.getElementById('stats');
-  st.innerHTML = '<div class="stat"><b>'+QS.length+'</b><span>总题量</span></div>' +
-    '<div class="stat"><b>'+CATS.length+'</b><span>知识点分类</span></div>';
+  var m = meta(), s = stats();
+  var done = 0; for(var c in s) done += s[c].total;
+  document.getElementById('stats').innerHTML =
+    '<div class="stat"><b>'+QS.length+'</b><span>总题量</span></div>'+
+    '<div class="stat"><b>'+CATS.length+'</b><span>知识点</span></div>'+
+    '<div class="stat"><b>'+(m.best||0)+'</b><span>最佳成绩</span></div>'+
+    '<div class="stat"><b>'+done+'</b><span>累计练习</span></div>';
   var chips = '<div class="chip active" onclick="setCat(this,\'all\')">全部 ('+QS.length+')</div>';
-  CATS.forEach(function(c){
-    var n = QS.filter(function(q){return q.category===c;}).length;
-    chips += '<div class="chip" onclick="setCat(this,\''+c+'\')">'+c+' ('+n+')</div>';
-  });
+  CATS.forEach(function(c){ var n=QS.filter(q=>q.category===c).length;
+    chips += '<div class="chip" onclick="setCat(this,\''+c+'\')">'+c+' ('+n+')</div>'; });
   document.getElementById('cats').innerHTML = chips;
 }
-
-function setCat(el, c){
-  document.querySelectorAll('.chip').forEach(function(x){x.classList.remove('active');});
-  el.classList.add('active');
-  state.cat = c;
-  document.getElementById('quizCard').classList.add('hidden');
-  document.getElementById('weakCard').classList.add('hidden');
-}
-
-function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
-
+function setCat(el,c){ document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active')); el.classList.add('active'); state.cat=c; }
+function shuffle(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
 function weightedPool(n){
-  var pool = state.cat==='all' ? QS.slice() : QS.filter(function(q){return q.category===state.cat;});
+  var pool = state.cat==='all' ? QS.slice() : QS.filter(q=>q.category===state.cat);
   if(!pool.length) return [];
-  var hasStats = Object.keys(stats()).length > 0;
-  if(state.cat==='all' && hasStats){
-    var w = pool.map(function(q){return catWeight(q.category);});
-    var totalW = w.reduce(function(a,b){return a+b;},0);
-    var res = [];
+  var has = Object.keys(stats()).length>0;
+  if(state.cat==='all' && has){
+    var w = pool.map(q=>catWeight(q.category)), tw = w.reduce((a,b)=>a+b,0), res=[];
     for(var i=0;i<Math.min(n,pool.length);i++){
-      var r = Math.random()*totalW, acc = 0, pick = pool[0];
-      for(var j=0;j<pool.length;j++){ acc += w[j]; if(r<=acc){ pick = pool[j]; break; } }
+      var r=Math.random()*tw, acc=0, pick=pool[0];
+      for(var j=0;j<pool.length;j++){ acc+=w[j]; if(r<=acc){pick=pool[j];break;} }
       res.push(pick);
     }
     return res;
   }
-  return shuffle(pool).slice(0, Math.min(n, pool.length));
+  return shuffle(pool).slice(0,Math.min(n,pool.length));
 }
 
+/* ---------- quiz ---------- */
 function startQuiz(mode){
-  state.mode = mode;
-  state.score = 0; state.total = 0;
-  state.pool = weightedPool(mode==='mock' ? 10 : 10);
-  if(!state.pool.length){ alert('没有题目，请选择分类'); return; }
-  document.getElementById('weakCard').classList.add('hidden');
-  document.getElementById('quizCard').classList.remove('hidden');
-  state.idx = 0;
-  showQuestion();
+  state.mode = mode; state.score=0; state.streak=0; state.best=0;
+  state.pool = weightedPool(10);
+  if(!state.pool.length){ alert('该分类暂无题目'); return; }
+  show('quiz'); hide('home'); hide('result'); hide('weak');
+  state.idx=0; showQuestion();
 }
-
 function showQuestion(){
   current = state.pool[state.idx];
+  document.getElementById('qMeta').textContent = (state.idx+1)+' / '+state.pool.length;
+  document.getElementById('pbar').style.width = (state.idx/state.pool.length*100)+'%';
   document.getElementById('qCat').textContent = '['+current.category+']';
-  document.getElementById('qIdx').textContent = (state.idx+1)+' / '+state.pool.length;
   document.getElementById('qText').textContent = current.question;
-  document.getElementById('feedback').classList.add('hidden');
-  document.getElementById('nextBtn').style.display = 'none';
+  var fb=document.getElementById('feedback'); fb.className='feedback hidden';
+  document.getElementById('nextBtn').style.display='none';
   document.getElementById('qShort').classList.add('hidden');
   document.getElementById('qJudge').classList.add('hidden');
-  var opts = document.getElementById('qOpts');
-  opts.innerHTML = ''; opts.classList.remove('hidden');
-  if(current.type === 'single'){
-    (current.options||[]).forEach(function(o, i){
-      var d = document.createElement('div');
-      d.className = 'opt'; d.textContent = o;
-      d.onclick = function(){ answer(i); };
+  var opts=document.getElementById('qOpts'); opts.innerHTML=''; opts.classList.remove('hidden');
+  if(current.type==='single'){
+    current.options.forEach(function(o,i){
+      var d=document.createElement('div'); d.className='opt';
+      d.innerHTML='<span class="k">'+'ABCD'[i]+'</span><span>'+o.replace(/^[A-D][.、]\s*/,'')+'</span>';
+      d.onclick=function(){ answer(i); };
       opts.appendChild(d);
     });
-  } else if(current.type === 'judge'){
+  } else if(current.type==='judge'){
     opts.classList.add('hidden');
-    var jb = document.getElementById('qJudge');
-    jb.classList.remove('hidden');
-    jb.innerHTML = '<button onclick="answer(\'对\')">✓ 对</button><button onclick="answer(\'错\')">✗ 错</button>';
+    var jb=document.getElementById('qJudge'); jb.classList.remove('hidden');
+    jb.innerHTML='<button onclick="answer(\'对\')">✓ 对</button><button onclick="answer(\'错\')">✗ 错</button>';
   } else {
     opts.classList.add('hidden');
-    var qs = document.getElementById('qShort');
-    qs.classList.remove('hidden');
-    document.getElementById('shortInput').value = '';
-    var gb = document.getElementById('gradeBox');
-    gb.innerHTML = '';
-    for(var g=1;g<=5;g++){
-      (function(v){ var b=document.createElement('button'); b.textContent=v;
-        b.onclick=function(){ selfGrade(v,b); }; gb.appendChild(b); })(g);
-    }
+    var qs=document.getElementById('qShort'); qs.classList.remove('hidden');
+    document.getElementById('shortInput').value='';
+    var gb=document.getElementById('gradeBox'); gb.innerHTML='';
+    for(var g=1;g<=5;g++){ (function(v){var b=document.createElement('button'); b.textContent=v;
+      b.onclick=function(){ document.querySelectorAll('.grade button').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); submitShort(v); };
+      gb.appendChild(b); })(g); }
   }
+  if(state.mode==='mock'){ startTimer(); } else { document.getElementById('qTimer').textContent=''; }
+  window.scrollTo({top:0,behavior:'smooth'});
 }
-
-function selfGrade(v, btn){
-  document.querySelectorAll('.grade button').forEach(function(b){b.classList.remove('sel');});
-  btn.classList.add('sel');
-  state.shortGrade = v;
-  submitShort();
+function startTimer(){
+  state.timeLeft=60; tick();
+  clearInterval(state.timer);
+  state.timer=setInterval(tick,1000);
 }
-
-function submitShort(){
-  var fb = document.getElementById('feedback');
-  fb.classList.remove('hidden','ok','no');
-  fb.className = 'feedback ok';
-  fb.innerHTML = '<b>[参考答案]</b> ' + (current.answer||'') + '<br><b>[讲解]</b> ' + (current.explanation||'');
-  var ok = (state.shortGrade||0) >= 4;
-  record(current.category, ok);
-  state.total++; if(ok) state.score++;
-  document.getElementById('nextBtn').style.display = 'block';
-  if(state.idx+1 >= state.pool.length) document.getElementById('nextBtn').textContent = '查看结果 🏁';
+function tick(){
+  var el=document.getElementById('qTimer');
+  el.textContent='⏱ '+state.timeLeft+'s';
+  el.classList.toggle('warn', state.timeLeft<=10);
+  if(state.timeLeft<=0){ clearInterval(state.timer); if(current && !current._answered) judgeTimeout(); }
+  state.timeLeft--;
 }
+function judgeTimeout(){ answer(-1); }
+function stopTimer(){ clearInterval(state.timer); }
 
+function submitShort(g){
+  var ok = g>=4;
+  var fb=document.getElementById('feedback');
+  fb.className='feedback '+(ok?'ok':'no');
+  fb.innerHTML='<b>[参考答案]</b> '+(current.answer||'')+'<br><b>[讲解]</b> '+(current.explanation||'');
+  record(current.category, ok); state.score+=ok?1:0;
+  if(ok) state.streak++; else state.streak=0;
+  endCheck();
+}
 function answer(i){
-  var correct = false;
-  if(current.type === 'single'){
-    var letter = String.fromCharCode(65 + i);
-    correct = letter === current.answer;
-    var optDivs = document.querySelectorAll('#qOpts .opt');
-    optDivs.forEach(function(d, idx){
-      d.classList.add('disabled');
-      var L = String.fromCharCode(65+idx);
-      if(L === current.answer) d.classList.add('correct');
-      else if(idx === i) d.classList.add('wrong');
+  if(current._answered) return; current._answered=true;
+  stopTimer();
+  var ok=false;
+  if(current.type==='single'){
+    var letter='ABCD'[i];
+    if(i<0){ ok=false; } else { ok = letter===current.answer; }
+    document.querySelectorAll('#qOpts .opt').forEach(function(d,idx){
+      d.classList.add('locked');
+      if('ABCD'[idx]===current.answer) d.classList.add('correct');
+      else if(idx===i) d.classList.add('wrong');
     });
-  } else if(current.type === 'judge'){
-    correct = String(i).toUpperCase() === String(current.answer).toUpperCase();
-    document.querySelectorAll('#qJudge button').forEach(function(b){b.disabled = true;});
+  } else if(current.type==='judge'){
+    ok = i>=0 && String(i).toUpperCase()===String(current.answer).toUpperCase();
+    document.querySelectorAll('#qJudge button').forEach(b=>b.disabled=true);
   }
-  var fb = document.getElementById('feedback');
-  fb.classList.remove('hidden','ok','no');
-  if(correct){ fb.className = 'feedback ok'; fb.innerHTML = '<b>[正确]</b> '+(current.explanation||''); }
-  else { fb.className = 'feedback no'; fb.innerHTML = '<b>[错误] 正确答案：'+(current.answer||'')+'</b><br>'+(current.explanation||''); }
-  record(current.category, correct);
-  state.total++; if(correct) state.score++;
-  document.getElementById('nextBtn').style.display = 'block';
-  if(state.idx+1 >= state.pool.length) document.getElementById('nextBtn').textContent = '查看结果 🏁';
+  var fb=document.getElementById('feedback');
+  fb.className='feedback '+(ok?'ok':'no');
+  fb.innerHTML = ok ? '<b>✅ 正确</b><br>'+(current.explanation||'')
+                    : '<b>❌ 正确答案：'+(current.answer||'')+'</b><br>'+(current.explanation||'');
+  record(current.category, ok);
+  state.score += ok?1:0;
+  state.streak = ok ? state.streak+1 : 0;
+  state.best = Math.max(state.best, state.streak);
+  endCheck();
 }
-
+function endCheck(){
+  document.getElementById('nextBtn').style.display='inline-block';
+  if(state.idx+1>=state.pool.length) document.getElementById('nextBtn').textContent='查看结果 🏁';
+  else document.getElementById('nextBtn').textContent='下一题 →';
+}
 function next(){
   state.idx++;
-  if(state.idx >= state.pool.length){
-    var pct = Math.round(state.score/state.total*100);
-    var fb = document.getElementById('feedback');
-    fb.classList.remove('hidden'); fb.className = 'feedback ok';
-    fb.innerHTML = '<b>本轮完成！得分 '+state.score+' / '+state.total+'（'+pct+'%）</b><br>点击下方"薄弱点分析"查看你的知识短板。';
-    document.getElementById('nextBtn').style.display = 'none';
-    document.getElementById('qOpts').innerHTML = '';
-    document.getElementById('qJudge').classList.add('hidden');
-    document.getElementById('qShort').classList.add('hidden');
-    return;
-  }
+  if(state.idx>=state.pool.length){ endQuiz(); return; }
   showQuestion();
 }
+function endQuiz(){
+  stopTimer();
+  var m=meta(); m.best=Math.max(m.best||0,state.score); saveMeta(m);
+  var pct=Math.round(state.score/state.pool.length*100);
+  document.getElementById('ring').style.setProperty('--p', pct);
+  document.getElementById('rScore').textContent = pct+'%';
+  document.getElementById('rPct').textContent = state.score+' / '+state.pool.length;
+  document.getElementById('rCorrect').textContent = state.score;
+  document.getElementById('rTotal').textContent = state.pool.length;
+  document.getElementById('rStreak').textContent = state.best;
+  show('result'); hide('quiz');
+}
+function quitQuiz(){ stopTimer(); backHome(); }
 
+/* ---------- weak ---------- */
 function showWeak(){
-  document.getElementById('quizCard').classList.add('hidden');
-  var wc = document.getElementById('weakCard');
-  wc.classList.remove('hidden');
-  var rows = [];
-  var s = stats();
-  for(var c in s){ if(s[c].total>0) rows.push({c:c, rate:s[c].correct/s[c].total}); }
-  rows.sort(function(a,b){ return a.rate - b.rate; });
-  var html = '';
-  if(!rows.length){ html = '<div style="color:#94a3b8">还没有答题记录，先去练几题吧！</div>'; }
-  rows.forEach(function(r){
-    var pct = Math.round(r.rate*100);
-    html += '<div class="row"><div class="lbl"><span>'+r.c+'</span><span>'+pct+'%</span></div>' +
-      '<div class="bar"><div style="width:'+pct+'%"></div></div></div>';
-  });
-  document.getElementById('weakList').innerHTML = html;
+  show('weak'); hide('quiz'); hide('result'); hide('home');
+  var s=stats(), rows=[];
+  for(var c in s) if(s[c].total>0) rows.push({c:c,rate:s[c].correct/s[c].total});
+  rows.sort((a,b)=>a.rate-b.rate);
+  var html='';
+  if(!rows.length){ html='<div style="color:var(--sub)">还没有答题记录，先去练几题吧！</div>'; }
+  rows.forEach(function(r){ var p=Math.round(r.rate*100);
+    html+='<div class="weak-row"><div class="lbl"><span>'+r.c+'</span><span>'+p+'% ('+s[r.c].correct+'/'+s[r.c].total+')</span></div>'+
+    '<div class="bar"><div data-w="'+p+'"></div></div></div>'; });
+  document.getElementById('weakList').innerHTML=html;
+  setTimeout(function(){ document.querySelectorAll('.bar>div').forEach(b=>b.style.width=b.getAttribute('data-w')+'%'); },100);
+  var worst = rows.length ? rows[0] : null;
+  var tip = worst
+    ? '💡 <b>建议：</b>你的最薄弱点是 <b style="color:var(--acc)">'+worst.c+'</b>（正确率 '+Math.round(worst.rate*100)+'%）。<br>'
+      + '先用"专项练习"锁定该分类刷 20 题，再配合 Python 版的 <b>AI 智能诊断</b>（需配置 API Key）获得针对性学习目标和面试建议。'
+    : '💡 完成几轮练习后，这里会展示你的知识短板和针对性建议。';
+  document.getElementById('weakTip').innerHTML=tip;
 }
 
-function backHome(){
-  document.getElementById('weakCard').classList.add('hidden');
-  document.getElementById('quizCard').classList.add('hidden');
-}
+/* ---------- nav ---------- */
+function show(id){ document.getElementById(id).classList.remove('hidden'); }
+function hide(id){ document.getElementById(id).classList.add('hidden'); }
+function backHome(){ show('home'); hide('quiz'); hide('result'); hide('weak'); init(); }
+
+/* keyboard */
+document.addEventListener('keydown',function(e){
+  if(document.getElementById('quiz').classList.contains('hidden')) return;
+  if(current && !current._answered && current.type==='single' && 'abcd'.indexOf(e.key.toLowerCase())>=0){
+    answer('abcd'.indexOf(e.key.toLowerCase()));
+  }
+  if(e.key==='Enter' && !document.getElementById('nextBtn').style.display==='none' && !document.getElementById('nextBtn').classList.contains('hidden')){
+    if(document.getElementById('nextBtn').style.display==='inline-block') next();
+  }
+});
 
 init();
 </script>

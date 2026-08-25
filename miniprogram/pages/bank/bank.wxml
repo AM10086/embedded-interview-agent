@@ -1,0 +1,23 @@
+﻿<view class="container">
+  <input class="search" placeholder="🔍 输入关键词搜索题目（volatile/信号量/设备树...）" value="{{keyword}}" bindinput="onInput"/>
+  <view class="chips">
+    <view wx:for="{{catAll}}" wx:key="name" class="chip {{selectedCat===item.name?'active':''}}"
+          data-c="{{item.name}}" bindtap="selectCat">{{item.name}} ({{item.count}})</view>
+  </view>
+
+  <view wx:if="{{empty}}" class="empty">没有找到匹配的题目，换个关键词试试</view>
+
+  <view wx:for="{{groups}}" wx:key="name" wx:for-item="g" class="grp">
+    <view class="grp-title">{{g.name}} <text class="cnt">{{g.count}} 题</text></view>
+    <view wx:for="{{g.items}}" wx:key="id" wx:for-item="it" class="bitem {{it.open?'open':''}}" data-id="{{it.id}}" bindtap="toggle">
+      <view class="bq">{{it.question}}</view>
+      <view class="detail" wx:if="{{it.open}}">
+        <view wx:if="{{it.options.length}}" class="bopt">
+          <text wx:for="{{it.options}}" wx:key="*this" class="oline">{{item}}</text>
+        </view>
+        <view class="bans">答案：{{it.answer}}</view>
+        <view class="bexp">{{it.explanation}}</view>
+      </view>
+    </view>
+  </view>
+</view>

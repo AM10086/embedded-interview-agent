@@ -65,8 +65,19 @@ embedded-interview-agent/
 结合嵌入式求职高频考点与个人简历项目整理（FreeRTOS / STM32 / ARM-Linux / 网络协议等）。
 欢迎提交 Issue / PR 补充题目。
 
+
+## 📱 微信小程序版（miniprogram/）
+完整的小程序源码（首页 / 答题 / 面试模拟 / 题库目录 / 薄弱点分析 / 成绩）。
+**使用步骤：**
+1. 下载安装 [微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)
+2. 打开工具 → 导入项目 → 选择 `miniprogram/` 目录（AppID 可用测试号）
+3. 编译预览即可在模拟器/手机体验
+
+> 小程序题库与网页版共用同一份 660 题数据。
+
 ## 📄 License
 MIT
+
 
 
 

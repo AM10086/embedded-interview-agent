@@ -1,0 +1,10 @@
+﻿.wtitle { font-size: 34rpx; font-weight: 700; }
+.wsub { color: #8ea0b8; font-size: 24rpx; margin: 8rpx 0 24rpx; }
+.wrow { margin-bottom: 22rpx; }
+.wlbl { display: flex; justify-content: space-between; font-size: 26rpx; margin-bottom: 8rpx; }
+.wlbl text:last-child { color: #8ea0b8; }
+.bar { height: 16rpx; background: rgba(148,163,184,.12); border-radius: 99rpx; overflow: hidden; }
+.fill { height: 100%; background: linear-gradient(90deg,#38bdf8,#6366f1); border-radius: 99rpx; }
+.tip { background: rgba(99,102,241,.08); border: 1rpx solid rgba(99,102,241,.3); border-radius: 18rpx;
+  padding: 20rpx 24rpx; font-size: 24rpx; color: #8ea0b8; margin-top: 24rpx; line-height: 1.7; }
+.empty { text-align: center; color: #8ea0b8; padding: 40rpx 0; }

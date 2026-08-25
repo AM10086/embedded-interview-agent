@@ -1,0 +1,14 @@
+﻿<view class="container">
+  <view class="card center">
+    <view class="big">{{pct}}%</view>
+    <view class="sub">{{score}} / {{total}} 题答对</view>
+    <view class="stat-row">
+      <view class="st"><text class="n">{{score}}</text><text class="l">答对</text></view>
+      <view class="st"><text class="n">{{total}}</text><text class="l">总题数</text></view>
+      <view class="st"><text class="n">{{streak}}</text><text class="l">最佳连续</text></view>
+    </view>
+  </view>
+  <button class="btn btn-primary" bindtap="again">再来一轮</button>
+  <button class="btn btn-ghost" style="margin-top:20rpx" bindtap="goWeak">查看薄弱点</button>
+  <button class="btn btn-ghost" style="margin-top:20rpx" bindtap="goHome">返回首页</button>
+</view>

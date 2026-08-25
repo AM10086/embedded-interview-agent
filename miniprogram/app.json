@@ -1,0 +1,18 @@
+﻿{
+  "pages": [
+    "pages/index/index",
+    "pages/quiz/quiz",
+    "pages/bank/bank",
+    "pages/weak/weak",
+    "pages/result/result"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#0c1322",
+    "navigationBarTitleText": "嵌入式面试 AI Agent",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#070b14",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

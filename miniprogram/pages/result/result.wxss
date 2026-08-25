@@ -1,0 +1,7 @@
+﻿.center { text-align: center; padding: 60rpx 30rpx; }
+.big { font-size: 100rpx; font-weight: 800; color: #38bdf8; }
+.sub { color: #8ea0b8; font-size: 28rpx; margin-top: 10rpx; }
+.stat-row { display: flex; justify-content: center; gap: 60rpx; margin-top: 50rpx; }
+.st { text-align: center; }
+.st .n { display: block; font-size: 40rpx; font-weight: 700; color: #fff; }
+.st .l { font-size: 22rpx; color: #8ea0b8; }

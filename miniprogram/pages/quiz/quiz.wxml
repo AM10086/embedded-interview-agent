@@ -1,0 +1,40 @@
+﻿<view class="container">
+  <view class="qbar">
+    <text class="meta">{{idx+1}} / {{total}}</text>
+    <view class="track"><view class="fill" style="width:{{progress}}%"></view></view>
+    <text class="timer {{timerWarn?'warn':''}}">{{timerText}}</text>
+  </view>
+
+  <view class="card">
+    <view class="qtag">[{{q.category}}] {{mode==='mock'?'面试模拟':'智能练习'}}</view>
+    <view class="qtext">{{q.question}}</view>
+
+    <view class="opts" wx:if="{{type==='single'}}">
+      <view wx:for="{{options}}" wx:key="key" class="opt {{item.cls||''}}" data-i="{{index}}" bindtap="tapOpt">
+        <text class="k">{{item.key}}</text><text class="t">{{item.text}}</text>
+      </view>
+    </view>
+
+    <view class="jbtn" wx:if="{{type==='judge'}}">
+      <button class="j {{answered?'off':''}}" data-v="对" bindtap="tapJudge">✓ 对</button>
+      <button class="j {{answered?'off':''}}" data-v="错" bindtap="tapJudge">✗ 错</button>
+    </view>
+
+    <view wx:if="{{type==='short'}}">
+      <textarea value="{{shortValue}}" bindinput="onShortInput" placeholder="输入你的答案，尽量用要点作答..." maxlength="2000"/>
+      <view class="grade" wx:if="{{!answered}}">
+        <view wx:for="{{[1,2,3,4,5]}}" wx:key="*this" class="g {{gradeSel===item?'sel':''}}" data-v="{{item}}" bindtap="grade">{{item}}</view>
+      </view>
+      <view class="grade-tip" wx:if="{{!answered}}">答完请给自己打分（1-5）</view>
+    </view>
+
+    <view class="feedback {{fbClass}}" wx:if="{{feedback}}">{{feedback}}</view>
+
+    <view class="next" wx:if="{{answered}}">
+      <button class="btn btn-primary" bindtap="next">{{idx+1>=total?'查看结果 🏁':'下一题 →'}}</button>
+    </view>
+  </view>
+
+  <button class="btn btn-ghost quit" bindtap="quit">退出练习</button>
+</view>
+

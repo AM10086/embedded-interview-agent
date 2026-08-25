@@ -1,0 +1,17 @@
+﻿.hero { padding: 20rpx 0 10rpx; }
+.tag { display: inline-block; font-size: 22rpx; color: #38bdf8; border: 1rpx solid rgba(56,189,248,.35);
+  background: rgba(56,189,248,.08); padding: 6rpx 22rpx; border-radius: 999rpx; margin-bottom: 20rpx; }
+.title { font-size: 46rpx; font-weight: 800; }
+.sub { color: #8ea0b8; font-size: 26rpx; margin-top: 12rpx; }
+.dash { display: flex; flex-wrap: wrap; margin: 30rpx 0; }
+.dstat { width: 48%; background: rgba(17,25,40,.72); border: 1rpx solid rgba(148,163,184,.14);
+  border-radius: 24rpx; padding: 24rpx; margin: 0 2% 20rpx 0; box-sizing: border-box; }
+.dstat .lab { font-size: 24rpx; color: #8ea0b8; }
+.dstat .num { font-size: 44rpx; font-weight: 800; color: #38bdf8; margin-top: 6rpx; }
+.modes { display: flex; flex-wrap: wrap; }
+.mode { width: 48%; box-sizing: border-box; background: rgba(17,25,40,.72); border: 1rpx solid rgba(148,163,184,.14);
+  border-radius: 24rpx; padding: 28rpx; margin: 0 2% 20rpx 0; }
+.mode .ic { font-size: 44rpx; }
+.mode .mt { font-size: 32rpx; font-weight: 700; margin-top: 10rpx; }
+.mode .ms { font-size: 22rpx; color: #8ea0b8; margin-top: 6rpx; }
+.sec-title { font-size: 28rpx; color: #a5b4fc; margin: 20rpx 0 16rpx; }

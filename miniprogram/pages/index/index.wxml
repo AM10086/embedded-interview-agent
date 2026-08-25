@@ -1,0 +1,39 @@
+﻿<view class="container">
+  <view class="hero">
+    <view class="tag">🎯 求职冲刺 · 智能出题 · 面试模拟</view>
+    <view class="title">嵌入式面试 AI Agent</view>
+    <view class="sub">按薄弱点智能出题 · 限时面试模拟 · 自动判分讲解</view>
+  </view>
+
+  <view class="dash">
+    <view class="dstat"><view class="lab">📚 总题量</view><view class="num">{{total}}</view></view>
+    <view class="dstat"><view class="lab">🗂 知识点</view><view class="num">{{cats}}</view></view>
+    <view class="dstat"><view class="lab">🏆 最佳成绩</view><view class="num">{{best}}</view></view>
+    <view class="dstat"><view class="lab">📈 累计练习</view><view class="num">{{done}}</view></view>
+  </view>
+
+  <view class="modes">
+    <view class="mode" bindtap="goPractice">
+      <view class="ic">🧠</view><view class="mt">智能练习</view>
+      <view class="ms">按历史正确率加权出题，专攻薄弱点</view>
+    </view>
+    <view class="mode" bindtap="goMock">
+      <view class="ic">⏱️</view><view class="mt">面试模拟</view>
+      <view class="ms">限时 60 秒/题，还原真实面试节奏</view>
+    </view>
+    <view class="mode" bindtap="goBank">
+      <view class="ic">📚</view><view class="mt">题库目录</view>
+      <view class="ms">按分类浏览全部题目，快速查阅</view>
+    </view>
+    <view class="mode" bindtap="goWeak">
+      <view class="ic">📊</view><view class="mt">薄弱点分析</view>
+      <view class="ms">查看各知识点正确率与建议</view>
+    </view>
+  </view>
+
+  <view class="sec-title">选择分类（默认全部）</view>
+  <view class="chips">
+    <view wx:for="{{catAll}}" wx:key="name" class="chip {{selectedCat===item.name?'active':''}}"
+          data-c="{{item.name}}" bindtap="selectCat">{{item.name}} ({{item.count}})</view>
+  </view>
+</view>

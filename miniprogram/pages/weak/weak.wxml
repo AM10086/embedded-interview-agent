@@ -1,0 +1,13 @@
+﻿<view class="container">
+  <view class="card">
+    <view class="wtitle">📊 薄弱点分析</view>
+    <view class="wsub">正确率从低到高 · 数据保存在本机</view>
+    <view wx:if="{{empty}}" class="empty">还没有答题记录，先去练几题吧！</view>
+    <view wx:for="{{rows}}" wx:key="c" class="wrow">
+      <view class="wlbl"><text>{{item.c}}</text><text>{{item.pct}}% ({{item.correct}}/{{item.total}})</text></view>
+      <view class="bar"><view class="fill" style="width:{{item.pct}}%"></view></view>
+    </view>
+    <view class="tip">{{tip}}</view>
+  </view>
+  <button class="btn btn-ghost" bindtap="goBack">返回首页</button>
+</view>

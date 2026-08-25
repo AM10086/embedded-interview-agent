@@ -75,9 +75,4 @@ embedded-interview-agent/
 
 > 小程序题库与网页版共用同一份 660 题数据。
 
-## 📄 License
-MIT
-
-
-
 

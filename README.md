@@ -76,6 +76,7 @@ embedded-interview-agent/
 │   └── terms/                 # 知识点知识库（生成器数据源）
 ├── docs/                      # 网页版（GitHub Pages 部署源）
 │   ├── index.html             # 网页应用
+│   ├── interview.js           # 简历 AI 模拟面试引擎（审问式 20 题 + 四维报告）
 │   └── questions.js           # 网页题库数据
 └── miniprogram/               # 微信小程序版
     ├── app.js / app.json / app.wxss

@@ -32,18 +32,26 @@ embedded-interview-agent/
 └── history.json      # 答题历史（自动生成）
 ```
 
-## 🔌 可选：接入 AI 讲解
-编辑 `config.json`：
+## 🔌 可选：接入 AI 讲解（支持多模型）
+编辑 `config.json`，把 `ai.enabled` 改为 `true`，选择 provider 并填写 api_key：
 ```json
 {
   "ai": {
     "enabled": true,
-    "api_key": "你的API Key",
-    "base_url": "https://api.deepseek.com/v1/chat/completions",
-    "model": "deepseek-chat"
+    "provider": "deepseek",
+    "api_key": "你的API Key"
   }
 }
 ```
+支持的大模型：
+| provider | 说明 |
+|---|---|
+| `deepseek` | DeepSeek（推荐，便宜）|
+| `openai` | OpenAI GPT |
+| `qwen` | 通义千问 |
+| `zhipu` | 智谱 GLM |
+| `kimi` | Kimi 月之暗面 |
+| `ollama` | 本地 Ollama（无需 API Key）|
 
 ## 📚 题库来源
 结合嵌入式求职高频考点与个人简历项目整理（FreeRTOS / STM32 / ARM-Linux / 网络协议等）。
@@ -51,3 +59,4 @@ embedded-interview-agent/
 
 ## 📄 License
 MIT
+

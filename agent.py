@@ -13,23 +13,27 @@ from analyzer import History
 
 
 def ai_ask(prompt, cfg):
-    """调用大模型接口（需在 config.json 配置 API Key 并 enabled=true）。"""
+    """调用大模型接口（支持 DeepSeek/OpenAI/通义/智谱/Kimi/Ollama，在 config.json 配置）。"""
     ai = cfg.get("ai", {})
-    if not ai.get("enabled") or not ai.get("api_key"):
+    if not ai.get("enabled"):
         return None
+    provider_key = ai.get("provider", "deepseek")
+    providers = cfg.get("providers", {})
+    prov = providers.get(provider_key, providers.get("deepseek", {}))
+    base_url = prov.get("base_url", "")
+    model = prov.get("model", "deepseek-chat")
+    api_key = ai.get("api_key", "")
+    if not prov.get("no_key") and not api_key:
+        return "（未配置 API Key：请在 config.json 的 ai.api_key 填写）"
     body = json.dumps({
-        "model": ai.get("model", "deepseek-chat"),
+        "model": model,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
     }).encode("utf-8")
-    req = urllib.request.Request(
-        ai.get("base_url"),
-        data=body,
-        headers={
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + ai["api_key"],
-        },
-    )
+    headers = {"Content-Type": "application/json"}
+    if api_key:
+        headers["Authorization"] = "Bearer " + api_key
+    req = urllib.request.Request(base_url, data=body, headers=headers)
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
             data = json.loads(resp.read().decode("utf-8"))
@@ -136,4 +140,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 

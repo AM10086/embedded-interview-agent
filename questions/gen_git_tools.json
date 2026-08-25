@@ -1,0 +1,485 @@
+{
+ "category": "Git 与工具链",
+ "questions": [
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：分布式版本控制系统，跟踪文件变更并支持协作？",
+   "options": [
+    "A. Git",
+    "B. 函数指针",
+    "C. 内核",
+    "D. 波特率"
+   ],
+   "answer": "A",
+   "explanation": "Git：分布式版本控制系统，跟踪文件变更并支持协作"
+  },
+  {
+   "type": "judge",
+   "question": "判断：Git 的含义是“分布式版本控制系统，跟踪文件变更并支持协作”。",
+   "answer": "对",
+   "explanation": "正确。Git：分布式版本控制系统，跟踪文件变更并支持协作"
+  },
+  {
+   "type": "judge",
+   "question": "判断：Git 的含义是“硬件计数装置，可产生定时中断、PWM、输入捕获等”。",
+   "answer": "错",
+   "explanation": "错误。“硬件计数装置，可产生定时中断、PWM、输入捕获等”描述的是 定时器。Git 的正确含义是：分布式版本控制系统，跟踪文件变更并支持协作"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：Git 保存版本历史的地方，含 .git 目录？",
+   "options": [
+    "A. 仓库",
+    "B. 图",
+    "C. 交叉编译",
+    "D. 归并排序"
+   ],
+   "answer": "A",
+   "explanation": "仓库：Git 保存版本历史的地方，含 .git 目录"
+  },
+  {
+   "type": "judge",
+   "question": "判断：仓库 的含义是“Git 保存版本历史的地方，含 .git 目录”。",
+   "answer": "对",
+   "explanation": "正确。仓库：Git 保存版本历史的地方，含 .git 目录"
+  },
+  {
+   "type": "judge",
+   "question": "判断：仓库 的含义是“外设寄存器在内存中的地址布局，通过地址访问外设”。",
+   "answer": "错",
+   "explanation": "错误。“外设寄存器在内存中的地址布局，通过地址访问外设”描述的是 寄存器映射。仓库 的正确含义是：Git 保存版本历史的地方，含 .git 目录"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：把暂存区内容保存为一个版本快照？",
+   "options": [
+    "A. 字符设备",
+    "B. typedef",
+    "C. 堆heap",
+    "D. 提交commit"
+   ],
+   "answer": "D",
+   "explanation": "提交commit：把暂存区内容保存为一个版本快照"
+  },
+  {
+   "type": "judge",
+   "question": "判断：提交commit 的含义是“把暂存区内容保存为一个版本快照”。",
+   "answer": "对",
+   "explanation": "正确。提交commit：把暂存区内容保存为一个版本快照"
+  },
+  {
+   "type": "judge",
+   "question": "判断：提交commit 的含义是“低速短距离无线 Mesh 网络协议，适合智能家居”。",
+   "answer": "错",
+   "explanation": "错误。“低速短距离无线 Mesh 网络协议，适合智能家居”描述的是 ZigBee。提交commit 的正确含义是：把暂存区内容保存为一个版本快照"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：独立的开发线，默认主分支 main？",
+   "options": [
+    "A. 位域",
+    "B. 状态机",
+    "C. LoRa",
+    "D. 分支"
+   ],
+   "answer": "D",
+   "explanation": "分支：独立的开发线，默认主分支 main"
+  },
+  {
+   "type": "judge",
+   "question": "判断：分支 的含义是“独立的开发线，默认主分支 main”。",
+   "answer": "对",
+   "explanation": "正确。分支：独立的开发线，默认主分支 main"
+  },
+  {
+   "type": "judge",
+   "question": "判断：分支 的含义是“数模转换器，把数字量转为模拟电压”。",
+   "answer": "错",
+   "explanation": "错误。“数模转换器，把数字量转为模拟电压”描述的是 DAC。分支 的正确含义是：独立的开发线，默认主分支 main"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：把一个分支的改动合入另一个分支？",
+   "options": [
+    "A. ARP",
+    "B. goto",
+    "C. 合并merge",
+    "D. sizeof"
+   ],
+   "answer": "C",
+   "explanation": "合并merge：把一个分支的改动合入另一个分支"
+  },
+  {
+   "type": "judge",
+   "question": "判断：合并merge 的含义是“把一个分支的改动合入另一个分支”。",
+   "answer": "对",
+   "explanation": "正确。合并merge：把一个分支的改动合入另一个分支"
+  },
+  {
+   "type": "judge",
+   "question": "判断：合并merge 的含义是“同优先级任务按时间片轮流使用 CPU”。",
+   "answer": "错",
+   "explanation": "错误。“同优先级任务按时间片轮流使用 CPU”描述的是 时间片轮转。合并merge 的正确含义是：把一个分支的改动合入另一个分支"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：两个分支修改同一处导致的合并冲突，需手动解决？",
+   "options": [
+    "A. 冲突",
+    "B. 头文件守卫",
+    "C. 输入子系统",
+    "D. 外部中断EXTI"
+   ],
+   "answer": "A",
+   "explanation": "冲突：两个分支修改同一处导致的合并冲突，需手动解决"
+  },
+  {
+   "type": "judge",
+   "question": "判断：冲突 的含义是“两个分支修改同一处导致的合并冲突，需手动解决”。",
+   "answer": "对",
+   "explanation": "正确。冲突：两个分支修改同一处导致的合并冲突，需手动解决"
+  },
+  {
+   "type": "judge",
+   "question": "判断：冲突 的含义是“决定任务调度先后顺序的数值，数值越大优先级越高”。",
+   "answer": "错",
+   "explanation": "错误。“决定任务调度先后顺序的数值，数值越大优先级越高”描述的是 任务优先级。冲突 的正确含义是：两个分支修改同一处导致的合并冲突，需手动解决"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：git add 后提交前存放改动的地方？",
+   "options": [
+    "A. 开漏输出",
+    "B. 位图",
+    "C. HTTP",
+    "D. 暂存区"
+   ],
+   "answer": "D",
+   "explanation": "暂存区：git add 后提交前存放改动的地方"
+  },
+  {
+   "type": "judge",
+   "question": "判断：暂存区 的含义是“git add 后提交前存放改动的地方”。",
+   "answer": "对",
+   "explanation": "正确。暂存区：git add 后提交前存放改动的地方"
+  },
+  {
+   "type": "judge",
+   "question": "判断：暂存区 的含义是“变量可见的范围，分为局部作用域、文件作用域等”。",
+   "answer": "错",
+   "explanation": "错误。“变量可见的范围，分为局部作用域、文件作用域等”描述的是 作用域。暂存区 的正确含义是：git add 后提交前存放改动的地方"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：当前编辑的文件目录？",
+   "options": [
+    "A. 指针",
+    "B. 工作区",
+    "C. 子网掩码",
+    "D. 环形缓冲区"
+   ],
+   "answer": "B",
+   "explanation": "工作区：当前编辑的文件目录"
+  },
+  {
+   "type": "judge",
+   "question": "判断：工作区 的含义是“当前编辑的文件目录”。",
+   "answer": "对",
+   "explanation": "正确。工作区：当前编辑的文件目录"
+  },
+  {
+   "type": "judge",
+   "question": "判断：工作区 的含义是“自动分配释放的内存区，后进先出，存局部变量和返回地址，速度快空间有限”。",
+   "answer": "错",
+   "explanation": "错误。“自动分配释放的内存区，后进先出，存局部变量和返回地址，速度快空间有限”描述的是 栈stack。工作区 的正确含义是：当前编辑的文件目录"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：把远程仓库完整复制到本地？",
+   "options": [
+    "A. 信号量",
+    "B. ICMP",
+    "C. 克隆clone",
+    "D. 三次握手"
+   ],
+   "answer": "C",
+   "explanation": "克隆clone：把远程仓库完整复制到本地"
+  },
+  {
+   "type": "judge",
+   "question": "判断：克隆clone 的含义是“把远程仓库完整复制到本地”。",
+   "answer": "对",
+   "explanation": "正确。克隆clone：把远程仓库完整复制到本地"
+  },
+  {
+   "type": "judge",
+   "question": "判断：克隆clone 的含义是“用于任务间同步或资源计数的内核对象，二值/计数两种”。",
+   "answer": "错",
+   "explanation": "错误。“用于任务间同步或资源计数的内核对象，二值/计数两种”描述的是 信号量。克隆clone 的正确含义是：把远程仓库完整复制到本地"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：获取远程更新并合并到当前分支？",
+   "options": [
+    "A. 输入子系统",
+    "B. 数组",
+    "C. 粘包",
+    "D. 拉取pull"
+   ],
+   "answer": "D",
+   "explanation": "拉取pull：获取远程更新并合并到当前分支"
+  },
+  {
+   "type": "judge",
+   "question": "判断：拉取pull 的含义是“获取远程更新并合并到当前分支”。",
+   "answer": "对",
+   "explanation": "正确。拉取pull：获取远程更新并合并到当前分支"
+  },
+  {
+   "type": "judge",
+   "question": "判断：拉取pull 的含义是“RTOS 中独立调度的执行单元，有独立的栈和状态”。",
+   "answer": "错",
+   "explanation": "错误。“RTOS 中独立调度的执行单元，有独立的栈和状态”描述的是 任务。拉取pull 的正确含义是：获取远程更新并合并到当前分支"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：把本地提交上传到远程仓库？",
+   "options": [
+    "A. 文件I/O",
+    "B. 位图",
+    "C. 推送push",
+    "D. 位域"
+   ],
+   "answer": "C",
+   "explanation": "推送push：把本地提交上传到远程仓库"
+  },
+  {
+   "type": "judge",
+   "question": "判断：推送push 的含义是“把本地提交上传到远程仓库”。",
+   "answer": "对",
+   "explanation": "正确。推送push：把本地提交上传到远程仓库"
+  },
+  {
+   "type": "judge",
+   "question": "判断：推送push 的含义是“单向数据传输的 IPC 机制，有匿名管道和命名管道”。",
+   "answer": "错",
+   "explanation": "错误。“单向数据传输的 IPC 机制，有匿名管道和命名管道”描述的是 管道。推送push 的正确含义是：把本地提交上传到远程仓库"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：撤销某次提交的改动？",
+   "options": [
+    "A. 作用域",
+    "B. 回退revert",
+    "C. GitHub Pages",
+    "D. 排序稳定性"
+   ],
+   "answer": "B",
+   "explanation": "回退revert：撤销某次提交的改动"
+  },
+  {
+   "type": "judge",
+   "question": "判断：回退revert 的含义是“撤销某次提交的改动”。",
+   "answer": "对",
+   "explanation": "正确。回退revert：撤销某次提交的改动"
+  },
+  {
+   "type": "judge",
+   "question": "判断：回退revert 的含义是“描述编译规则的构建脚本”。",
+   "answer": "错",
+   "explanation": "错误。“描述编译规则的构建脚本”描述的是 Makefile。回退revert 的正确含义是：撤销某次提交的改动"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：暂存未提交的改动，稍后恢复？",
+   "options": [
+    "A. stash",
+    "B. UART",
+    "C. 硬链接",
+    "D. 阻塞"
+   ],
+   "answer": "A",
+   "explanation": "stash：暂存未提交的改动，稍后恢复"
+  },
+  {
+   "type": "judge",
+   "question": "判断：stash 的含义是“暂存未提交的改动，稍后恢复”。",
+   "answer": "对",
+   "explanation": "正确。stash：暂存未提交的改动，稍后恢复"
+  },
+  {
+   "type": "judge",
+   "question": "判断：stash 的含义是“按字节流访问的设备，如串口、LED，实现 file_operations”。",
+   "answer": "错",
+   "explanation": "错误。“按字节流访问的设备，如串口、LED，实现 file_operations”描述的是 字符设备。stash 的正确含义是：暂存未提交的改动，稍后恢复"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：指定哪些文件/目录不被 Git 跟踪？",
+   "options": [
+    "A. 三次握手",
+    "B. gitignore",
+    "C. CMake",
+    "D. 阻塞"
+   ],
+   "answer": "B",
+   "explanation": "gitignore：指定哪些文件/目录不被 Git 跟踪"
+  },
+  {
+   "type": "judge",
+   "question": "判断：gitignore 的含义是“指定哪些文件/目录不被 Git 跟踪”。",
+   "answer": "对",
+   "explanation": "正确。gitignore：指定哪些文件/目录不被 Git 跟踪"
+  },
+  {
+   "type": "judge",
+   "question": "判断：gitignore 的含义是“频繁 malloc/free 产生的不连续小空闲块，导致大块分配失败”。",
+   "answer": "错",
+   "explanation": "错误。“频繁 malloc/free 产生的不连续小空闲块，导致大块分配失败”描述的是 内存碎片。gitignore 的正确含义是：指定哪些文件/目录不被 Git 跟踪"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：基于 Git 的代码托管平台，支持开源协作？",
+   "options": [
+    "A. GitHub",
+    "B. HAL库",
+    "C. 设备树",
+    "D. 时钟树"
+   ],
+   "answer": "A",
+   "explanation": "GitHub：基于 Git 的代码托管平台，支持开源协作"
+  },
+  {
+   "type": "judge",
+   "question": "判断：GitHub 的含义是“基于 Git 的代码托管平台，支持开源协作”。",
+   "answer": "对",
+   "explanation": "正确。GitHub：基于 Git 的代码托管平台，支持开源协作"
+  },
+  {
+   "type": "judge",
+   "question": "判断：GitHub 的含义是“分治合并两个有序序列，稳定 O(n log n)”。",
+   "answer": "错",
+   "explanation": "错误。“分治合并两个有序序列，稳定 O(n log n)”描述的是 归并排序。GitHub 的正确含义是：基于 Git 的代码托管平台，支持开源协作"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：GitHub 提供的静态网站托管服务？",
+   "options": [
+    "A. 管道",
+    "B. GitHub Pages",
+    "C. 图",
+    "D. 空指针"
+   ],
+   "answer": "B",
+   "explanation": "GitHub Pages：GitHub 提供的静态网站托管服务"
+  },
+  {
+   "type": "judge",
+   "question": "判断：GitHub Pages 的含义是“GitHub 提供的静态网站托管服务”。",
+   "answer": "对",
+   "explanation": "正确。GitHub Pages：GitHub 提供的静态网站托管服务"
+  },
+  {
+   "type": "judge",
+   "question": "判断：GitHub Pages 的含义是“函数调用自身的编程技巧，需终止条件”。",
+   "answer": "错",
+   "explanation": "错误。“函数调用自身的编程技巧，需终止条件”描述的是 递归。GitHub Pages 的正确含义是：GitHub 提供的静态网站托管服务"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：跨平台构建系统，生成 Makefile 或工程？",
+   "options": [
+    "A. 按键消抖",
+    "B. CMake",
+    "C. HAL库",
+    "D. 堆排序"
+   ],
+   "answer": "B",
+   "explanation": "CMake：跨平台构建系统，生成 Makefile 或工程"
+  },
+  {
+   "type": "judge",
+   "question": "判断：CMake 的含义是“跨平台构建系统，生成 Makefile 或工程”。",
+   "answer": "对",
+   "explanation": "正确。CMake：跨平台构建系统，生成 Makefile 或工程"
+  },
+  {
+   "type": "judge",
+   "question": "判断：CMake 的含义是“指向同一 inode 的多个名字，不能跨文件系统”。",
+   "answer": "错",
+   "explanation": "错误。“指向同一 inode 的多个名字，不能跨文件系统”描述的是 硬链接。CMake 的正确含义是：跨平台构建系统，生成 Makefile 或工程"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：描述编译规则的构建脚本？",
+   "options": [
+    "A. 内存泄漏",
+    "B. Makefile",
+    "C. I2C",
+    "D. RTC"
+   ],
+   "answer": "B",
+   "explanation": "Makefile：描述编译规则的构建脚本"
+  },
+  {
+   "type": "judge",
+   "question": "判断：Makefile 的含义是“描述编译规则的构建脚本”。",
+   "answer": "对",
+   "explanation": "正确。Makefile：描述编译规则的构建脚本"
+  },
+  {
+   "type": "judge",
+   "question": "判断：Makefile 的含义是“保护共享资源的锁，具有优先级继承、递归获取、持有者释放特性”。",
+   "answer": "错",
+   "explanation": "错误。“保护共享资源的锁，具有优先级继承、递归获取、持有者释放特性”描述的是 互斥量。Makefile 的正确含义是：描述编译规则的构建脚本"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：GNU 调试器，可设断点、查看变量、单步执行？",
+   "options": [
+    "A. BLE",
+    "B. GDB",
+    "C. 块设备",
+    "D. 任务通知"
+   ],
+   "answer": "B",
+   "explanation": "GDB：GNU 调试器，可设断点、查看变量、单步执行"
+  },
+  {
+   "type": "judge",
+   "question": "判断：GDB 的含义是“GNU 调试器，可设断点、查看变量、单步执行”。",
+   "answer": "对",
+   "explanation": "正确。GDB：GNU 调试器，可设断点、查看变量、单步执行"
+  },
+  {
+   "type": "judge",
+   "question": "判断：GDB 的含义是“多字节数据在内存中的字节排列顺序，小端低字节在低地址，网络字节序为大端”。",
+   "answer": "错",
+   "explanation": "错误。“多字节数据在内存中的字节排列顺序，小端低字节在低地址，网络字节序为大端”描述的是 大小端。GDB 的正确含义是：GNU 调试器，可设断点、查看变量、单步执行"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：开源片上调试器，配合 GDB 调试 MCU？",
+   "options": [
+    "A. OpenOCD",
+    "B. NVIC",
+    "C. 克隆clone",
+    "D. 数组"
+   ],
+   "answer": "A",
+   "explanation": "OpenOCD：开源片上调试器，配合 GDB 调试 MCU"
+  },
+  {
+   "type": "judge",
+   "question": "判断：OpenOCD 的含义是“开源片上调试器，配合 GDB 调试 MCU”。",
+   "answer": "对",
+   "explanation": "正确。OpenOCD：开源片上调试器，配合 GDB 调试 MCU"
+  },
+  {
+   "type": "judge",
+   "question": "判断：OpenOCD 的含义是“应用程序进入内核的接口，如 open/read/write”。",
+   "answer": "错",
+   "explanation": "错误。“应用程序进入内核的接口，如 open/read/write”描述的是 系统调用。OpenOCD 的正确含义是：开源片上调试器，配合 GDB 调试 MCU"
+  }
+ ]
+}

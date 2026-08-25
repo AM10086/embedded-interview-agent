@@ -1,0 +1,605 @@
+{
+ "category": "网络与协议",
+ "questions": [
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：面向连接的可靠传输协议，有确认重传、流量控制，有序？",
+   "options": [
+    "A. FromISR接口",
+    "B. 共享内存",
+    "C. TCP",
+    "D. ICMP"
+   ],
+   "answer": "C",
+   "explanation": "TCP：面向连接的可靠传输协议，有确认重传、流量控制，有序"
+  },
+  {
+   "type": "judge",
+   "question": "判断：TCP 的含义是“面向连接的可靠传输协议，有确认重传、流量控制，有序”。",
+   "answer": "对",
+   "explanation": "正确。TCP：面向连接的可靠传输协议，有确认重传、流量控制，有序"
+  },
+  {
+   "type": "judge",
+   "question": "判断：TCP 的含义是“把角位移/线位移转为电信号的传感器，用于测速测位”。",
+   "answer": "错",
+   "explanation": "错误。“把角位移/线位移转为电信号的传感器，用于测速测位”描述的是 编码器。TCP 的正确含义是：面向连接的可靠传输协议，有确认重传、流量控制，有序"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：无连接的不可靠传输协议，开销小、延迟低？",
+   "options": [
+    "A. UDP",
+    "B. SecureCRT",
+    "C. 冒泡排序",
+    "D. 标准库"
+   ],
+   "answer": "A",
+   "explanation": "UDP：无连接的不可靠传输协议，开销小、延迟低"
+  },
+  {
+   "type": "judge",
+   "question": "判断：UDP 的含义是“无连接的不可靠传输协议，开销小、延迟低”。",
+   "answer": "对",
+   "explanation": "正确。UDP：无连接的不可靠传输协议，开销小、延迟低"
+  },
+  {
+   "type": "judge",
+   "question": "判断：UDP 的含义是“以'\\\\0'结尾的字符数组，strlen 不含结尾符”。",
+   "answer": "错",
+   "explanation": "错误。“以'\\\\0'结尾的字符数组，strlen 不含结尾符”描述的是 字符串。UDP 的正确含义是：无连接的不可靠传输协议，开销小、延迟低"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：网络层地址，标识网络中的设备，IPv4 32位？",
+   "options": [
+    "A. HTTP",
+    "B. IP地址",
+    "C. 网络字节序",
+    "D. 空指针"
+   ],
+   "answer": "B",
+   "explanation": "IP地址：网络层地址，标识网络中的设备，IPv4 32位"
+  },
+  {
+   "type": "judge",
+   "question": "判断：IP地址 的含义是“网络层地址，标识网络中的设备，IPv4 32位”。",
+   "answer": "对",
+   "explanation": "正确。IP地址：网络层地址，标识网络中的设备，IPv4 32位"
+  },
+  {
+   "type": "judge",
+   "question": "判断：IP地址 的含义是“首尾相接的固定大小缓冲区，嵌入式串口接收常用”。",
+   "answer": "错",
+   "explanation": "错误。“首尾相接的固定大小缓冲区，嵌入式串口接收常用”描述的是 环形缓冲区。IP地址 的正确含义是：网络层地址，标识网络中的设备，IPv4 32位"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：划分网络位和主机位，决定设备是否在同一局域网？",
+   "options": [
+    "A. NFS",
+    "B. extern",
+    "C. 拉取pull",
+    "D. 子网掩码"
+   ],
+   "answer": "D",
+   "explanation": "子网掩码：划分网络位和主机位，决定设备是否在同一局域网"
+  },
+  {
+   "type": "judge",
+   "question": "判断：子网掩码 的含义是“划分网络位和主机位，决定设备是否在同一局域网”。",
+   "answer": "对",
+   "explanation": "正确。子网掩码：划分网络位和主机位，决定设备是否在同一局域网"
+  },
+  {
+   "type": "judge",
+   "question": "判断：子网掩码 的含义是“操作系统的核心，管理进程、内存、驱动等资源”。",
+   "answer": "错",
+   "explanation": "错误。“操作系统的核心，管理进程、内存、驱动等资源”描述的是 内核。子网掩码 的正确含义是：划分网络位和主机位，决定设备是否在同一局域网"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：数据链路层的物理地址，唯一标识网卡？",
+   "options": [
+    "A. MAC地址",
+    "B. 数组",
+    "C. BLE",
+    "D. goto"
+   ],
+   "answer": "A",
+   "explanation": "MAC地址：数据链路层的物理地址，唯一标识网卡"
+  },
+  {
+   "type": "judge",
+   "question": "判断：MAC地址 的含义是“数据链路层的物理地址，唯一标识网卡”。",
+   "answer": "对",
+   "explanation": "正确。MAC地址：数据链路层的物理地址，唯一标识网卡"
+  },
+  {
+   "type": "judge",
+   "question": "判断：MAC地址 的含义是“fopen/fread 等库函数，有用户态缓冲，适合大量小数据”。",
+   "answer": "错",
+   "explanation": "错误。“fopen/fread 等库函数，有用户态缓冲，适合大量小数据”描述的是 标准I/O。MAC地址 的正确含义是：数据链路层的物理地址，唯一标识网卡"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：传输层标识应用进程的编号，HTTP 80、HTTPS 443？",
+   "options": [
+    "A. 传感器",
+    "B. 端口",
+    "C. 软件定时器",
+    "D. 回退revert"
+   ],
+   "answer": "B",
+   "explanation": "端口：传输层标识应用进程的编号，HTTP 80、HTTPS 443"
+  },
+  {
+   "type": "judge",
+   "question": "判断：端口 的含义是“传输层标识应用进程的编号，HTTP 80、HTTPS 443”。",
+   "answer": "对",
+   "explanation": "正确。端口：传输层标识应用进程的编号，HTTP 80、HTTPS 443"
+  },
+  {
+   "type": "judge",
+   "question": "判断：端口 的含义是“在一种架构上编译另一种架构的程序，需交叉工具链”。",
+   "answer": "错",
+   "explanation": "错误。“在一种架构上编译另一种架构的程序，需交叉工具链”描述的是 交叉编译。端口 的正确含义是：传输层标识应用进程的编号，HTTP 80、HTTPS 443"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：TCP 建立连接：SYN → SYN+ACK → ACK？",
+   "options": [
+    "A. 分支",
+    "B. 三次握手",
+    "C. 条件编译",
+    "D. NFS"
+   ],
+   "answer": "B",
+   "explanation": "三次握手：TCP 建立连接：SYN → SYN+ACK → ACK"
+  },
+  {
+   "type": "judge",
+   "question": "判断：三次握手 的含义是“TCP 建立连接：SYN → SYN+ACK → ACK”。",
+   "answer": "对",
+   "explanation": "正确。三次握手：TCP 建立连接：SYN → SYN+ACK → ACK"
+  },
+  {
+   "type": "judge",
+   "question": "判断：三次握手 的含义是“在结构体中按位分配存储，节省内存，常用于寄存器定义”。",
+   "answer": "错",
+   "explanation": "错误。“在结构体中按位分配存储，节省内存，常用于寄存器定义”描述的是 位域。三次握手 的正确含义是：TCP 建立连接：SYN → SYN+ACK → ACK"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：TCP 断开连接：FIN → ACK → FIN → ACK？",
+   "options": [
+    "A. 四次挥手",
+    "B. STM32CubeMX",
+    "C. 回退revert",
+    "D. 任务优先级"
+   ],
+   "answer": "A",
+   "explanation": "四次挥手：TCP 断开连接：FIN → ACK → FIN → ACK"
+  },
+  {
+   "type": "judge",
+   "question": "判断：四次挥手 的含义是“TCP 断开连接：FIN → ACK → FIN → ACK”。",
+   "answer": "对",
+   "explanation": "正确。四次挥手：TCP 断开连接：FIN → ACK → FIN → ACK"
+  },
+  {
+   "type": "judge",
+   "question": "判断：四次挥手 的含义是“告诉编译器该变量可能被硬件/中断修改，每次使用必须从内存重新读取，禁止优化缓存”。",
+   "answer": "错",
+   "explanation": "错误。“告诉编译器该变量可能被硬件/中断修改，每次使用必须从内存重新读取，禁止优化缓存”描述的是 volatile。四次挥手 的正确含义是：TCP 断开连接：FIN → ACK → FIN → ACK"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：TCP 字节流中多个报文边界丢失，需协议头或分隔符解决？",
+   "options": [
+    "A. Tick",
+    "B. LL库",
+    "C. 粘包",
+    "D. 链表"
+   ],
+   "answer": "C",
+   "explanation": "粘包：TCP 字节流中多个报文边界丢失，需协议头或分隔符解决"
+  },
+  {
+   "type": "judge",
+   "question": "判断：粘包 的含义是“TCP 字节流中多个报文边界丢失，需协议头或分隔符解决”。",
+   "answer": "对",
+   "explanation": "正确。粘包：TCP 字节流中多个报文边界丢失，需协议头或分隔符解决"
+  },
+  {
+   "type": "judge",
+   "question": "判断：粘包 的含义是“影响程序运行环境的变量，如 PATH”。",
+   "answer": "错",
+   "explanation": "错误。“影响程序运行环境的变量，如 PATH”描述的是 环境变量。粘包 的正确含义是：TCP 字节流中多个报文边界丢失，需协议头或分隔符解决"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：基于 TCP 的物联网发布/订阅协议，轻量省带宽？",
+   "options": [
+    "A. MQTT",
+    "B. 时间复杂度",
+    "C. 进程",
+    "D. 插入排序"
+   ],
+   "answer": "A",
+   "explanation": "MQTT：基于 TCP 的物联网发布/订阅协议，轻量省带宽"
+  },
+  {
+   "type": "judge",
+   "question": "判断：MQTT 的含义是“基于 TCP 的物联网发布/订阅协议，轻量省带宽”。",
+   "answer": "对",
+   "explanation": "正确。MQTT：基于 TCP 的物联网发布/订阅协议，轻量省带宽"
+  },
+  {
+   "type": "judge",
+   "question": "判断：MQTT 的含义是“同步串行总线，2线（SCL/SDA）带上拉，多设备寻址，半双工”。",
+   "answer": "错",
+   "explanation": "错误。“同步串行总线，2线（SCL/SDA）带上拉，多设备寻址，半双工”描述的是 I2C。MQTT 的正确含义是：基于 TCP 的物联网发布/订阅协议，轻量省带宽"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：超文本传输协议，基于 TCP，请求/响应模型？",
+   "options": [
+    "A. RTC",
+    "B. 消息队列",
+    "C. HTTP",
+    "D. UDP"
+   ],
+   "answer": "C",
+   "explanation": "HTTP：超文本传输协议，基于 TCP，请求/响应模型"
+  },
+  {
+   "type": "judge",
+   "question": "判断：HTTP 的含义是“超文本传输协议，基于 TCP，请求/响应模型”。",
+   "answer": "对",
+   "explanation": "正确。HTTP：超文本传输协议，基于 TCP，请求/响应模型"
+  },
+  {
+   "type": "judge",
+   "question": "判断：HTTP 的含义是“指向整个数组的指针，如 int (*p)[5]，步长为整个数组大小”。",
+   "answer": "错",
+   "explanation": "错误。“指向整个数组的指针，如 int (*p)[5]，步长为整个数组大小”描述的是 数组指针。HTTP 的正确含义是：超文本传输协议，基于 TCP，请求/响应模型"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：HTTP + TLS 加密，默认端口 443？",
+   "options": [
+    "A. 上下文切换",
+    "B. HTTPS",
+    "C. 二叉树",
+    "D. 块设备"
+   ],
+   "answer": "B",
+   "explanation": "HTTPS：HTTP + TLS 加密，默认端口 443"
+  },
+  {
+   "type": "judge",
+   "question": "判断：HTTPS 的含义是“HTTP + TLS 加密，默认端口 443”。",
+   "answer": "对",
+   "explanation": "正确。HTTPS：HTTP + TLS 加密，默认端口 443"
+  },
+  {
+   "type": "judge",
+   "question": "判断：HTTPS 的含义是“单向数据传输的 IPC 机制，有匿名管道和命名管道”。",
+   "answer": "错",
+   "explanation": "错误。“单向数据传输的 IPC 机制，有匿名管道和命名管道”描述的是 管道。HTTPS 的正确含义是：HTTP + TLS 加密，默认端口 443"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：把域名解析为 IP 地址的系统？",
+   "options": [
+    "A. 信号",
+    "B. 悬空指针",
+    "C. DNS",
+    "D. 二维数组"
+   ],
+   "answer": "C",
+   "explanation": "DNS：把域名解析为 IP 地址的系统"
+  },
+  {
+   "type": "judge",
+   "question": "判断：DNS 的含义是“把域名解析为 IP 地址的系统”。",
+   "answer": "对",
+   "explanation": "正确。DNS：把域名解析为 IP 地址的系统"
+  },
+  {
+   "type": "judge",
+   "question": "判断：DNS 的含义是“函数直接或间接调用自身，必须有终止条件，注意栈深度”。",
+   "answer": "错",
+   "explanation": "错误。“函数直接或间接调用自身，必须有终止条件，注意栈深度”描述的是 递归。DNS 的正确含义是：把域名解析为 IP 地址的系统"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：动态分配 IP/掩码/网关/DNS 的协议，免手动配置？",
+   "options": [
+    "A. 交叉编译",
+    "B. DHCP",
+    "C. extern",
+    "D. 静态库"
+   ],
+   "answer": "B",
+   "explanation": "DHCP：动态分配 IP/掩码/网关/DNS 的协议，免手动配置"
+  },
+  {
+   "type": "judge",
+   "question": "判断：DHCP 的含义是“动态分配 IP/掩码/网关/DNS 的协议，免手动配置”。",
+   "answer": "对",
+   "explanation": "正确。DHCP：动态分配 IP/掩码/网关/DNS 的协议，免手动配置"
+  },
+  {
+   "type": "judge",
+   "question": "判断：DHCP 的含义是“自动分配释放的内存区，后进先出，存局部变量和返回地址，速度快空间有限”。",
+   "answer": "错",
+   "explanation": "错误。“自动分配释放的内存区，后进先出，存局部变量和返回地址，速度快空间有限”描述的是 栈stack。DHCP 的正确含义是：动态分配 IP/掩码/网关/DNS 的协议，免手动配置"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：把 IP 解析为 MAC 地址的协议，用于局域网帧转发？",
+   "options": [
+    "A. 字符设备",
+    "B. ARP",
+    "C. L298N",
+    "D. 归并排序"
+   ],
+   "answer": "B",
+   "explanation": "ARP：把 IP 解析为 MAC 地址的协议，用于局域网帧转发"
+  },
+  {
+   "type": "judge",
+   "question": "判断：ARP 的含义是“把 IP 解析为 MAC 地址的协议，用于局域网帧转发”。",
+   "answer": "对",
+   "explanation": "正确。ARP：把 IP 解析为 MAC 地址的协议，用于局域网帧转发"
+  },
+  {
+   "type": "judge",
+   "question": "判断：ARP 的含义是“每趟选最小/最大元素放到有序区末尾，O(n^2)”。",
+   "answer": "错",
+   "explanation": "错误。“每趟选最小/最大元素放到有序区末尾，O(n^2)”描述的是 选择排序。ARP 的正确含义是：把 IP 解析为 MAC 地址的协议，用于局域网帧转发"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：网络层控制报文协议，ping 基于它检测连通性？",
+   "options": [
+    "A. ICMP",
+    "B. 时间片轮转",
+    "C. 提交commit",
+    "D. Shell"
+   ],
+   "answer": "A",
+   "explanation": "ICMP：网络层控制报文协议，ping 基于它检测连通性"
+  },
+  {
+   "type": "judge",
+   "question": "判断：ICMP 的含义是“网络层控制报文协议，ping 基于它检测连通性”。",
+   "answer": "对",
+   "explanation": "正确。ICMP：网络层控制报文协议，ping 基于它检测连通性"
+  },
+  {
+   "type": "judge",
+   "question": "判断：ICMP 的含义是“可动态加载/卸载的内核代码，用 insmod/rmmod 管理”。",
+   "answer": "错",
+   "explanation": "错误。“可动态加载/卸载的内核代码，用 insmod/rmmod 管理”描述的是 内核模块。ICMP 的正确含义是：网络层控制报文协议，ping 基于它检测连通性"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：统一为大端序，发送用 htonl/htons，接收用 ntohl/ntohs？",
+   "options": [
+    "A. 网络字节序",
+    "B. 位域",
+    "C. DHCP",
+    "D. 悬空指针"
+   ],
+   "answer": "A",
+   "explanation": "网络字节序：统一为大端序，发送用 htonl/htons，接收用 ntohl/ntohs"
+  },
+  {
+   "type": "judge",
+   "question": "判断：网络字节序 的含义是“统一为大端序，发送用 htonl/htons，接收用 ntohl/ntohs”。",
+   "answer": "对",
+   "explanation": "正确。网络字节序：统一为大端序，发送用 htonl/htons，接收用 ntohl/ntohs"
+  },
+  {
+   "type": "judge",
+   "question": "判断：网络字节序 的含义是“直接内存访问，外设与内存间搬运数据无需 CPU 逐字节干预”。",
+   "answer": "错",
+   "explanation": "错误。“直接内存访问，外设与内存间搬运数据无需 CPU 逐字节干预”描述的是 DMA。网络字节序 的正确含义是：统一为大端序，发送用 htonl/htons，接收用 ntohl/ntohs"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：轻量级 TCP/IP 协议栈，常用于嵌入式设备？",
+   "options": [
+    "A. 内核对象",
+    "B. CMake",
+    "C. 大小端",
+    "D. lwIP"
+   ],
+   "answer": "D",
+   "explanation": "lwIP：轻量级 TCP/IP 协议栈，常用于嵌入式设备"
+  },
+  {
+   "type": "judge",
+   "question": "判断：lwIP 的含义是“轻量级 TCP/IP 协议栈，常用于嵌入式设备”。",
+   "answer": "对",
+   "explanation": "正确。lwIP：轻量级 TCP/IP 协议栈，常用于嵌入式设备"
+  },
+  {
+   "type": "judge",
+   "question": "判断：lwIP 的含义是“GNU 调试器，可设断点、查看变量、单步执行”。",
+   "answer": "错",
+   "explanation": "错误。“GNU 调试器，可设断点、查看变量、单步执行”描述的是 GDB。lwIP 的正确含义是：轻量级 TCP/IP 协议栈，常用于嵌入式设备"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：应用/表示/会话/传输/网络/数据链路/物理 七层模型？",
+   "options": [
+    "A. 互斥量",
+    "B. 开漏输出",
+    "C. 链表",
+    "D. OSI七层"
+   ],
+   "answer": "D",
+   "explanation": "OSI七层：应用/表示/会话/传输/网络/数据链路/物理 七层模型"
+  },
+  {
+   "type": "judge",
+   "question": "判断：OSI七层 的含义是“应用/表示/会话/传输/网络/数据链路/物理 七层模型”。",
+   "answer": "对",
+   "explanation": "正确。OSI七层：应用/表示/会话/传输/网络/数据链路/物理 七层模型"
+  },
+  {
+   "type": "judge",
+   "question": "判断：OSI七层 的含义是“编译器按成员对齐要求插入填充字节，sizeof 可能大于成员之和”。",
+   "answer": "错",
+   "explanation": "错误。“编译器按成员对齐要求插入填充字节，sizeof 可能大于成员之和”描述的是 结构体对齐。OSI七层 的正确含义是：应用/表示/会话/传输/网络/数据链路/物理 七层模型"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：无线局域网技术，基于 802.11 标准？",
+   "options": [
+    "A. 数组",
+    "B. 迭代",
+    "C. WiFi",
+    "D. Git"
+   ],
+   "answer": "C",
+   "explanation": "WiFi：无线局域网技术，基于 802.11 标准"
+  },
+  {
+   "type": "judge",
+   "question": "判断：WiFi 的含义是“无线局域网技术，基于 802.11 标准”。",
+   "answer": "对",
+   "explanation": "正确。WiFi：无线局域网技术，基于 802.11 标准"
+  },
+  {
+   "type": "judge",
+   "question": "判断：WiFi 的含义是“运行时加载的共享库，后缀 .so，多个程序共享”。",
+   "answer": "错",
+   "explanation": "错误。“运行时加载的共享库，后缀 .so，多个程序共享”描述的是 动态库。WiFi 的正确含义是：无线局域网技术，基于 802.11 标准"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：蓝牙低功耗，适合低功耗传感器和穿戴设备？",
+   "options": [
+    "A. 优先级反转",
+    "B. 输入子系统",
+    "C. BLE",
+    "D. 推送push"
+   ],
+   "answer": "C",
+   "explanation": "BLE：蓝牙低功耗，适合低功耗传感器和穿戴设备"
+  },
+  {
+   "type": "judge",
+   "question": "判断：BLE 的含义是“蓝牙低功耗，适合低功耗传感器和穿戴设备”。",
+   "answer": "对",
+   "explanation": "正确。BLE：蓝牙低功耗，适合低功耗传感器和穿戴设备"
+  },
+  {
+   "type": "judge",
+   "question": "判断：BLE 的含义是“程序员用 malloc/free 手动管理的内存区，灵活但可能碎片化”。",
+   "answer": "错",
+   "explanation": "错误。“程序员用 malloc/free 手动管理的内存区，灵活但可能碎片化”描述的是 堆heap。BLE 的正确含义是：蓝牙低功耗，适合低功耗传感器和穿戴设备"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：远距离低速率 LPWAN 无线技术，适合物联网广域连接？",
+   "options": [
+    "A. 提交commit",
+    "B. LoRa",
+    "C. DHCP",
+    "D. HTTPS"
+   ],
+   "answer": "B",
+   "explanation": "LoRa：远距离低速率 LPWAN 无线技术，适合物联网广域连接"
+  },
+  {
+   "type": "judge",
+   "question": "判断：LoRa 的含义是“远距离低速率 LPWAN 无线技术，适合物联网广域连接”。",
+   "answer": "对",
+   "explanation": "正确。LoRa：远距离低速率 LPWAN 无线技术，适合物联网广域连接"
+  },
+  {
+   "type": "judge",
+   "question": "判断：LoRa 的含义是“独立定时器，超时未喂狗则复位系统，防止程序跑飞”。",
+   "answer": "错",
+   "explanation": "错误。“独立定时器，超时未喂狗则复位系统，防止程序跑飞”描述的是 看门狗。LoRa 的正确含义是：远距离低速率 LPWAN 无线技术，适合物联网广域连接"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：低速短距离无线 Mesh 网络协议，适合智能家居？",
+   "options": [
+    "A. OSI七层",
+    "B. ZigBee",
+    "C. 内核",
+    "D. 读改写"
+   ],
+   "answer": "B",
+   "explanation": "ZigBee：低速短距离无线 Mesh 网络协议，适合智能家居"
+  },
+  {
+   "type": "judge",
+   "question": "判断：ZigBee 的含义是“低速短距离无线 Mesh 网络协议，适合智能家居”。",
+   "answer": "对",
+   "explanation": "正确。ZigBee：低速短距离无线 Mesh 网络协议，适合智能家居"
+  },
+  {
+   "type": "judge",
+   "question": "判断：ZigBee 的含义是“系统启动后挂载的根目录文件系统，含 /bin /etc 等，常用 BusyBox 构建”。",
+   "answer": "错",
+   "explanation": "错误。“系统启动后挂载的根目录文件系统，含 /bin /etc 等，常用 BusyBox 构建”描述的是 根文件系统。ZigBee 的正确含义是：低速短距离无线 Mesh 网络协议，适合智能家居"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：连接不同网络并做协议转换的设备，如 ZigBee 转 WiFi？",
+   "options": [
+    "A. 任务状态",
+    "B. 交叉工具链",
+    "C. 网关",
+    "D. 标准库"
+   ],
+   "answer": "C",
+   "explanation": "网关：连接不同网络并做协议转换的设备，如 ZigBee 转 WiFi"
+  },
+  {
+   "type": "judge",
+   "question": "判断：网关 的含义是“连接不同网络并做协议转换的设备，如 ZigBee 转 WiFi”。",
+   "answer": "对",
+   "explanation": "正确。网关：连接不同网络并做协议转换的设备，如 ZigBee 转 WiFi"
+  },
+  {
+   "type": "judge",
+   "question": "判断：网关 的含义是“算法运行时间随输入规模增长的趋势，用大O表示”。",
+   "answer": "错",
+   "explanation": "错误。“算法运行时间随输入规模增长的趋势，用大O表示”描述的是 时间复杂度。网关 的正确含义是：连接不同网络并做协议转换的设备，如 ZigBee 转 WiFi"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：网络编程接口，封装 TCP/UDP 通信？",
+   "options": [
+    "A. Socket",
+    "B. 端口",
+    "C. 链表",
+    "D. OSI七层"
+   ],
+   "answer": "A",
+   "explanation": "Socket：网络编程接口，封装 TCP/UDP 通信"
+  },
+  {
+   "type": "judge",
+   "question": "判断：Socket 的含义是“网络编程接口，封装 TCP/UDP 通信”。",
+   "answer": "对",
+   "explanation": "正确。Socket：网络编程接口，封装 TCP/UDP 通信"
+  },
+  {
+   "type": "judge",
+   "question": "判断：Socket 的含义是“在一种架构上编译另一种架构的程序，需交叉工具链”。",
+   "answer": "错",
+   "explanation": "错误。“在一种架构上编译另一种架构的程序，需交叉工具链”描述的是 交叉编译。Socket 的正确含义是：网络编程接口，封装 TCP/UDP 通信"
+  }
+ ]
+}

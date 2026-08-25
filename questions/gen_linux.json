@@ -1,0 +1,723 @@
+{
+ "category": "嵌入式 Linux",
+ "questions": [
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：描述硬件信息的树形数据结构，内核启动时解析，实现硬件配置与内核解耦？",
+   "options": [
+    "A. 设备树",
+    "B. NFS",
+    "C. 动态库",
+    "D. 时间复杂度"
+   ],
+   "answer": "A",
+   "explanation": "设备树：描述硬件信息的树形数据结构，内核启动时解析，实现硬件配置与内核解耦"
+  },
+  {
+   "type": "judge",
+   "question": "判断：设备树 的含义是“描述硬件信息的树形数据结构，内核启动时解析，实现硬件配置与内核解耦”。",
+   "answer": "对",
+   "explanation": "正确。设备树：描述硬件信息的树形数据结构，内核启动时解析，实现硬件配置与内核解耦"
+  },
+  {
+   "type": "judge",
+   "question": "判断：设备树 的含义是“函数调用自身的编程技巧，需终止条件”。",
+   "answer": "错",
+   "explanation": "错误。“函数调用自身的编程技巧，需终止条件”描述的是 递归。设备树 的正确含义是：描述硬件信息的树形数据结构，内核启动时解析，实现硬件配置与内核解耦"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：在一种架构上编译另一种架构的程序，需交叉工具链？",
+   "options": [
+    "A. 交叉编译",
+    "B. 传感器",
+    "C. 事件组"
+   ],
+   "answer": "A",
+   "explanation": "交叉编译：在一种架构上编译另一种架构的程序，需交叉工具链"
+  },
+  {
+   "type": "judge",
+   "question": "判断：交叉编译 的含义是“在一种架构上编译另一种架构的程序，需交叉工具链”。",
+   "answer": "对",
+   "explanation": "正确。交叉编译：在一种架构上编译另一种架构的程序，需交叉工具链"
+  },
+  {
+   "type": "judge",
+   "question": "判断：交叉编译 的含义是“独立定时器，超时未喂狗则复位系统，防止程序跑飞”。",
+   "answer": "错",
+   "explanation": "错误。“独立定时器，超时未喂狗则复位系统，防止程序跑飞”描述的是 看门狗。交叉编译 的正确含义是：在一种架构上编译另一种架构的程序，需交叉工具链"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：系统上电后最先运行的程序，负责引导内核，如 U-Boot？",
+   "options": [
+    "A. 数组",
+    "B. CAN",
+    "C. Bootloader",
+    "D. 空闲任务"
+   ],
+   "answer": "C",
+   "explanation": "Bootloader：系统上电后最先运行的程序，负责引导内核，如 U-Boot"
+  },
+  {
+   "type": "judge",
+   "question": "判断：Bootloader 的含义是“系统上电后最先运行的程序，负责引导内核，如 U-Boot”。",
+   "answer": "对",
+   "explanation": "正确。Bootloader：系统上电后最先运行的程序，负责引导内核，如 U-Boot"
+  },
+  {
+   "type": "judge",
+   "question": "判断：Bootloader 的含义是“差分总线，抗干扰强，多主通信，常用于汽车电子”。",
+   "answer": "错",
+   "explanation": "错误。“差分总线，抗干扰强，多主通信，常用于汽车电子”描述的是 CAN。Bootloader 的正确含义是：系统上电后最先运行的程序，负责引导内核，如 U-Boot"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：操作系统的核心，管理进程、内存、驱动等资源？",
+   "options": [
+    "A. 内核",
+    "B. 外部中断EXTI",
+    "C. 进程",
+    "D. 调度器"
+   ],
+   "answer": "A",
+   "explanation": "内核：操作系统的核心，管理进程、内存、驱动等资源"
+  },
+  {
+   "type": "judge",
+   "question": "判断：内核 的含义是“操作系统的核心，管理进程、内存、驱动等资源”。",
+   "answer": "对",
+   "explanation": "正确。内核：操作系统的核心，管理进程、内存、驱动等资源"
+  },
+  {
+   "type": "judge",
+   "question": "判断：内核 的含义是“函数直接或间接调用自身，必须有终止条件，注意栈深度”。",
+   "answer": "错",
+   "explanation": "错误。“函数直接或间接调用自身，必须有终止条件，注意栈深度”描述的是 递归。内核 的正确含义是：操作系统的核心，管理进程、内存、驱动等资源"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：系统启动后挂载的根目录文件系统，含 /bin /etc 等，常用 BusyBox 构建？",
+   "options": [
+    "A. DMA",
+    "B. CAN",
+    "C. 根文件系统",
+    "D. 数组"
+   ],
+   "answer": "C",
+   "explanation": "根文件系统：系统启动后挂载的根目录文件系统，含 /bin /etc 等，常用 BusyBox 构建"
+  },
+  {
+   "type": "judge",
+   "question": "判断：根文件系统 的含义是“系统启动后挂载的根目录文件系统，含 /bin /etc 等，常用 BusyBox 构建”。",
+   "answer": "对",
+   "explanation": "正确。根文件系统：系统启动后挂载的根目录文件系统，含 /bin /etc 等，常用 BusyBox 构建"
+  },
+  {
+   "type": "judge",
+   "question": "判断：根文件系统 的含义是“声明变量或函数在别处定义，此处只引用，不分配内存”。",
+   "answer": "错",
+   "explanation": "错误。“声明变量或函数在别处定义，此处只引用，不分配内存”描述的是 extern。根文件系统 的正确含义是：系统启动后挂载的根目录文件系统，含 /bin /etc 等，常用 BusyBox 构建"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：按字节流访问的设备，如串口、LED，实现 file_operations？",
+   "options": [
+    "A. 临界区",
+    "B. 二维数组",
+    "C. 字符设备",
+    "D. Shell"
+   ],
+   "answer": "C",
+   "explanation": "字符设备：按字节流访问的设备，如串口、LED，实现 file_operations"
+  },
+  {
+   "type": "judge",
+   "question": "判断：字符设备 的含义是“按字节流访问的设备，如串口、LED，实现 file_operations”。",
+   "answer": "对",
+   "explanation": "正确。字符设备：按字节流访问的设备，如串口、LED，实现 file_operations"
+  },
+  {
+   "type": "judge",
+   "question": "判断：字符设备 的含义是“简单文件传输协议，开发中用于通过网络下载内核/镜像到开发板”。",
+   "answer": "错",
+   "explanation": "错误。“简单文件传输协议，开发中用于通过网络下载内核/镜像到开发板”描述的是 TFTP。字符设备 的正确含义是：按字节流访问的设备，如串口、LED，实现 file_operations"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：按块访问的设备，如硬盘、SD 卡，带缓存？",
+   "options": [
+    "A. Flash",
+    "B. 消息队列",
+    "C. 块设备",
+    "D. 二维数组"
+   ],
+   "answer": "C",
+   "explanation": "块设备：按块访问的设备，如硬盘、SD 卡，带缓存"
+  },
+  {
+   "type": "judge",
+   "question": "判断：块设备 的含义是“按块访问的设备，如硬盘、SD 卡，带缓存”。",
+   "answer": "对",
+   "explanation": "正确。块设备：按块访问的设备，如硬盘、SD 卡，带缓存"
+  },
+  {
+   "type": "judge",
+   "question": "判断：块设备 的含义是“网络层地址，标识网络中的设备，IPv4 32位”。",
+   "answer": "错",
+   "explanation": "错误。“网络层地址，标识网络中的设备，IPv4 32位”描述的是 IP地址。块设备 的正确含义是：按块访问的设备，如硬盘、SD 卡，带缓存"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：应用程序进入内核的接口，如 open/read/write？",
+   "options": [
+    "A. 系统调用",
+    "B. 字符设备",
+    "C. LL库"
+   ],
+   "answer": "A",
+   "explanation": "系统调用：应用程序进入内核的接口，如 open/read/write"
+  },
+  {
+   "type": "judge",
+   "question": "判断：系统调用 的含义是“应用程序进入内核的接口，如 open/read/write”。",
+   "answer": "对",
+   "explanation": "正确。系统调用：应用程序进入内核的接口，如 open/read/write"
+  },
+  {
+   "type": "judge",
+   "question": "判断：系统调用 的含义是“同步串行总线，4线（SCK/MOSI/MISO/CS），高速全双工，一主多从”。",
+   "answer": "错",
+   "explanation": "错误。“同步串行总线，4线（SCK/MOSI/MISO/CS），高速全双工，一主多从”描述的是 SPI。系统调用 的正确含义是：应用程序进入内核的接口，如 open/read/write"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：程序运行的实例，有独立地址空间，资源隔离？",
+   "options": [
+    "A. 寄存器映射",
+    "B. 结构体",
+    "C. 系统调用",
+    "D. 进程"
+   ],
+   "answer": "D",
+   "explanation": "进程：程序运行的实例，有独立地址空间，资源隔离"
+  },
+  {
+   "type": "judge",
+   "question": "判断：进程 的含义是“程序运行的实例，有独立地址空间，资源隔离”。",
+   "answer": "对",
+   "explanation": "正确。进程：程序运行的实例，有独立地址空间，资源隔离"
+  },
+  {
+   "type": "judge",
+   "question": "判断：进程 的含义是“单向数据传输的 IPC 机制，有匿名管道和命名管道”。",
+   "answer": "错",
+   "explanation": "错误。“单向数据传输的 IPC 机制，有匿名管道和命名管道”描述的是 管道。进程 的正确含义是：程序运行的实例，有独立地址空间，资源隔离"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：进程内的执行单元，共享进程地址空间，通信方便？",
+   "options": [
+    "A. 位操作",
+    "B. IP地址",
+    "C. 网络字节序",
+    "D. 线程"
+   ],
+   "answer": "D",
+   "explanation": "线程：进程内的执行单元，共享进程地址空间，通信方便"
+  },
+  {
+   "type": "judge",
+   "question": "判断：线程 的含义是“进程内的执行单元，共享进程地址空间，通信方便”。",
+   "answer": "对",
+   "explanation": "正确。线程：进程内的执行单元，共享进程地址空间，通信方便"
+  },
+  {
+   "type": "judge",
+   "question": "判断：线程 的含义是“面向连接的可靠传输协议，有确认重传、流量控制，有序”。",
+   "answer": "错",
+   "explanation": "错误。“面向连接的可靠传输协议，有确认重传、流量控制，有序”描述的是 TCP。线程 的正确含义是：进程内的执行单元，共享进程地址空间，通信方便"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：进程间通信机制，包括管道、信号、共享内存、消息队列、Socket？",
+   "options": [
+    "A. 系统滴答Systick",
+    "B. 栈",
+    "C. 内存泄漏",
+    "D. IPC"
+   ],
+   "answer": "D",
+   "explanation": "IPC：进程间通信机制，包括管道、信号、共享内存、消息队列、Socket"
+  },
+  {
+   "type": "judge",
+   "question": "判断：IPC 的含义是“进程间通信机制，包括管道、信号、共享内存、消息队列、Socket”。",
+   "answer": "对",
+   "explanation": "正确。IPC：进程间通信机制，包括管道、信号、共享内存、消息队列、Socket"
+  },
+  {
+   "type": "judge",
+   "question": "判断：IPC 的含义是“HTTP + TLS 加密，默认端口 443”。",
+   "answer": "错",
+   "explanation": "错误。“HTTP + TLS 加密，默认端口 443”描述的是 HTTPS。IPC 的正确含义是：进程间通信机制，包括管道、信号、共享内存、消息队列、Socket"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：单向数据传输的 IPC 机制，有匿名管道和命名管道？",
+   "options": [
+    "A. 管道",
+    "B. DHCP",
+    "C. 四次挥手",
+    "D. 中断优先级"
+   ],
+   "answer": "A",
+   "explanation": "管道：单向数据传输的 IPC 机制，有匿名管道和命名管道"
+  },
+  {
+   "type": "judge",
+   "question": "判断：管道 的含义是“单向数据传输的 IPC 机制，有匿名管道和命名管道”。",
+   "answer": "对",
+   "explanation": "正确。管道：单向数据传输的 IPC 机制，有匿名管道和命名管道"
+  },
+  {
+   "type": "judge",
+   "question": "判断：管道 的含义是“通过指针连接节点的数据结构，插入删除 O(1)，访问 O(n)”。",
+   "answer": "错",
+   "explanation": "错误。“通过指针连接节点的数据结构，插入删除 O(1)，访问 O(n)”描述的是 链表。管道 的正确含义是：单向数据传输的 IPC 机制，有匿名管道和命名管道"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：多个进程映射同一块内存实现高效数据交换，需同步？",
+   "options": [
+    "A. 端口",
+    "B. 队列",
+    "C. GitHub",
+    "D. 共享内存"
+   ],
+   "answer": "D",
+   "explanation": "共享内存：多个进程映射同一块内存实现高效数据交换，需同步"
+  },
+  {
+   "type": "judge",
+   "question": "判断：共享内存 的含义是“多个进程映射同一块内存实现高效数据交换，需同步”。",
+   "answer": "对",
+   "explanation": "正确。共享内存：多个进程映射同一块内存实现高效数据交换，需同步"
+  },
+  {
+   "type": "judge",
+   "question": "判断：共享内存 的含义是“同一任务可多次获取的互斥量，需对应次数释放”。",
+   "answer": "错",
+   "explanation": "错误。“同一任务可多次获取的互斥量，需对应次数释放”描述的是 互斥量递归。共享内存 的正确含义是：多个进程映射同一块内存实现高效数据交换，需同步"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：进程间异步通知机制，用于事件通知和中断处理？",
+   "options": [
+    "A. 占空比",
+    "B. 信号",
+    "C. 定时器",
+    "D. ICMP"
+   ],
+   "answer": "B",
+   "explanation": "信号：进程间异步通知机制，用于事件通知和中断处理"
+  },
+  {
+   "type": "judge",
+   "question": "判断：信号 的含义是“进程间异步通知机制，用于事件通知和中断处理”。",
+   "answer": "对",
+   "explanation": "正确。信号：进程间异步通知机制，用于事件通知和中断处理"
+  },
+  {
+   "type": "judge",
+   "question": "判断：信号 的含义是“通用输入输出引脚，可配置为输入、输出、复用或模拟功能”。",
+   "answer": "错",
+   "explanation": "错误。“通用输入输出引脚，可配置为输入、输出、复用或模拟功能”描述的是 GPIO。信号 的正确含义是：进程间异步通知机制，用于事件通知和中断处理"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：open/read/write 等系统调用，无用户态缓冲？",
+   "options": [
+    "A. RTC",
+    "B. 下拉电阻",
+    "C. NFS",
+    "D. 文件I/O"
+   ],
+   "answer": "D",
+   "explanation": "文件I/O：open/read/write 等系统调用，无用户态缓冲"
+  },
+  {
+   "type": "judge",
+   "question": "判断：文件I/O 的含义是“open/read/write 等系统调用，无用户态缓冲”。",
+   "answer": "对",
+   "explanation": "正确。文件I/O：open/read/write 等系统调用，无用户态缓冲"
+  },
+  {
+   "type": "judge",
+   "question": "判断：文件I/O 的含义是“获取远程更新并合并到当前分支”。",
+   "answer": "错",
+   "explanation": "错误。“获取远程更新并合并到当前分支”描述的是 拉取pull。文件I/O 的正确含义是：open/read/write 等系统调用，无用户态缓冲"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：fopen/fread 等库函数，有用户态缓冲，适合大量小数据？",
+   "options": [
+    "A. 信号量",
+    "B. 标准I/O",
+    "C. 设备树",
+    "D. 四次挥手"
+   ],
+   "answer": "B",
+   "explanation": "标准I/O：fopen/fread 等库函数，有用户态缓冲，适合大量小数据"
+  },
+  {
+   "type": "judge",
+   "question": "判断：标准I/O 的含义是“fopen/fread 等库函数，有用户态缓冲，适合大量小数据”。",
+   "answer": "对",
+   "explanation": "正确。标准I/O：fopen/fread 等库函数，有用户态缓冲，适合大量小数据"
+  },
+  {
+   "type": "judge",
+   "question": "判断：标准I/O 的含义是“独立定时器，超时未喂狗则复位系统，防止程序跑飞”。",
+   "answer": "错",
+   "explanation": "错误。“独立定时器，超时未喂狗则复位系统，防止程序跑飞”描述的是 看门狗。标准I/O 的正确含义是：fopen/fread 等库函数，有用户态缓冲，适合大量小数据"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：修改文件权限的命令，数字如 644 表示 rw-r--r--？",
+   "options": [
+    "A. 标准库",
+    "B. 软件定时器",
+    "C. chmod",
+    "D. LL库"
+   ],
+   "answer": "C",
+   "explanation": "chmod：修改文件权限的命令，数字如 644 表示 rw-r--r--"
+  },
+  {
+   "type": "judge",
+   "question": "判断：chmod 的含义是“修改文件权限的命令，数字如 644 表示 rw-r--r--”。",
+   "answer": "对",
+   "explanation": "正确。chmod：修改文件权限的命令，数字如 644 表示 rw-r--r--"
+  },
+  {
+   "type": "judge",
+   "question": "判断：chmod 的含义是“常用电机驱动模块，通过 H 桥控制电机方向和调速”。",
+   "answer": "错",
+   "explanation": "错误。“常用电机驱动模块，通过 H 桥控制电机方向和调速”描述的是 L298N。chmod 的正确含义是：修改文件权限的命令，数字如 644 表示 rw-r--r--"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：存目标路径的链接文件，可跨文件系统，可指向目录？",
+   "options": [
+    "A. 端口",
+    "B. 软链接",
+    "C. Socket",
+    "D. ICMP"
+   ],
+   "answer": "B",
+   "explanation": "软链接：存目标路径的链接文件，可跨文件系统，可指向目录"
+  },
+  {
+   "type": "judge",
+   "question": "判断：软链接 的含义是“存目标路径的链接文件，可跨文件系统，可指向目录”。",
+   "answer": "对",
+   "explanation": "正确。软链接：存目标路径的链接文件，可跨文件系统，可指向目录"
+  },
+  {
+   "type": "judge",
+   "question": "判断：软链接 的含义是“串口/SSH 终端调试工具，连接开发板控制台”。",
+   "answer": "错",
+   "explanation": "错误。“串口/SSH 终端调试工具，连接开发板控制台”描述的是 SecureCRT。软链接 的正确含义是：存目标路径的链接文件，可跨文件系统，可指向目录"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：指向同一 inode 的多个名字，不能跨文件系统？",
+   "options": [
+    "A. 中断优先级",
+    "B. 内联函数",
+    "C. 硬链接",
+    "D. BLE"
+   ],
+   "answer": "C",
+   "explanation": "硬链接：指向同一 inode 的多个名字，不能跨文件系统"
+  },
+  {
+   "type": "judge",
+   "question": "判断：硬链接 的含义是“指向同一 inode 的多个名字，不能跨文件系统”。",
+   "answer": "对",
+   "explanation": "正确。硬链接：指向同一 inode 的多个名字，不能跨文件系统"
+  },
+  {
+   "type": "judge",
+   "question": "判断：硬链接 的含义是“多个成员共享同一块内存，大小取最大成员，常用于大小端判断”。",
+   "answer": "错",
+   "explanation": "错误。“多个成员共享同一块内存，大小取最大成员，常用于大小端判断”描述的是 共用体union。硬链接 的正确含义是：指向同一 inode 的多个名字，不能跨文件系统"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：编译时链接进可执行文件的库，后缀 .a，部署简单？",
+   "options": [
+    "A. 四次挥手",
+    "B. 静态库",
+    "C. 开漏输出",
+    "D. 队列"
+   ],
+   "answer": "B",
+   "explanation": "静态库：编译时链接进可执行文件的库，后缀 .a，部署简单"
+  },
+  {
+   "type": "judge",
+   "question": "判断：静态库 的含义是“编译时链接进可执行文件的库，后缀 .a，部署简单”。",
+   "answer": "对",
+   "explanation": "正确。静态库：编译时链接进可执行文件的库，后缀 .a，部署简单"
+  },
+  {
+   "type": "judge",
+   "question": "判断：静态库 的含义是“系统启动后挂载的根目录文件系统，含 /bin /etc 等，常用 BusyBox 构建”。",
+   "answer": "错",
+   "explanation": "错误。“系统启动后挂载的根目录文件系统，含 /bin /etc 等，常用 BusyBox 构建”描述的是 根文件系统。静态库 的正确含义是：编译时链接进可执行文件的库，后缀 .a，部署简单"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：运行时加载的共享库，后缀 .so，多个程序共享？",
+   "options": [
+    "A. 动态库",
+    "B. 栈",
+    "C. 信号量",
+    "D. 事件组"
+   ],
+   "answer": "A",
+   "explanation": "动态库：运行时加载的共享库，后缀 .so，多个程序共享"
+  },
+  {
+   "type": "judge",
+   "question": "判断：动态库 的含义是“运行时加载的共享库，后缀 .so，多个程序共享”。",
+   "answer": "对",
+   "explanation": "正确。动态库：运行时加载的共享库，后缀 .so，多个程序共享"
+  },
+  {
+   "type": "judge",
+   "question": "判断：动态库 的含义是“描述编译规则的构建脚本”。",
+   "answer": "错",
+   "explanation": "错误。“描述编译规则的构建脚本”描述的是 Makefile。动态库 的正确含义是：运行时加载的共享库，后缀 .so，多个程序共享"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：命令行解释器，可编写脚本实现自动化？",
+   "options": [
+    "A. Shell",
+    "B. 堆heap",
+    "C. 粘包",
+    "D. 指针数组"
+   ],
+   "answer": "A",
+   "explanation": "Shell：命令行解释器，可编写脚本实现自动化"
+  },
+  {
+   "type": "judge",
+   "question": "判断：Shell 的含义是“命令行解释器，可编写脚本实现自动化”。",
+   "answer": "对",
+   "explanation": "正确。Shell：命令行解释器，可编写脚本实现自动化"
+  },
+  {
+   "type": "judge",
+   "question": "判断：Shell 的含义是“超文本传输协议，基于 TCP，请求/响应模型”。",
+   "answer": "错",
+   "explanation": "错误。“超文本传输协议，基于 TCP，请求/响应模型”描述的是 HTTP。Shell 的正确含义是：命令行解释器，可编写脚本实现自动化"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：影响程序运行环境的变量，如 PATH？",
+   "options": [
+    "A. 大小端",
+    "B. 环境变量",
+    "C. 指针",
+    "D. 寄存器映射"
+   ],
+   "answer": "B",
+   "explanation": "环境变量：影响程序运行环境的变量，如 PATH"
+  },
+  {
+   "type": "judge",
+   "question": "判断：环境变量 的含义是“影响程序运行环境的变量，如 PATH”。",
+   "answer": "对",
+   "explanation": "正确。环境变量：影响程序运行环境的变量，如 PATH"
+  },
+  {
+   "type": "judge",
+   "question": "判断：环境变量 的含义是“同一任务可多次获取的互斥量，需对应次数释放”。",
+   "answer": "错",
+   "explanation": "错误。“同一任务可多次获取的互斥量，需对应次数释放”描述的是 互斥量递归。环境变量 的正确含义是：影响程序运行环境的变量，如 PATH"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：可动态加载/卸载的内核代码，用 insmod/rmmod 管理？",
+   "options": [
+    "A. 编码器",
+    "B. 时间片轮转",
+    "C. IP地址",
+    "D. 内核模块"
+   ],
+   "answer": "D",
+   "explanation": "内核模块：可动态加载/卸载的内核代码，用 insmod/rmmod 管理"
+  },
+  {
+   "type": "judge",
+   "question": "判断：内核模块 的含义是“可动态加载/卸载的内核代码，用 insmod/rmmod 管理”。",
+   "answer": "对",
+   "explanation": "正确。内核模块：可动态加载/卸载的内核代码，用 insmod/rmmod 管理"
+  },
+  {
+   "type": "judge",
+   "question": "判断：内核模块 的含义是“存目标路径的链接文件，可跨文件系统，可指向目录”。",
+   "answer": "错",
+   "explanation": "错误。“存目标路径的链接文件，可跨文件系统，可指向目录”描述的是 软链接。内核模块 的正确含义是：可动态加载/卸载的内核代码，用 insmod/rmmod 管理"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：如 arm-linux-gnueabihf-gcc，用于编译 ARM 目标程序？",
+   "options": [
+    "A. 交叉工具链",
+    "B. HAL库",
+    "C. GDB",
+    "D. LoRa"
+   ],
+   "answer": "A",
+   "explanation": "交叉工具链：如 arm-linux-gnueabihf-gcc，用于编译 ARM 目标程序"
+  },
+  {
+   "type": "judge",
+   "question": "判断：交叉工具链 的含义是“如 arm-linux-gnueabihf-gcc，用于编译 ARM 目标程序”。",
+   "answer": "对",
+   "explanation": "正确。交叉工具链：如 arm-linux-gnueabihf-gcc，用于编译 ARM 目标程序"
+  },
+  {
+   "type": "judge",
+   "question": "判断：交叉工具链 的含义是“应用/表示/会话/传输/网络/数据链路/物理 七层模型”。",
+   "answer": "错",
+   "explanation": "错误。“应用/表示/会话/传输/网络/数据链路/物理 七层模型”描述的是 OSI七层。交叉工具链 的正确含义是：如 arm-linux-gnueabihf-gcc，用于编译 ARM 目标程序"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：串口/SSH 终端调试工具，连接开发板控制台？",
+   "options": [
+    "A. SecureCRT",
+    "B. 字符设备",
+    "C. IPC",
+    "D. 大小端"
+   ],
+   "answer": "A",
+   "explanation": "SecureCRT：串口/SSH 终端调试工具，连接开发板控制台"
+  },
+  {
+   "type": "judge",
+   "question": "判断：SecureCRT 的含义是“串口/SSH 终端调试工具，连接开发板控制台”。",
+   "answer": "对",
+   "explanation": "正确。SecureCRT：串口/SSH 终端调试工具，连接开发板控制台"
+  },
+  {
+   "type": "judge",
+   "question": "判断：SecureCRT 的含义是“完全二叉树实现的优先队列，最大/最小堆”。",
+   "answer": "错",
+   "explanation": "错误。“完全二叉树实现的优先队列，最大/最小堆”描述的是 堆。SecureCRT 的正确含义是：串口/SSH 终端调试工具，连接开发板控制台"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：网络文件系统，开发时常把根文件系统放在主机上通过网络挂载？",
+   "options": [
+    "A. NFS",
+    "B. 推挽输出",
+    "C. 抢占式调度",
+    "D. 回调函数"
+   ],
+   "answer": "A",
+   "explanation": "NFS：网络文件系统，开发时常把根文件系统放在主机上通过网络挂载"
+  },
+  {
+   "type": "judge",
+   "question": "判断：NFS 的含义是“网络文件系统，开发时常把根文件系统放在主机上通过网络挂载”。",
+   "answer": "对",
+   "explanation": "正确。NFS：网络文件系统，开发时常把根文件系统放在主机上通过网络挂载"
+  },
+  {
+   "type": "judge",
+   "question": "判断：NFS 的含义是“ST 早期外设固件库，基于寄存器封装，代码量大”。",
+   "answer": "错",
+   "explanation": "错误。“ST 早期外设固件库，基于寄存器封装，代码量大”描述的是 标准库。NFS 的正确含义是：网络文件系统，开发时常把根文件系统放在主机上通过网络挂载"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：简单文件传输协议，开发中用于通过网络下载内核/镜像到开发板？",
+   "options": [
+    "A. 工作区",
+    "B. 高水位",
+    "C. Socket",
+    "D. TFTP"
+   ],
+   "answer": "D",
+   "explanation": "TFTP：简单文件传输协议，开发中用于通过网络下载内核/镜像到开发板"
+  },
+  {
+   "type": "judge",
+   "question": "判断：TFTP 的含义是“简单文件传输协议，开发中用于通过网络下载内核/镜像到开发板”。",
+   "answer": "对",
+   "explanation": "正确。TFTP：简单文件传输协议，开发中用于通过网络下载内核/镜像到开发板"
+  },
+  {
+   "type": "judge",
+   "question": "判断：TFTP 的含义是“通过散列函数映射键值，平均查找 O(1)”。",
+   "answer": "错",
+   "explanation": "错误。“通过散列函数映射键值，平均查找 O(1)”描述的是 哈希表。TFTP 的正确含义是：简单文件传输协议，开发中用于通过网络下载内核/镜像到开发板"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：设备树源文件，编译后生成 DTB 供内核使用？",
+   "options": [
+    "A. 寄存器映射",
+    "B. DTS",
+    "C. 堆",
+    "D. 头文件守卫"
+   ],
+   "answer": "B",
+   "explanation": "DTS：设备树源文件，编译后生成 DTB 供内核使用"
+  },
+  {
+   "type": "judge",
+   "question": "判断：DTS 的含义是“设备树源文件，编译后生成 DTB 供内核使用”。",
+   "answer": "对",
+   "explanation": "正确。DTS：设备树源文件，编译后生成 DTB 供内核使用"
+  },
+  {
+   "type": "judge",
+   "question": "判断：DTS 的含义是“网络编程接口，封装 TCP/UDP 通信”。",
+   "answer": "错",
+   "explanation": "错误。“网络编程接口，封装 TCP/UDP 通信”描述的是 Socket。DTS 的正确含义是：设备树源文件，编译后生成 DTB 供内核使用"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：Linux 管理输入设备（触摸屏/按键）的框架，通过事件上报坐标？",
+   "options": [
+    "A. 内核",
+    "B. 内核模块",
+    "C. 推送push",
+    "D. 输入子系统"
+   ],
+   "answer": "D",
+   "explanation": "输入子系统：Linux 管理输入设备（触摸屏/按键）的框架，通过事件上报坐标"
+  },
+  {
+   "type": "judge",
+   "question": "判断：输入子系统 的含义是“Linux 管理输入设备（触摸屏/按键）的框架，通过事件上报坐标”。",
+   "answer": "对",
+   "explanation": "正确。输入子系统：Linux 管理输入设备（触摸屏/按键）的框架，通过事件上报坐标"
+  },
+  {
+   "type": "judge",
+   "question": "判断：输入子系统 的含义是“网络层控制报文协议，ping 基于它检测连通性”。",
+   "answer": "错",
+   "explanation": "错误。“网络层控制报文协议，ping 基于它检测连通性”描述的是 ICMP。输入子系统 的正确含义是：Linux 管理输入设备（触摸屏/按键）的框架，通过事件上报坐标"
+  }
+ ]
+}

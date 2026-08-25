@@ -1,0 +1,845 @@
+{
+ "category": "驱动与外设",
+ "questions": [
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：通用输入输出引脚，可配置为输入、输出、复用或模拟功能？",
+   "options": [
+    "A. 共用体union",
+    "B. 工作区",
+    "C. GPIO",
+    "D. 开漏输出"
+   ],
+   "answer": "C",
+   "explanation": "GPIO：通用输入输出引脚，可配置为输入、输出、复用或模拟功能"
+  },
+  {
+   "type": "judge",
+   "question": "判断：GPIO 的含义是“通用输入输出引脚，可配置为输入、输出、复用或模拟功能”。",
+   "answer": "对",
+   "explanation": "正确。GPIO：通用输入输出引脚，可配置为输入、输出、复用或模拟功能"
+  },
+  {
+   "type": "judge",
+   "question": "判断：GPIO 的含义是“把角位移/线位移转为电信号的传感器，用于测速测位”。",
+   "answer": "错",
+   "explanation": "错误。“把角位移/线位移转为电信号的传感器，用于测速测位”描述的是 编码器。GPIO 的正确含义是：通用输入输出引脚，可配置为输入、输出、复用或模拟功能"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：GPIO 输出模式，可主动输出高电平和低电平，驱动能力强？",
+   "options": [
+    "A. 交叉编译",
+    "B. 标准库",
+    "C. 推挽输出",
+    "D. gitignore"
+   ],
+   "answer": "C",
+   "explanation": "推挽输出：GPIO 输出模式，可主动输出高电平和低电平，驱动能力强"
+  },
+  {
+   "type": "judge",
+   "question": "判断：推挽输出 的含义是“GPIO 输出模式，可主动输出高电平和低电平，驱动能力强”。",
+   "answer": "对",
+   "explanation": "正确。推挽输出：GPIO 输出模式，可主动输出高电平和低电平，驱动能力强"
+  },
+  {
+   "type": "judge",
+   "question": "判断：推挽输出 的含义是“通过指针连接节点的数据结构，插入删除 O(1)，访问 O(n)”。",
+   "answer": "错",
+   "explanation": "错误。“通过指针连接节点的数据结构，插入删除 O(1)，访问 O(n)”描述的是 链表。推挽输出 的正确含义是：GPIO 输出模式，可主动输出高电平和低电平，驱动能力强"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：GPIO 输出模式，只能拉低，高电平需外部上拉，常用于 I2C 和电平转换？",
+   "options": [
+    "A. 子网掩码",
+    "B. 外部中断EXTI",
+    "C. 结构体对齐",
+    "D. 开漏输出"
+   ],
+   "answer": "D",
+   "explanation": "开漏输出：GPIO 输出模式，只能拉低，高电平需外部上拉，常用于 I2C 和电平转换"
+  },
+  {
+   "type": "judge",
+   "question": "判断：开漏输出 的含义是“GPIO 输出模式，只能拉低，高电平需外部上拉，常用于 I2C 和电平转换”。",
+   "answer": "对",
+   "explanation": "正确。开漏输出：GPIO 输出模式，只能拉低，高电平需外部上拉，常用于 I2C 和电平转换"
+  },
+  {
+   "type": "judge",
+   "question": "判断：开漏输出 的含义是“编译器按成员对齐要求插入填充字节，sizeof 可能大于成员之和”。",
+   "answer": "错",
+   "explanation": "错误。“编译器按成员对齐要求插入填充字节，sizeof 可能大于成员之和”描述的是 结构体对齐。开漏输出 的正确含义是：GPIO 输出模式，只能拉低，高电平需外部上拉，常用于 I2C 和电平转换"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：将信号默认拉至高电平的电阻，防止悬空，I2C 总线必备？",
+   "options": [
+    "A. 系统调用",
+    "B. MAC地址",
+    "C. 上拉电阻",
+    "D. 函数指针"
+   ],
+   "answer": "C",
+   "explanation": "上拉电阻：将信号默认拉至高电平的电阻，防止悬空，I2C 总线必备"
+  },
+  {
+   "type": "judge",
+   "question": "判断：上拉电阻 的含义是“将信号默认拉至高电平的电阻，防止悬空，I2C 总线必备”。",
+   "answer": "对",
+   "explanation": "正确。上拉电阻：将信号默认拉至高电平的电阻，防止悬空，I2C 总线必备"
+  },
+  {
+   "type": "judge",
+   "question": "判断：上拉电阻 的含义是“同步串行总线，2线（SCL/SDA）带上拉，多设备寻址，半双工”。",
+   "answer": "错",
+   "explanation": "错误。“同步串行总线，2线（SCL/SDA）带上拉，多设备寻址，半双工”描述的是 I2C。上拉电阻 的正确含义是：将信号默认拉至高电平的电阻，防止悬空，I2C 总线必备"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：将信号默认拉至低电平的电阻，防止悬空？",
+   "options": [
+    "A. 四次挥手",
+    "B. 下拉电阻",
+    "C. 时间片轮转",
+    "D. 位域"
+   ],
+   "answer": "B",
+   "explanation": "下拉电阻：将信号默认拉至低电平的电阻，防止悬空"
+  },
+  {
+   "type": "judge",
+   "question": "判断：下拉电阻 的含义是“将信号默认拉至低电平的电阻，防止悬空”。",
+   "answer": "对",
+   "explanation": "正确。下拉电阻：将信号默认拉至低电平的电阻，防止悬空"
+  },
+  {
+   "type": "judge",
+   "question": "判断：下拉电阻 的含义是“无连接的不可靠传输协议，开销小、延迟低”。",
+   "answer": "错",
+   "explanation": "错误。“无连接的不可靠传输协议，开销小、延迟低”描述的是 UDP。下拉电阻 的正确含义是：将信号默认拉至低电平的电阻，防止悬空"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：异步串行通信，靠起始位和波特率同步，无时钟线，点对点？",
+   "options": [
+    "A. 系统滴答Systick",
+    "B. 四次挥手",
+    "C. 子网掩码",
+    "D. UART"
+   ],
+   "answer": "D",
+   "explanation": "UART：异步串行通信，靠起始位和波特率同步，无时钟线，点对点"
+  },
+  {
+   "type": "judge",
+   "question": "判断：UART 的含义是“异步串行通信，靠起始位和波特率同步，无时钟线，点对点”。",
+   "answer": "对",
+   "explanation": "正确。UART：异步串行通信，靠起始位和波特率同步，无时钟线，点对点"
+  },
+  {
+   "type": "judge",
+   "question": "判断：UART 的含义是“指定哪些文件/目录不被 Git 跟踪”。",
+   "answer": "错",
+   "explanation": "错误。“指定哪些文件/目录不被 Git 跟踪”描述的是 gitignore。UART 的正确含义是：异步串行通信，靠起始位和波特率同步，无时钟线，点对点"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：串口每秒传输的码元数，收发双方必须一致否则乱码？",
+   "options": [
+    "A. 输入子系统",
+    "B. 波特率",
+    "C. 网关",
+    "D. MAC地址"
+   ],
+   "answer": "B",
+   "explanation": "波特率：串口每秒传输的码元数，收发双方必须一致否则乱码"
+  },
+  {
+   "type": "judge",
+   "question": "判断：波特率 的含义是“串口每秒传输的码元数，收发双方必须一致否则乱码”。",
+   "answer": "对",
+   "explanation": "正确。波特率：串口每秒传输的码元数，收发双方必须一致否则乱码"
+  },
+  {
+   "type": "judge",
+   "question": "判断：波特率 的含义是“同优先级任务按时间片轮流使用 CPU”。",
+   "answer": "错",
+   "explanation": "错误。“同优先级任务按时间片轮流使用 CPU”描述的是 时间片轮转。波特率 的正确含义是：串口每秒传输的码元数，收发双方必须一致否则乱码"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：同步串行总线，4线（SCK/MOSI/MISO/CS），高速全双工，一主多从？",
+   "options": [
+    "A. RTC",
+    "B. SPI",
+    "C. 栈溢出",
+    "D. 哈希表"
+   ],
+   "answer": "B",
+   "explanation": "SPI：同步串行总线，4线（SCK/MOSI/MISO/CS），高速全双工，一主多从"
+  },
+  {
+   "type": "judge",
+   "question": "判断：SPI 的含义是“同步串行总线，4线（SCK/MOSI/MISO/CS），高速全双工，一主多从”。",
+   "answer": "对",
+   "explanation": "正确。SPI：同步串行总线，4线（SCK/MOSI/MISO/CS），高速全双工，一主多从"
+  },
+  {
+   "type": "judge",
+   "question": "判断：SPI 的含义是“同优先级任务按时间片轮流使用 CPU”。",
+   "answer": "错",
+   "explanation": "错误。“同优先级任务按时间片轮流使用 CPU”描述的是 时间片轮转。SPI 的正确含义是：同步串行总线，4线（SCK/MOSI/MISO/CS），高速全双工，一主多从"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：同步串行总线，2线（SCL/SDA）带上拉，多设备寻址，半双工？",
+   "options": [
+    "A. BLE",
+    "B. Bootloader",
+    "C. I2C",
+    "D. 链表"
+   ],
+   "answer": "C",
+   "explanation": "I2C：同步串行总线，2线（SCL/SDA）带上拉，多设备寻址，半双工"
+  },
+  {
+   "type": "judge",
+   "question": "判断：I2C 的含义是“同步串行总线，2线（SCL/SDA）带上拉，多设备寻址，半双工”。",
+   "answer": "对",
+   "explanation": "正确。I2C：同步串行总线，2线（SCL/SDA）带上拉，多设备寻址，半双工"
+  },
+  {
+   "type": "judge",
+   "question": "判断：I2C 的含义是“操作系统的核心，管理进程、内存、驱动等资源”。",
+   "answer": "错",
+   "explanation": "错误。“操作系统的核心，管理进程、内存、驱动等资源”描述的是 内核。I2C 的正确含义是：同步串行总线，2线（SCL/SDA）带上拉，多设备寻址，半双工"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：差分总线，抗干扰强，多主通信，常用于汽车电子？",
+   "options": [
+    "A. ARP",
+    "B. 递归",
+    "C. 输入子系统",
+    "D. CAN"
+   ],
+   "answer": "D",
+   "explanation": "CAN：差分总线，抗干扰强，多主通信，常用于汽车电子"
+  },
+  {
+   "type": "judge",
+   "question": "判断：CAN 的含义是“差分总线，抗干扰强，多主通信，常用于汽车电子”。",
+   "answer": "对",
+   "explanation": "正确。CAN：差分总线，抗干扰强，多主通信，常用于汽车电子"
+  },
+  {
+   "type": "judge",
+   "question": "判断：CAN 的含义是“fopen/fread 等库函数，有用户态缓冲，适合大量小数据”。",
+   "answer": "错",
+   "explanation": "错误。“fopen/fread 等库函数，有用户态缓冲，适合大量小数据”描述的是 标准I/O。CAN 的正确含义是：差分总线，抗干扰强，多主通信，常用于汽车电子"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：模数转换器，把模拟电压转为数字量，分辨率决定精度？",
+   "options": [
+    "A. 冒泡排序",
+    "B. L298N",
+    "C. 空间复杂度",
+    "D. ADC"
+   ],
+   "answer": "D",
+   "explanation": "ADC：模数转换器，把模拟电压转为数字量，分辨率决定精度"
+  },
+  {
+   "type": "judge",
+   "question": "判断：ADC 的含义是“模数转换器，把模拟电压转为数字量，分辨率决定精度”。",
+   "answer": "对",
+   "explanation": "正确。ADC：模数转换器，把模拟电压转为数字量，分辨率决定精度"
+  },
+  {
+   "type": "judge",
+   "question": "判断：ADC 的含义是“ST 早期外设固件库，基于寄存器封装，代码量大”。",
+   "answer": "错",
+   "explanation": "错误。“ST 早期外设固件库，基于寄存器封装，代码量大”描述的是 标准库。ADC 的正确含义是：模数转换器，把模拟电压转为数字量，分辨率决定精度"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：数模转换器，把数字量转为模拟电压？",
+   "options": [
+    "A. GPIO",
+    "B. DAC",
+    "C. 交叉工具链",
+    "D. Makefile"
+   ],
+   "answer": "B",
+   "explanation": "DAC：数模转换器，把数字量转为模拟电压"
+  },
+  {
+   "type": "judge",
+   "question": "判断：DAC 的含义是“数模转换器，把数字量转为模拟电压”。",
+   "answer": "对",
+   "explanation": "正确。DAC：数模转换器，把数字量转为模拟电压"
+  },
+  {
+   "type": "judge",
+   "question": "判断：DAC 的含义是“高优先级任务就绪时立即抢占低优先级任务，保证实时性”。",
+   "answer": "错",
+   "explanation": "错误。“高优先级任务就绪时立即抢占低优先级任务，保证实时性”描述的是 抢占式调度。DAC 的正确含义是：数模转换器，把数字量转为模拟电压"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：脉冲宽度调制，通过改变占空比调节平均电压，控制电机/亮度？",
+   "options": [
+    "A. 链表",
+    "B. NFS",
+    "C. Socket",
+    "D. PWM"
+   ],
+   "answer": "D",
+   "explanation": "PWM：脉冲宽度调制，通过改变占空比调节平均电压，控制电机/亮度"
+  },
+  {
+   "type": "judge",
+   "question": "判断：PWM 的含义是“脉冲宽度调制，通过改变占空比调节平均电压，控制电机/亮度”。",
+   "answer": "对",
+   "explanation": "正确。PWM：脉冲宽度调制，通过改变占空比调节平均电压，控制电机/亮度"
+  },
+  {
+   "type": "judge",
+   "question": "判断：PWM 的含义是“用 #ifndef/#define/#endif 防止头文件被重复包含”。",
+   "answer": "错",
+   "explanation": "错误。“用 #ifndef/#define/#endif 防止头文件被重复包含”描述的是 头文件守卫。PWM 的正确含义是：脉冲宽度调制，通过改变占空比调节平均电压，控制电机/亮度"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：高电平时间占整个周期的比例，由 CCR 与 ARR 决定？",
+   "options": [
+    "A. 占空比",
+    "B. 上下文切换",
+    "C. NFS",
+    "D. 作用域"
+   ],
+   "answer": "A",
+   "explanation": "占空比：高电平时间占整个周期的比例，由 CCR 与 ARR 决定"
+  },
+  {
+   "type": "judge",
+   "question": "判断：占空比 的含义是“高电平时间占整个周期的比例，由 CCR 与 ARR 决定”。",
+   "answer": "对",
+   "explanation": "正确。占空比：高电平时间占整个周期的比例，由 CCR 与 ARR 决定"
+  },
+  {
+   "type": "judge",
+   "question": "判断：占空比 的含义是“超文本传输协议，基于 TCP，请求/响应模型”。",
+   "answer": "错",
+   "explanation": "错误。“超文本传输协议，基于 TCP，请求/响应模型”描述的是 HTTP。占空比 的正确含义是：高电平时间占整个周期的比例，由 CCR 与 ARR 决定"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：硬件计数装置，可产生定时中断、PWM、输入捕获等？",
+   "options": [
+    "A. 定时器",
+    "B. 堆排序",
+    "C. 栈溢出",
+    "D. 占空比"
+   ],
+   "answer": "A",
+   "explanation": "定时器：硬件计数装置，可产生定时中断、PWM、输入捕获等"
+  },
+  {
+   "type": "judge",
+   "question": "判断：定时器 的含义是“硬件计数装置，可产生定时中断、PWM、输入捕获等”。",
+   "answer": "对",
+   "explanation": "正确。定时器：硬件计数装置，可产生定时中断、PWM、输入捕获等"
+  },
+  {
+   "type": "judge",
+   "question": "判断：定时器 的含义是“fopen/fread 等库函数，有用户态缓冲，适合大量小数据”。",
+   "answer": "错",
+   "explanation": "错误。“fopen/fread 等库函数，有用户态缓冲，适合大量小数据”描述的是 标准I/O。定时器 的正确含义是：硬件计数装置，可产生定时中断、PWM、输入捕获等"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：由 GPIO 边沿触发的硬件中断，需配置触发方式和 NVIC？",
+   "options": [
+    "A. 结构体",
+    "B. IPC",
+    "C. 寄存器映射",
+    "D. 外部中断EXTI"
+   ],
+   "answer": "D",
+   "explanation": "外部中断EXTI：由 GPIO 边沿触发的硬件中断，需配置触发方式和 NVIC"
+  },
+  {
+   "type": "judge",
+   "question": "判断：外部中断EXTI 的含义是“由 GPIO 边沿触发的硬件中断，需配置触发方式和 NVIC”。",
+   "answer": "对",
+   "explanation": "正确。外部中断EXTI：由 GPIO 边沿触发的硬件中断，需配置触发方式和 NVIC"
+  },
+  {
+   "type": "judge",
+   "question": "判断：外部中断EXTI 的含义是“ST 硬件抽象层库，提供统一外设 API，可移植性好”。",
+   "answer": "错",
+   "explanation": "错误。“ST 硬件抽象层库，提供统一外设 API，可移植性好”描述的是 HAL库。外部中断EXTI 的正确含义是：由 GPIO 边沿触发的硬件中断，需配置触发方式和 NVIC"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：Cortex-M 的中断控制器，管理中断优先级和使能？",
+   "options": [
+    "A. NVIC",
+    "B. 插入排序",
+    "C. volatile",
+    "D. 数组指针"
+   ],
+   "answer": "A",
+   "explanation": "NVIC：Cortex-M 的中断控制器，管理中断优先级和使能"
+  },
+  {
+   "type": "judge",
+   "question": "判断：NVIC 的含义是“Cortex-M 的中断控制器，管理中断优先级和使能”。",
+   "answer": "对",
+   "explanation": "正确。NVIC：Cortex-M 的中断控制器，管理中断优先级和使能"
+  },
+  {
+   "type": "judge",
+   "question": "判断：NVIC 的含义是“GPIO 输出模式，可主动输出高电平和低电平，驱动能力强”。",
+   "answer": "错",
+   "explanation": "错误。“GPIO 输出模式，可主动输出高电平和低电平，驱动能力强”描述的是 推挽输出。NVIC 的正确含义是：Cortex-M 的中断控制器，管理中断优先级和使能"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：决定多个中断同时到达时的响应顺序，抢占优先级+子优先级？",
+   "options": [
+    "A. 调度器",
+    "B. 中断优先级",
+    "C. GDB",
+    "D. NFS"
+   ],
+   "answer": "B",
+   "explanation": "中断优先级：决定多个中断同时到达时的响应顺序，抢占优先级+子优先级"
+  },
+  {
+   "type": "judge",
+   "question": "判断：中断优先级 的含义是“决定多个中断同时到达时的响应顺序，抢占优先级+子优先级”。",
+   "answer": "对",
+   "explanation": "正确。中断优先级：决定多个中断同时到达时的响应顺序，抢占优先级+子优先级"
+  },
+  {
+   "type": "judge",
+   "question": "判断：中断优先级 的含义是“变量从创建到销毁的存活时间，静态存储期最长”。",
+   "answer": "错",
+   "explanation": "错误。“变量从创建到销毁的存活时间，静态存储期最长”描述的是 生命周期。中断优先级 的正确含义是：决定多个中断同时到达时的响应顺序，抢占优先级+子优先级"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：直接内存访问，外设与内存间搬运数据无需 CPU 逐字节干预？",
+   "options": [
+    "A. 信号量",
+    "B. 内联函数",
+    "C. 栈stack",
+    "D. DMA"
+   ],
+   "answer": "D",
+   "explanation": "DMA：直接内存访问，外设与内存间搬运数据无需 CPU 逐字节干预"
+  },
+  {
+   "type": "judge",
+   "question": "判断：DMA 的含义是“直接内存访问，外设与内存间搬运数据无需 CPU 逐字节干预”。",
+   "answer": "对",
+   "explanation": "正确。DMA：直接内存访问，外设与内存间搬运数据无需 CPU 逐字节干预"
+  },
+  {
+   "type": "judge",
+   "question": "判断：DMA 的含义是“跨平台构建系统，生成 Makefile 或工程”。",
+   "answer": "错",
+   "explanation": "错误。“跨平台构建系统，生成 Makefile 或工程”描述的是 CMake。DMA 的正确含义是：直接内存访问，外设与内存间搬运数据无需 CPU 逐字节干预"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：独立定时器，超时未喂狗则复位系统，防止程序跑飞？",
+   "options": [
+    "A. 队列",
+    "B. 二维数组",
+    "C. 看门狗",
+    "D. 指针数组"
+   ],
+   "answer": "C",
+   "explanation": "看门狗：独立定时器，超时未喂狗则复位系统，防止程序跑飞"
+  },
+  {
+   "type": "judge",
+   "question": "判断：看门狗 的含义是“独立定时器，超时未喂狗则复位系统，防止程序跑飞”。",
+   "answer": "对",
+   "explanation": "正确。看门狗：独立定时器，超时未喂狗则复位系统，防止程序跑飞"
+  },
+  {
+   "type": "judge",
+   "question": "判断：看门狗 的含义是“高电平时间占整个周期的比例，由 CCR 与 ARR 决定”。",
+   "answer": "错",
+   "explanation": "错误。“高电平时间占整个周期的比例，由 CCR 与 ARR 决定”描述的是 占空比。看门狗 的正确含义是：独立定时器，超时未喂狗则复位系统，防止程序跑飞"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：在超时前重新装载看门狗计数器，证明程序运行正常？",
+   "options": [
+    "A. 任务",
+    "B. 系统滴答Systick",
+    "C. 优先级反转",
+    "D. 喂狗"
+   ],
+   "answer": "D",
+   "explanation": "喂狗：在超时前重新装载看门狗计数器，证明程序运行正常"
+  },
+  {
+   "type": "judge",
+   "question": "判断：喂狗 的含义是“在超时前重新装载看门狗计数器，证明程序运行正常”。",
+   "answer": "对",
+   "explanation": "正确。喂狗：在超时前重新装载看门狗计数器，证明程序运行正常"
+  },
+  {
+   "type": "judge",
+   "question": "判断：喂狗 的含义是“把 IP 解析为 MAC 地址的协议，用于局域网帧转发”。",
+   "answer": "错",
+   "explanation": "错误。“把 IP 解析为 MAC 地址的协议，用于局域网帧转发”描述的是 ARP。喂狗 的正确含义是：在超时前重新装载看门狗计数器，证明程序运行正常"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：实时时钟，独立供电记录日期时间，低功耗运行？",
+   "options": [
+    "A. goto",
+    "B. 喂狗",
+    "C. RTC",
+    "D. 内核对象"
+   ],
+   "answer": "C",
+   "explanation": "RTC：实时时钟，独立供电记录日期时间，低功耗运行"
+  },
+  {
+   "type": "judge",
+   "question": "判断：RTC 的含义是“实时时钟，独立供电记录日期时间，低功耗运行”。",
+   "answer": "对",
+   "explanation": "正确。RTC：实时时钟，独立供电记录日期时间，低功耗运行"
+  },
+  {
+   "type": "judge",
+   "question": "判断：RTC 的含义是“存放内存地址的变量，通过解引用*可访问指向的内存”。",
+   "answer": "错",
+   "explanation": "错误。“存放内存地址的变量，通过解引用*可访问指向的内存”描述的是 指针。RTC 的正确含义是：实时时钟，独立供电记录日期时间，低功耗运行"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：MCU 内部时钟源与分频倍频结构，决定各外设工作频率？",
+   "options": [
+    "A. UART",
+    "B. 时钟树",
+    "C. 死锁",
+    "D. 插入排序"
+   ],
+   "answer": "B",
+   "explanation": "时钟树：MCU 内部时钟源与分频倍频结构，决定各外设工作频率"
+  },
+  {
+   "type": "judge",
+   "question": "判断：时钟树 的含义是“MCU 内部时钟源与分频倍频结构，决定各外设工作频率”。",
+   "answer": "对",
+   "explanation": "正确。时钟树：MCU 内部时钟源与分频倍频结构，决定各外设工作频率"
+  },
+  {
+   "type": "judge",
+   "question": "判断：时钟树 的含义是“把物理量（温度/光照/距离等）转为电信号的器件”。",
+   "answer": "错",
+   "explanation": "错误。“把物理量（温度/光照/距离等）转为电信号的器件”描述的是 传感器。时钟树 的正确含义是：MCU 内部时钟源与分频倍频结构，决定各外设工作频率"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：Cortex-M 内核定时器，常作为 RTOS 的时基 Tick？",
+   "options": [
+    "A. 事件组",
+    "B. GPIO",
+    "C. 系统滴答Systick",
+    "D. 作用域"
+   ],
+   "answer": "C",
+   "explanation": "系统滴答Systick：Cortex-M 内核定时器，常作为 RTOS 的时基 Tick"
+  },
+  {
+   "type": "judge",
+   "question": "判断：系统滴答Systick 的含义是“Cortex-M 内核定时器，常作为 RTOS 的时基 Tick”。",
+   "answer": "对",
+   "explanation": "正确。系统滴答Systick：Cortex-M 内核定时器，常作为 RTOS 的时基 Tick"
+  },
+  {
+   "type": "judge",
+   "question": "判断：系统滴答Systick 的含义是“Cortex-M 的中断控制器，管理中断优先级和使能”。",
+   "answer": "错",
+   "explanation": "错误。“Cortex-M 的中断控制器，管理中断优先级和使能”描述的是 NVIC。系统滴答Systick 的正确含义是：Cortex-M 内核定时器，常作为 RTOS 的时基 Tick"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：外设寄存器在内存中的地址布局，通过地址访问外设？",
+   "options": [
+    "A. DAC",
+    "B. 空间复杂度",
+    "C. 寄存器映射",
+    "D. Bootloader"
+   ],
+   "answer": "C",
+   "explanation": "寄存器映射：外设寄存器在内存中的地址布局，通过地址访问外设"
+  },
+  {
+   "type": "judge",
+   "question": "判断：寄存器映射 的含义是“外设寄存器在内存中的地址布局，通过地址访问外设”。",
+   "answer": "对",
+   "explanation": "正确。寄存器映射：外设寄存器在内存中的地址布局，通过地址访问外设"
+  },
+  {
+   "type": "judge",
+   "question": "判断：寄存器映射 的含义是“存放内存地址的变量，通过解引用*可访问指向的内存”。",
+   "answer": "错",
+   "explanation": "错误。“存放内存地址的变量，通过解引用*可访问指向的内存”描述的是 指针。寄存器映射 的正确含义是：外设寄存器在内存中的地址布局，通过地址访问外设"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：修改寄存器指定位的标准流程：读回-掩码清位-写入，避免覆盖其他位？",
+   "options": [
+    "A. 工作区",
+    "B. 读改写",
+    "C. 网关",
+    "D. CAN"
+   ],
+   "answer": "B",
+   "explanation": "读改写：修改寄存器指定位的标准流程：读回-掩码清位-写入，避免覆盖其他位"
+  },
+  {
+   "type": "judge",
+   "question": "判断：读改写 的含义是“修改寄存器指定位的标准流程：读回-掩码清位-写入，避免覆盖其他位”。",
+   "answer": "对",
+   "explanation": "正确。读改写：修改寄存器指定位的标准流程：读回-掩码清位-写入，避免覆盖其他位"
+  },
+  {
+   "type": "judge",
+   "question": "判断：读改写 的含义是“程序由事件触发执行对应处理，配合 RTOS 实现实时响应”。",
+   "answer": "错",
+   "explanation": "错误。“程序由事件触发执行对应处理，配合 RTOS 实现实时响应”描述的是 事件驱动。读改写 的正确含义是：修改寄存器指定位的标准流程：读回-掩码清位-写入，避免覆盖其他位"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：消除机械按键抖动，硬件RC滤波或软件延时/状态机处理？",
+   "options": [
+    "A. 按键消抖",
+    "B. HAL库",
+    "C. 空间复杂度",
+    "D. WiFi"
+   ],
+   "answer": "A",
+   "explanation": "按键消抖：消除机械按键抖动，硬件RC滤波或软件延时/状态机处理"
+  },
+  {
+   "type": "judge",
+   "question": "判断：按键消抖 的含义是“消除机械按键抖动，硬件RC滤波或软件延时/状态机处理”。",
+   "answer": "对",
+   "explanation": "正确。按键消抖：消除机械按键抖动，硬件RC滤波或软件延时/状态机处理"
+  },
+  {
+   "type": "judge",
+   "question": "判断：按键消抖 的含义是“值为 NULL 的指针，不指向任何有效内存，用于初始化指针”。",
+   "answer": "错",
+   "explanation": "错误。“值为 NULL 的指针，不指向任何有效内存，用于初始化指针”描述的是 空指针。按键消抖 的正确含义是：消除机械按键抖动，硬件RC滤波或软件延时/状态机处理"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：常用电机驱动模块，通过 H 桥控制电机方向和调速？",
+   "options": [
+    "A. 头文件守卫",
+    "B. UART",
+    "C. L298N",
+    "D. 按键消抖"
+   ],
+   "answer": "C",
+   "explanation": "L298N：常用电机驱动模块，通过 H 桥控制电机方向和调速"
+  },
+  {
+   "type": "judge",
+   "question": "判断：L298N 的含义是“常用电机驱动模块，通过 H 桥控制电机方向和调速”。",
+   "answer": "对",
+   "explanation": "正确。L298N：常用电机驱动模块，通过 H 桥控制电机方向和调速"
+  },
+  {
+   "type": "judge",
+   "question": "判断：L298N 的含义是“TCP 字节流中多个报文边界丢失，需协议头或分隔符解决”。",
+   "answer": "错",
+   "explanation": "错误。“TCP 字节流中多个报文边界丢失，需协议头或分隔符解决”描述的是 粘包。L298N 的正确含义是：常用电机驱动模块，通过 H 桥控制电机方向和调速"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：把角位移/线位移转为电信号的传感器，用于测速测位？",
+   "options": [
+    "A. vTaskDelay",
+    "B. 编码器",
+    "C. CMake",
+    "D. 时间复杂度"
+   ],
+   "answer": "B",
+   "explanation": "编码器：把角位移/线位移转为电信号的传感器，用于测速测位"
+  },
+  {
+   "type": "judge",
+   "question": "判断：编码器 的含义是“把角位移/线位移转为电信号的传感器，用于测速测位”。",
+   "answer": "对",
+   "explanation": "正确。编码器：把角位移/线位移转为电信号的传感器，用于测速测位"
+  },
+  {
+   "type": "judge",
+   "question": "判断：编码器 的含义是“把一个分支的改动合入另一个分支”。",
+   "answer": "错",
+   "explanation": "错误。“把一个分支的改动合入另一个分支”描述的是 合并merge。编码器 的正确含义是：把角位移/线位移转为电信号的传感器，用于测速测位"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：把物理量（温度/光照/距离等）转为电信号的器件？",
+   "options": [
+    "A. 读改写",
+    "B. IP地址",
+    "C. I2C",
+    "D. 传感器"
+   ],
+   "answer": "D",
+   "explanation": "传感器：把物理量（温度/光照/距离等）转为电信号的器件"
+  },
+  {
+   "type": "judge",
+   "question": "判断：传感器 的含义是“把物理量（温度/光照/距离等）转为电信号的器件”。",
+   "answer": "对",
+   "explanation": "正确。传感器：把物理量（温度/光照/距离等）转为电信号的器件"
+  },
+  {
+   "type": "judge",
+   "question": "判断：传感器 的含义是“告诉编译器该变量可能被硬件/中断修改，每次使用必须从内存重新读取，禁止优化缓存”。",
+   "answer": "错",
+   "explanation": "错误。“告诉编译器该变量可能被硬件/中断修改，每次使用必须从内存重新读取，禁止优化缓存”描述的是 volatile。传感器 的正确含义是：把物理量（温度/光照/距离等）转为电信号的器件"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：ST 的图形化配置工具，生成外设初始化和工程代码？",
+   "options": [
+    "A. STM32CubeMX",
+    "B. 环境变量",
+    "C. 优先级继承",
+    "D. 硬链接"
+   ],
+   "answer": "A",
+   "explanation": "STM32CubeMX：ST 的图形化配置工具，生成外设初始化和工程代码"
+  },
+  {
+   "type": "judge",
+   "question": "判断：STM32CubeMX 的含义是“ST 的图形化配置工具，生成外设初始化和工程代码”。",
+   "answer": "对",
+   "explanation": "正确。STM32CubeMX：ST 的图形化配置工具，生成外设初始化和工程代码"
+  },
+  {
+   "type": "judge",
+   "question": "判断：STM32CubeMX 的含义是“在结构体中按位分配存储，节省内存，常用于寄存器定义”。",
+   "answer": "错",
+   "explanation": "错误。“在结构体中按位分配存储，节省内存，常用于寄存器定义”描述的是 位域。STM32CubeMX 的正确含义是：ST 的图形化配置工具，生成外设初始化和工程代码"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：ST 硬件抽象层库，提供统一外设 API，可移植性好？",
+   "options": [
+    "A. 任务",
+    "B. HAL库",
+    "C. ARP",
+    "D. 选择排序"
+   ],
+   "answer": "B",
+   "explanation": "HAL库：ST 硬件抽象层库，提供统一外设 API，可移植性好"
+  },
+  {
+   "type": "judge",
+   "question": "判断：HAL库 的含义是“ST 硬件抽象层库，提供统一外设 API，可移植性好”。",
+   "answer": "对",
+   "explanation": "正确。HAL库：ST 硬件抽象层库，提供统一外设 API，可移植性好"
+  },
+  {
+   "type": "judge",
+   "question": "判断：HAL库 的含义是“RTOS 的时钟节拍，驱动调度和时间管理”。",
+   "answer": "错",
+   "explanation": "错误。“RTOS 的时钟节拍，驱动调度和时间管理”描述的是 Tick。HAL库 的正确含义是：ST 硬件抽象层库，提供统一外设 API，可移植性好"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：ST 低层库，接近寄存器操作，高效轻量？",
+   "options": [
+    "A. LL库",
+    "B. 文件I/O",
+    "C. 链表",
+    "D. 环形缓冲区"
+   ],
+   "answer": "A",
+   "explanation": "LL库：ST 低层库，接近寄存器操作，高效轻量"
+  },
+  {
+   "type": "judge",
+   "question": "判断：LL库 的含义是“ST 低层库，接近寄存器操作，高效轻量”。",
+   "answer": "对",
+   "explanation": "正确。LL库：ST 低层库，接近寄存器操作，高效轻量"
+  },
+  {
+   "type": "judge",
+   "question": "判断：LL库 的含义是“用位标志表示多个事件，任务可等待多个事件的组合”。",
+   "answer": "错",
+   "explanation": "错误。“用位标志表示多个事件，任务可等待多个事件的组合”描述的是 事件组。LL库 的正确含义是：ST 低层库，接近寄存器操作，高效轻量"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：ST 早期外设固件库，基于寄存器封装，代码量大？",
+   "options": [
+    "A. 标准库",
+    "B. NFS",
+    "C. 二维数组",
+    "D. 数组"
+   ],
+   "answer": "A",
+   "explanation": "标准库：ST 早期外设固件库，基于寄存器封装，代码量大"
+  },
+  {
+   "type": "judge",
+   "question": "判断：标准库 的含义是“ST 早期外设固件库，基于寄存器封装，代码量大”。",
+   "answer": "对",
+   "explanation": "正确。标准库：ST 早期外设固件库，基于寄存器封装，代码量大"
+  },
+  {
+   "type": "judge",
+   "question": "判断：标准库 的含义是“低优先级任务持有资源导致高优先级任务被阻塞的现象”。",
+   "answer": "错",
+   "explanation": "错误。“低优先级任务持有资源导致高优先级任务被阻塞的现象”描述的是 优先级反转。标准库 的正确含义是：ST 早期外设固件库，基于寄存器封装，代码量大"
+  },
+  {
+   "type": "single",
+   "question": "下列哪个概念是指：非易失存储器，存程序和常量，擦写有寿命限制？",
+   "options": [
+    "A. DNS",
+    "B. Flash",
+    "C. 内核对象",
+    "D. 下拉电阻"
+   ],
+   "answer": "B",
+   "explanation": "Flash：非易失存储器，存程序和常量，擦写有寿命限制"
+  },
+  {
+   "type": "judge",
+   "question": "判断：Flash 的含义是“非易失存储器，存程序和常量，擦写有寿命限制”。",
+   "answer": "对",
+   "explanation": "正确。Flash：非易失存储器，存程序和常量，擦写有寿命限制"
+  },
+  {
+   "type": "judge",
+   "question": "判断：Flash 的含义是“先进先出的线性结构，任务调度、缓冲使用”。",
+   "answer": "错",
+   "explanation": "错误。“先进先出的线性结构，任务调度、缓冲使用”描述的是 队列。Flash 的正确含义是：非易失存储器，存程序和常量，擦写有寿命限制"
+  }
+ ]
+}

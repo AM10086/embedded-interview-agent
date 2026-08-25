@@ -1,57 +1,119 @@
 ﻿{
-  "category": "驱动与外设",
-  "questions": [
-    {
-      "type": "single",
-      "question": "以下哪个是异步串行通信协议？",
-      "options": ["A. SPI", "B. I2C", "C. UART", "D. CAN"],
-      "answer": "C",
-      "explanation": "UART 是异步的（靠起始位/波特率同步，无时钟线）；SPI/I2C 是同步的（有 SCK/SCL 时钟线）。"
-    },
-    {
-      "type": "single",
-      "question": "I2C 总线通常需要几根信号线？",
-      "options": ["A. 1 根", "B. 2 根（SCL + SDA）", "C. 4 根", "D. 8 根"],
-      "answer": "B",
-      "explanation": "I2C = SCL（时钟）+ SDA（数据），需要上拉电阻。SPI 是 4 根（SCK/MOSI/MISO/CS）。"
-    },
-    {
-      "type": "short",
-      "question": "中断、轮询、DMA 三种方式有什么区别？什么时候用 DMA？",
-      "answer": "轮询：CPU 一直查询状态，简单但浪费 CPU。中断：外设事件触发 CPU 处理，实时性好。DMA：外设与内存直接搬运数据，无需 CPU 逐字节干预。大量数据（如 ADC 连续采样、串口批量收发）适合 DMA。",
-      "explanation": "面试常考三者的取舍：实时性 vs CPU 占用 vs 复杂度。"
-    },
-    {
-      "type": "single",
-      "question": "GPIO 开漏输出（Open-Drain）的特点？",
-      "options": ["A. 能主动输出高电平", "B. 只能拉低，高电平需要外部上拉", "C. 只能输出低电平", "D. 支持双向传输"],
-      "answer": "B",
-      "explanation": "开漏输出只能输出低电平，高电平靠外部上拉电阻提供，常用于 I2C、电平转换。"
-    },
-    {
-      "type": "short",
-      "question": "编写中断服务函数（ISR）有哪些注意事项？",
-      "answer": "① 尽量短小，不做耗时操作；② 不调用阻塞函数（如 printf、malloc）；③ 共享变量用 volatile；④ RTOS 中用 ISR 专用 API；⑤ 避免在 ISR 里做浮点运算。",
-      "explanation": "ISR 会打断主流程，耗时过长会导致实时性下降甚至丢中断。"
-    },
-    {
-      "type": "single",
-      "question": "12 位 ADC 的转换结果范围是？",
-      "options": ["A. 0-255", "B. 0-1023", "C. 0-4095", "D. 0-65535"],
-      "answer": "C",
-      "explanation": "12 位 = 2^12 = 4096 个档位，即 0~4095。"
-    },
-    {
-      "type": "short",
-      "question": "PWM 是如何控制电机转速的？",
-      "answer": "PWM 通过改变占空比（高电平时间比例）改变平均电压，从而控制电机转速；配合 H 桥（如 L298N）控制方向和启停。",
-      "explanation": "对应你简历里的循迹小车项目：定时器 PWM 输出 + 占空比调速。"
-    },
-    {
-      "type": "judge",
-      "question": "看门狗（Watchdog）超时未喂狗会导致 MCU 复位。",
-      "answer": "对",
-      "explanation": "看门狗用于检测程序跑飞/死循环，必须在超时前喂狗，否则复位系统。"
-    }
-  ]
+    "category":  "驱动与外设",
+    "questions":  [
+                      {
+                          "type":  "single",
+                          "question":  "以下哪个是异步串行通信协议？",
+                          "options":  [
+                                          "A. SPI",
+                                          "B. I2C",
+                                          "C. UART",
+                                          "D. CAN"
+                                      ],
+                          "answer":  "C",
+                          "explanation":  "UART 是异步的（靠起始位/波特率同步，无时钟线）；SPI/I2C 是同步的（有 SCK/SCL 时钟线）。"
+                      },
+                      {
+                          "type":  "single",
+                          "question":  "I2C 总线通常需要几根信号线？",
+                          "options":  [
+                                          "A. 1 根",
+                                          "B. 2 根（SCL + SDA）",
+                                          "C. 4 根",
+                                          "D. 8 根"
+                                      ],
+                          "answer":  "B",
+                          "explanation":  "I2C = SCL（时钟）+ SDA（数据），需要上拉电阻。SPI 是 4 根（SCK/MOSI/MISO/CS）。"
+                      },
+                      {
+                          "type":  "short",
+                          "question":  "中断、轮询、DMA 三种方式有什么区别？什么时候用 DMA？",
+                          "answer":  "轮询：CPU 一直查询状态，简单但浪费 CPU。中断：外设事件触发 CPU 处理，实时性好。DMA：外设与内存直接搬运数据，无需 CPU 逐字节干预。大量数据（如 ADC 连续采样、串口批量收发）适合 DMA。",
+                          "explanation":  "面试常考三者的取舍：实时性 vs CPU 占用 vs 复杂度。"
+                      },
+                      {
+                          "type":  "single",
+                          "question":  "GPIO 开漏输出（Open-Drain）的特点？",
+                          "options":  [
+                                          "A. 能主动输出高电平",
+                                          "B. 只能拉低，高电平需要外部上拉",
+                                          "C. 只能输出低电平",
+                                          "D. 支持双向传输"
+                                      ],
+                          "answer":  "B",
+                          "explanation":  "开漏输出只能输出低电平，高电平靠外部上拉电阻提供，常用于 I2C、电平转换。"
+                      },
+                      {
+                          "type":  "short",
+                          "question":  "编写中断服务函数（ISR）有哪些注意事项？",
+                          "answer":  "① 尽量短小，不做耗时操作；② 不调用阻塞函数（如 printf、malloc）；③ 共享变量用 volatile；④ RTOS 中用 ISR 专用 API；⑤ 避免在 ISR 里做浮点运算。",
+                          "explanation":  "ISR 会打断主流程，耗时过长会导致实时性下降甚至丢中断。"
+                      },
+                      {
+                          "type":  "single",
+                          "question":  "12 位 ADC 的转换结果范围是？",
+                          "options":  [
+                                          "A. 0-255",
+                                          "B. 0-1023",
+                                          "C. 0-4095",
+                                          "D. 0-65535"
+                                      ],
+                          "answer":  "C",
+                          "explanation":  "12 位 = 2^12 = 4096 个档位，即 0~4095。"
+                      },
+                      {
+                          "type":  "short",
+                          "question":  "PWM 是如何控制电机转速的？",
+                          "answer":  "PWM 通过改变占空比（高电平时间比例）改变平均电压，从而控制电机转速；配合 H 桥（如 L298N）控制方向和启停。",
+                          "explanation":  "对应你简历里的循迹小车项目：定时器 PWM 输出 + 占空比调速。"
+                      },
+                      {
+                          "type":  "judge",
+                          "question":  "看门狗（Watchdog）超时未喂狗会导致 MCU 复位。",
+                          "answer":  "对",
+                          "explanation":  "看门狗用于检测程序跑飞/死循环，必须在超时前喂狗，否则复位系统。"
+                      },
+                      {
+                          "explanation":  "外部中断流程：GPIO 配输入、EXTI 选引脚和触发沿、NVIC 使能中断、写中断服务函数。对应你简历里的按键中断唤醒任务。",
+                          "answer":  "B",
+                          "question":  "STM32 使用外部中断（EXTI）时，通常还需要配置什么？",
+                          "type":  "single",
+                          "options":  [
+                                          "A. 只需要配置 GPIO 为输出",
+                                          "B. 配置 GPIO 为输入 + 触发方式（上升/下降/双边沿）+ NVIC 使能",
+                                          "C. 配置 DMA",
+                                          "D. 配置看门狗"
+                                      ]
+                      },
+                      {
+                          "explanation":  "机械按键按下瞬间会产生抖动，必须消抖否则会误触发多次。",
+                          "answer":  "① 硬件：RC 滤波、电容；② 软件：延时消抖（检测到电平变化后延时 10-20ms 再确认）、定时器轮询消抖、状态机消抖。",
+                          "question":  "按键消抖有哪些方法？",
+                          "type":  "short",
+                          "options":  [
+
+                                      ]
+                      },
+                      {
+                          "explanation":  "占空比 = CCR/(ARR+1)，决定高电平比例，从而控制电机速度/舵机角度等。",
+                          "answer":  "B",
+                          "question":  "定时器输出 PWM 时，占空比由什么决定？",
+                          "type":  "single",
+                          "options":  [
+                                          "A. 定时器时钟频率",
+                                          "B. 比较值 CCR 与自动重装值 ARR 的比值",
+                                          "C. 分频系数",
+                                          "D. 中断优先级"
+                                      ]
+                      },
+                      {
+                          "explanation":  "这是驱动开发的基本功，配合位操作宏使用。",
+                          "answer":  "直接赋值可能覆盖同一寄存器里其他无关位。正确做法：先读回寄存器 → 按位掩码清相关位 → 写入新值。注意：多任务/中断下\u0027读-改-写\u0027不是原子的，需要临界区保护。",
+                          "question":  "操作外设寄存器时，为什么常用\u0027读-改-写\u0027？要注意什么？",
+                          "type":  "short",
+                          "options":  [
+
+                                      ]
+                      }
+                  ]
 }

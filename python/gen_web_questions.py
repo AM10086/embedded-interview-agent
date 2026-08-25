@@ -13,9 +13,10 @@ for f in sorted(glob.glob(os.path.join(BASE, "questions", "*.json"))):
         q.setdefault("category", data.get("category", "未分类"))
         all_q.append(q)
 
-out = os.path.join(BASE, "docs", "questions.js")
+out = os.path.join(os.path.dirname(BASE), "docs", "questions.js")
 with open(out, "w", encoding="utf-8") as fh:
     fh.write("window.QUESTIONS = ")
     fh.write(json.dumps(all_q, ensure_ascii=False))
     fh.write(";\n")
 print(f"questions.js 生成完成，共 {len(all_q)} 题")
+

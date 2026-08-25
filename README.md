@@ -1,53 +1,42 @@
 ﻿# 🤖 嵌入式面试 AI Agent
 
-> 一个帮助你备战嵌入式软件面试的智能练习 Agent：按你的薄弱点智能出题、自动判分、讲解、生成薄弱点分析报告，可选接入大模型做 AI 点评。
+> 按你的薄弱点智能出题 · 大厂审问式面试模拟 · 自动判分讲解，为嵌入式软件求职与面试做好准备
 
-## ✨ 功能
+## 📑 目录
+- [✨ 功能](#features)
+- [🚀 快速开始（Python 版）](#quickstart)
+- [🌐 网页版](#web)
+- [🔌 接入 AI（多模型）](#ai)
+- [📱 微信小程序版](#miniprogram)
+- [📁 项目结构](#structure)
+
+## <a name="features"></a> ✨ 功能
 - **智能出题**：根据历史答题正确率加权抽题，正确率越低越常考
-- **专项练习**：按 C 语言 / 驱动外设 / RTOS / 嵌入式 Linux / 网络协议 分类练习
-- **面试模拟**：随机连答 + 参考答案，模拟真实面试节奏
+- **专项练习**：按 C 语言 / 驱动外设 / RTOS / 嵌入式 Linux / 网络协议 / 数据结构 / Git 分类练习
+- **面试模拟**：限时 60 秒/题，还原真实面试节奏
+- **题库目录**：按分类浏览 + 关键词搜索全部题目
 - **薄弱点分析**：自动统计各知识点正确率，生成 Top 薄弱点
-- **AI 自由问答**（可选）：配置 API Key 后，可让大模型讲解任意面试题
-- **AI 智能诊断**（可选）：基于答题数据，AI 自动分析薄弱点 → 给出解决方案 → 制定学习目标 → 面试准备建议
-- **解析优化**：每题解析包含【解析】【易错点】【面试追问】，自动生成题含干扰项辨析+面试提示
+- **AI 智能诊断**（可选）：基于答题数据，AI 生成解决方案、学习目标与面试建议
+- **简历驱动 AI 模拟面试**（可选）：AI 分析简历 → 20 题审问式面试 → 面试分析/修正计划/简历优化/学习计划
+- **多平台**：Python 命令行 + 网页版 + 微信小程序，共用同一份题库
 
-## 🌐 网页版（无需安装，浏览器直接玩）
+## <a name="quickstart"></a> 🚀 快速开始（Python 版）
+```bash
+cd python
+python agent.py
+```
+Windows 也可直接双击 `python/启动Agent.bat` 一键启动。
+
+## <a name="web"></a> 🌐 网页版（无需安装，浏览器直接玩）
 👉 **https://am10086.github.io/embedded-interview-agent/**
 
 > 纯前端实现，支持按薄弱点出题、面试模拟、薄弱点分析（本地存储），数据与 Python 版共用同一题库。
 
-## 🚀 快速开始
-```bash
-# 1. 需要 Python 3.8+
-python agent.py
-```
-
-## 📁 项目结构
-```
-embedded-interview-agent/
-├── agent.py          # 主程序（菜单）
-├── quiz.py           # 答题引擎（出题/判分）
-├── analyzer.py       # 薄弱点分析与历史记录
-├── config.py         # 配置加载
-├── config.json       # 用户配置（题数、AI）
-├── questions/        # 题库（JSON）
-│   ├── c_language.json
-│   ├── driver.json
-│   ├── rtos.json
-│   ├── linux.json
-│   └── network.json
-└── history.json      # 答题历史（自动生成）
-```
-
-## 🔌 可选：接入 AI 讲解（支持多模型）
-编辑 `config.json`，把 `ai.enabled` 改为 `true`，选择 provider 并填写 api_key：
+## <a name="ai"></a> 🔌 接入 AI（多模型）
+编辑 `python/config.json`，把 `ai.enabled` 改为 `true`，选择 provider 并填写 api_key：
 ```json
 {
-  "ai": {
-    "enabled": true,
-    "provider": "deepseek",
-    "api_key": "你的API Key"
-  }
+  "ai": { "enabled": true, "provider": "deepseek", "api_key": "你的API Key" }
 }
 ```
 支持的大模型：
@@ -60,7 +49,7 @@ embedded-interview-agent/
 | `kimi` | Kimi 月之暗面 |
 | `ollama` | 本地 Ollama（无需 API Key）|
 
-## 📱 微信小程序版（miniprogram/）
+## <a name="miniprogram"></a> 📱 微信小程序版（miniprogram/）
 完整的小程序源码（首页 / 答题 / 面试模拟 / 题库目录 / 薄弱点分析 / 成绩）。
 **使用步骤：**
 1. 下载安装 [微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)
@@ -69,5 +58,27 @@ embedded-interview-agent/
 
 > 小程序题库与网页版共用同一份 660 题数据。
 
-
-
+## <a name="structure"></a> 📁 项目结构
+```
+embedded-interview-agent/
+├── README.md                  # 项目说明（本文件）
+├── python/                    # Python 命令行版
+│   ├── agent.py               # 主程序（菜单）
+│   ├── quiz.py                # 答题引擎（智能出题/判分）
+│   ├── analyzer.py            # 薄弱点分析
+│   ├── interview.py           # 简历驱动 AI 模拟面试
+│   ├── config.py / config.json# 配置（多模型 AI）
+│   ├── generate_questions.py  # 题库生成器（基于知识库）
+│   ├── gen_web_questions.py   # 网页版题库生成脚本
+│   ├── 启动Agent.bat          # Windows 一键启动
+│   ├── questions/             # 题库（660 题，7 大分类）
+│   └── terms/                 # 知识点知识库（生成器数据源）
+├── docs/                      # 网页版（GitHub Pages 部署源）
+│   ├── index.html             # 网页应用
+│   └── questions.js           # 网页题库数据
+└── miniprogram/               # 微信小程序版
+    ├── app.js / app.json / app.wxss
+    ├── project.config.json
+    ├── data/questions.js      # 小程序题库数据
+    └── pages/                 # 首页/答题/题库/薄弱点/成绩
+```

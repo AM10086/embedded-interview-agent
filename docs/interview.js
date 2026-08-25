@@ -219,16 +219,17 @@ function extractZhuiWen(q){
 }
 function interviewerNote(q, ans, sc){
   var fw=pickFollowUp(ans)||extractZhuiWen(q);
-  var jn='';
+  var jn='', jcorrect=false;
   if(q && q.type==='judge'){
     var j=parseJudge(ans);
     if(j && j!==q.answer) jn='<br>❌ <b>你的判断错了</b>，正确答案是「'+q.answer+'」。判断类题目要先给结论（对/错），再用原理支撑。';
-    else if(j) jn='<br>✅ 判断正确。';
+    else if(j){ jn='<br>✅ 判断正确。'; jcorrect=true; }
     else jn='<br>⚠️ 你没有明确给出判断（对/错）。真实面试官会追问："到底是对还是错？先说结论，再讲原理。"';
   }
   var scTxt='本题得分 <b>'+sc+'/10</b>，';
   if(sc>=8) return {t:'ok', text:scTxt+'回答要点清晰'+(/\d/.test(ans)?'、有数据支撑':'')+'，过关。'+jn, fw:fw?('追问：'+fw):''};
   if(sc>=5) return {t:'mid', text:scTxt+'答到了一些要点，但不够深入、缺少细节。'+jn, fw:fw?('追问：'+fw):'追问：能结合具体实现和数据再讲一遍吗？'};
+  if(jcorrect) return {t:'ok', text:scTxt+'判断正确，但理由不够充分，需要补强原理与细节。'+jn, fw:fw?('追问：'+fw):''};
   if(VAGUE.test(ans)) return {t:'no', text:scTxt+'回答太模糊了。真实面试官会立刻挑战你："别用「大概/可能」，说清楚具体怎么实现的、数据是多少。"'+jn, fw:fw?('追问：'+fw):'追问：请重新组织语言，讲清原理与数据。'};
   return {t:'no', text:scTxt+'没有抓住核心考点，需要补强。'+jn, fw:fw?('追问：'+fw):'追问：核心要点是什么？请补充。'};
 }
@@ -357,6 +358,19 @@ function start(){
   }
 }
 
+/* 评分气泡样式：判断题按对错给色，其他按得分 */
+function noteClass(note, q, ans){
+  if(q && q.type==='judge'){
+    var j=parseJudge(ans);
+    if(j && j===q.answer) return 'iv-ok';
+    if(j) return 'iv-no';
+    return 'iv-warn';
+  }
+  if(note.t==='ok') return 'iv-ok';
+  if(note.t==='mid') return 'iv-mid';
+  return 'iv-no';
+}
+
 /* ---------- 提交回答 ---------- */
 function submit(){
   if(busy) return;
@@ -383,21 +397,22 @@ function submit(){
     .then(function(r){
       ld.remove(); setBusy(false);
       S.ai.push({role:'assistant',content:r});
+      var note=interviewerNote(q,ans,sc);
       var g=parseAQ(r);
-      if(g.q){ S.pendingQ=g.q; addBubble('iv','<span class="iv-who">📝 面试官点评</span>'+esc(g.a||'继续。')); }
-      else { addBubble('iv','<span class="iv-who">📝 面试官点评</span>'+esc(r)); }
+      if(g.q){ S.pendingQ=g.q; addBubble(noteClass(note,q,ans),'<span class="iv-who">📝 面试官点评</span>'+esc(g.a||'继续。')); }
+      else { addBubble(noteClass(note,q,ans),'<span class="iv-who">📝 面试官点评</span>'+esc(r)); }
       advance();
     })
     .catch(function(){
       ld.remove(); setBusy(false); S.mode='offline';
       var note=interviewerNote(q,ans,sc);
-      addBubble('iv','<span class="iv-who">📝 面试官点评</span>'+esc(note.text));
+      addBubble(noteClass(note,q,ans),'<span class="iv-who">📝 面试官点评</span>'+esc(note.text));
       if(note.fw) addBubble('iv','<span class="iv-who">🔍 面试官追问</span>'+esc(note.fw));
       advance();
     });
   } else {
     var note=interviewerNote(q,ans,sc);
-    addBubble('iv','<span class="iv-who">📝 面试官点评</span>'+esc(note.text));
+    addBubble(noteClass(note,q,ans),'<span class="iv-who">📝 面试官点评</span>'+esc(note.text));
     addBubble('iv-ref','<span class="iv-who">📖 参考答案要点</span>'+esc(refAnswer(q)).replace(/\n/g,'<br>'));
     if(note.fw) addBubble('iv','<span class="iv-who">🔍 面试官追问</span>'+esc(note.fw));
     advance();

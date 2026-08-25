@@ -121,6 +121,8 @@
     background:var(--panel2);color:var(--txt);transition:.18s}
   .jbtn button:hover{border-color:var(--acc)}
   .jbtn button:disabled{opacity:.5;cursor:default}
+  #qJudge button.correct{background:rgba(52,211,153,.16);border-color:var(--ok);color:var(--ok)}
+  #qJudge button.wrong{background:rgba(248,113,113,.16);border-color:var(--err);color:var(--err)}
   textarea{width:100%;min-height:90px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;
     color:var(--txt);padding:12px;font-size:14px;font-family:inherit;resize:vertical;outline:none}
   textarea:focus{border-color:var(--acc)}
@@ -212,6 +214,10 @@
   .iv-b.iv-me{align-self:flex-end;background:linear-gradient(135deg,rgba(56,189,248,.22),rgba(99,102,241,.20));border:1px solid rgba(56,189,248,.35);border-bottom-right-radius:4px}
   .iv-b.iv-iv{align-self:flex-start;background:var(--panel2);border:1px solid var(--line);border-bottom-left-radius:4px}
   .iv-b.iv-note{align-self:flex-start;background:rgba(99,102,241,.10);border:1px solid rgba(99,102,241,.35);border-bottom-left-radius:4px}
+  .iv-b.iv-ok{align-self:flex-start;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.4);border-bottom-left-radius:4px}
+  .iv-b.iv-mid{align-self:flex-start;background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.35);border-bottom-left-radius:4px}
+  .iv-b.iv-no{align-self:flex-start;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.4);border-bottom-left-radius:4px}
+  .iv-b.iv-warn{align-self:flex-start;background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.4);border-bottom-left-radius:4px}
   .iv-b.iv-ref{align-self:flex-start;background:rgba(52,211,153,.06);border:1px dashed rgba(52,211,153,.35);border-bottom-left-radius:4px;font-size:13px;color:var(--sub)}
   .iv-b .iv-who{display:block;font-size:12px;color:var(--sub);margin-bottom:5px}
   .iv-b.iv-me .iv-who{color:#a5b4fc}
@@ -496,7 +502,7 @@ function showQuestion(){
   } else if(current.type==='judge'){
     opts.classList.add('hidden');
     var jb=document.getElementById('qJudge'); jb.classList.remove('hidden');
-    jb.innerHTML='<button onclick="answer(\'对\')">✓ 对</button><button onclick="answer(\'错\')">✗ 错</button>';
+    jb.innerHTML='<button onclick="answer(\'对\')" data-v="对">✓ 对</button><button onclick="answer(\'错\')" data-v="错">✗ 错</button>';
   } else {
     opts.classList.add('hidden');
     var qs=document.getElementById('qShort'); qs.classList.remove('hidden');
@@ -537,8 +543,12 @@ function answer(i){
       else if(idx===i) d.classList.add('wrong');
     });
   } else if(current.type==='judge'){
-    ok = i>=0 && String(i).toUpperCase()===String(current.answer).toUpperCase();
-    document.querySelectorAll('#qJudge button').forEach(b=>b.disabled=true);
+    ok = String(i).toUpperCase()===String(current.answer).toUpperCase();
+    document.querySelectorAll('#qJudge button').forEach(function(b){
+      b.disabled=true;
+      if(b.getAttribute('data-v')===current.answer) b.classList.add('correct');
+      else if(b.getAttribute('data-v')===String(i)) b.classList.add('wrong');
+    });
   }
   var fb=document.getElementById('feedback');
   fb.className='feedback '+(ok?'ok':'no');

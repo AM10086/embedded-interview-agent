@@ -64,27 +64,4 @@ Windows 也可直接双击 `python/启动Agent.bat` 一键启动。
 > 小程序题库与网页版共用同一份 660 题数据。
 
 ## <a name="structure"></a> 📁 项目结构
-```
-embedded-interview-agent/
-├── README.md                  # 项目说明（本文件）
-├── python/                    # Python 命令行版
-│   ├── agent.py               # 主程序（菜单）
-│   ├── quiz.py                # 答题引擎（智能出题/判分）
-│   ├── analyzer.py            # 薄弱点分析
-│   ├── interview.py           # 简历驱动 AI 模拟面试
-│   ├── config.py / config.json# 配置（多模型 AI）
-│   ├── generate_questions.py  # 题库生成器（基于知识库）
-│   ├── gen_web_questions.py   # 网页版题库生成脚本
-│   ├── 启动Agent.bat          # Windows 一键启动
-│   ├── questions/             # 题库（660 题，7 大分类）
-│   └── terms/                 # 知识点知识库（生成器数据源）
-├── docs/                      # 网页版（GitHub Pages 部署源）
-│   ├── index.html             # 网页应用
-│   ├── interview.js           # 简历 AI 模拟面试引擎（审问式 20 题 + 四维报告）
-│   └── questions.js           # 网页题库数据
-└── miniprogram/               # 微信小程序版
-    ├── app.js / app.json / app.wxss
-    ├── project.config.json
-    ├── data/questions.js      # 小程序题库数据
-    └── pages/                 # 首页/答题/题库/薄弱点/成绩
-```
+![项目结构](docs/images/project-structure.png)

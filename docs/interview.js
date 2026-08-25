@@ -43,7 +43,11 @@ var CONCEPTS={
   '嵌入式 Linux':['进程','线程','内存','设备树','驱动','内核','交叉编译','文件系统','mmap','模块','中断','DMA','同步','锁','字符设备','platform','shell','调试'],
   '网络与协议':['TCP','UDP','三次握手','四次挥手','粘包','阻塞','非阻塞','select','epoll','IP','端口','重传','超时','滑动窗口','socket','校验'],
   '数据结构与算法':['链表','栈','队列','树','排序','复杂度','递归','哈希','查找','二叉树','快排','冒泡'],
-  'Git 与工具链':['git','提交','分支','合并','冲突','回滚','Makefile','CMake','编译','静态库','动态库','gdb','调试']
+  'Git 与工具链':['git','提交','分支','合并','冲突','回滚','Makefile','CMake','编译','静态库','动态库','gdb','调试'],
+  '代码判断':['越界','溢出','野指针','未初始化','malloc','free','NULL','悬空','strcpy','缓冲区','除零','释放','栈','数组','越界'],
+  'Linux 命令':['chmod','find','grep','ps','gcc','dmesg','ifconfig','tar','管道','权限','进程','编译','日志','网络','命令'],
+  '代码分析':['指针','sizeof','strlen','对齐','递归','宏','static','输出','地址','结构体','数组','填充','\0'],
+  '代码写作':['指针','malloc','free','NULL','循环','while','return','strlen','链表','位操作','二分','交换','边界','实现']
 };
 
 /* ---------- 面试官追问模板（回答命中关键词即深挖） ---------- */
@@ -93,6 +97,11 @@ var DESIGN_QUESTIONS=[
   {category:'综合',question:'如果面试通过，入职后前三个月你会怎么规划自己的学习和产出？',answer:'熟悉代码库/工具链→从简单 bug 入手→独立负责模块→输出文档',explanation:'考察学习能力和稳定性'}
 ];
 
+﻿/* 代码类面试题（代码判断 / Linux 命令 / 代码分析 / 代码写作）来自 code_questions.js（200 题） */
+var CODE_QUESTIONS = window.CODE_QUESTIONS || [];
+
+
+
 /* ---------- 基础工具 ---------- */
 function shuffle(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
@@ -141,10 +150,21 @@ function buildPool(skills){
     shuffle(arr);
     pool=pool.concat(arr.slice(0,Math.min(n,arr.length)));
   });
+  // 代码类面试题：代码判断 / Linux 命令 / 代码分析 / 代码写作，每类抽 3 题（共 12 道）
+  var CODE_CATS=['代码判断','Linux 命令','代码分析','代码写作'];
+  var codePool=[];
+  CODE_CATS.forEach(function(ct){
+    var arr=CODE_QUESTIONS.filter(function(cq){return cq.category===ct;});
+    shuffle(arr);
+    codePool=codePool.concat(arr.slice(0,3));
+  });
   shuffle(pool);
-  pool=pool.slice(0,18);
+  pool=pool.slice(0,6);            // 6 道基础题库
+  shuffle(codePool);
+  pool=pool.concat(codePool.slice(0,12)); // 12 道代码题
+  shuffle(pool);
   var design=DESIGN_QUESTIONS[Math.floor(Math.random()*DESIGN_QUESTIONS.length)];
-  pool.push(design);
+  pool.push(design);                // 1 道综合压力题（共 19 题，Q2~Q20）
   return pool;
 }
 
@@ -321,9 +341,11 @@ function showQ1(){
 }
 function showQ(q){
   var n=S.step+1;
+  var isAIq=!!S.pendingQ;
   var text=S.pendingQ || openEnded(q);
   S.pendingQ='';
-  addBubble('iv','<span class="iv-who">🎤 面试官 Q'+n+' · '+esc(q.category)+'</span>'+esc(text).replace(/\n/g,'<br>'));
+  var codeHtml=(!isAIq && q.code)?'<pre class="iv-code">'+esc(q.code)+'</pre>':'';
+  addBubble('iv','<span class="iv-who">🎤 面试官 Q'+n+' · '+esc(q.category)+'</span>'+esc(text).replace(/\n/g,'<br>')+codeHtml);
   showAnswerBox();
 }
 
@@ -343,7 +365,7 @@ function start(){
   $('ivChat').innerHTML='';
   $('ivAnswer').value='';
   $('ivModeTag').textContent=S.mode==='ai'?('🤖 '+PROVIDERS[prov].name):'⚙️ 内置审问引擎';
-  addBubble('iv','<span class="iv-who">🤖 面试官</span>你好，我是今天的面试官。已收到你的简历，目标岗位：<b>'+esc(pos)+'</b>。本次面试共 <b>20 题</b>：自我介绍 → 基础到进阶 → 结合简历项目深挖（STAR）→ 综合压力题。<br>'+ (S.mode==='ai'?'本场由 <b>'+PROVIDERS[prov].name+'</b> 大模型全真驱动。':'本场由 <b>内置审问引擎</b> 驱动（配置 API Key 可升级为大模型真面试）。'));
+  addBubble('iv','<span class="iv-who">🤖 面试官</span>你好，我是今天的面试官。已收到你的简历，目标岗位：<b>'+esc(pos)+'</b>。本次面试共 <b>20 题</b>：自我介绍 → 基础到进阶 → 代码判断/代码分析/Linux 命令/代码写作 → 结合简历项目深挖（STAR）→ 综合压力题。<br>'+ (S.mode==='ai'?'本场由 <b>'+PROVIDERS[prov].name+'</b> 大模型全真驱动。':'本场由 <b>内置审问引擎</b> 驱动（配置 API Key 可升级为大模型真面试）。'));
   var sk=an.skills.map(function(s){return s.name;});
   var risk=an.risks.map(function(r){return r.text;});
   addBubble('iv','<span class="iv-who">📋 简历速览</span>检测到技能：<b>'+(sk.length?esc(sk.join('、')):'未识别到明显技术关键词')+'</b><br>⚠️ 面试官重点考察：'+esc(risk.length?risk.join('；'):'围绕你简历里的项目和技能展开深挖'));
@@ -407,6 +429,8 @@ function submit(){
       ld.remove(); setBusy(false); S.mode='offline';
       var note=interviewerNote(q,ans,sc);
       addBubble(noteClass(note,q,ans),'<span class="iv-who">📝 面试官点评</span>'+esc(note.text));
+      addBubble('iv-ref','<span class="iv-who">📖 参考答案要点</span>'+esc(refAnswer(q)).replace(/\n/g,'<br>'));
+      if(q.code_ans) addBubble('iv-ref','<span class="iv-who">💻 参考代码</span><pre class="iv-code">'+esc(q.code_ans)+'</pre>');
       if(note.fw) addBubble('iv','<span class="iv-who">🔍 面试官追问</span>'+esc(note.fw));
       advance();
     });
@@ -414,6 +438,7 @@ function submit(){
     var note=interviewerNote(q,ans,sc);
     addBubble(noteClass(note,q,ans),'<span class="iv-who">📝 面试官点评</span>'+esc(note.text));
     addBubble('iv-ref','<span class="iv-who">📖 参考答案要点</span>'+esc(refAnswer(q)).replace(/\n/g,'<br>'));
+    if(q.code_ans) addBubble('iv-ref','<span class="iv-who">💻 参考代码</span><pre class="iv-code">'+esc(q.code_ans)+'</pre>');
     if(note.fw) addBubble('iv','<span class="iv-who">🔍 面试官追问</span>'+esc(note.fw));
     advance();
   }
@@ -465,7 +490,11 @@ var FIX_PLAN={
   '嵌入式 Linux':['进程 / 线程与同步','字符设备驱动框架','设备树与平台驱动','交叉编译与调试'],
   '网络与协议':['TCP / UDP 与 socket 编程','三次握手 / 四次挥手','select / epoll 模型','粘包 / 拆包处理'],
   '数据结构与算法':['链表 / 栈 / 队列','排序与复杂度分析','递归与回溯','哈希与查找'],
-  'Git 与工具链':['Git 常用命令与分支管理','Makefile / CMake 构建','gdb 调试']
+  'Git 与工具链':['Git 常用命令与分支管理','Makefile / CMake 构建','gdb 调试'],
+  '代码判断':['数组越界与缓冲区溢出（strcpy/strncpy/snprintf）','指针与内存（野指针/悬空指针/重复 free）','未初始化/返回局部地址/除零等 C 陷阱'],
+  'Linux 命令':['文件与权限（chmod/chown/ls -l）','查找与过滤（find/grep/管道）','进程与调试（ps/top/kill/gdb/dmesg）','编译构建（gcc -Wall/-O2、Makefile、交叉编译）'],
+  '代码分析':['sizeof/strlen 与指针运算','结构体对齐与内存布局','宏与预处理陷阱','递归/循环/static 作用域'],
+  '代码写作':['字符串与内存操作（strlen/strcpy/反转/安全复制）','链表与指针操作','位操作与寄存器','二分查找/排序实现']
 };
 
 function renderReport(rep){

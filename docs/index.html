@@ -6,201 +6,303 @@
 <title>嵌入式面试 AI Agent · 网页版</title>
 <style>
   :root{
-    --bg:#0b1120; --bg2:#111a2e; --card:rgba(30,41,59,.6); --card2:rgba(15,23,42,.7);
-    --line:rgba(148,163,184,.15); --txt:#e2e8f0; --sub:#94a3b8;
-    --acc:#38bdf8; --acc2:#0ea5e9; --ok:#22c55e; --err:#ef4444; --warn:#f59e0b;
+    --bg:#070b14; --bg2:#0c1322; --panel:rgba(17,25,40,.72); --panel2:rgba(13,20,35,.85);
+    --line:rgba(148,163,184,.14); --txt:#e6edf7; --sub:#8ea0b8;
+    --acc:#38bdf8; --acc2:#6366f1; --ok:#34d399; --err:#f87171; --warn:#fbbf24;
     --r:16px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html,body{height:100%}
   body{
     font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;
-    color:var(--txt); background:var(--bg); min-height:100vh; line-height:1.6;
+    color:var(--txt);background:var(--bg);line-height:1.65;overflow-x:hidden;
     background-image:
-      radial-gradient(800px 400px at 15% -10%, rgba(56,189,248,.14), transparent 60%),
-      radial-gradient(700px 400px at 90% 0%, rgba(14,165,233,.10), transparent 60%),
-      radial-gradient(600px 500px at 50% 110%, rgba(34,211,238,.08), transparent 60%);
+      radial-gradient(900px 500px at 80% -10%, rgba(99,102,241,.16), transparent 60%),
+      radial-gradient(800px 500px at 0% 100%, rgba(56,189,248,.10), transparent 60%);
   }
+  ::-webkit-scrollbar{width:9px;height:9px}
+  ::-webkit-scrollbar-thumb{background:rgba(148,163,184,.25);border-radius:99px}
   ::selection{background:rgba(56,189,248,.3)}
-  .wrap{max-width:860px;margin:0 auto;padding:0 18px 70px}
 
-  /* Nav */
-  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(11,17,32,.7);border-bottom:1px solid var(--line)}
-  .nav-in{max-width:860px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
-  .logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px}
-  .logo .dot{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:grid;place-items:center;font-size:14px}
-  .nav-in a{color:var(--sub);font-size:13px;text-decoration:none;border:1px solid var(--line);padding:6px 13px;border-radius:999px;transition:.2s}
-  .nav-in a:hover{color:#fff;border-color:var(--acc)}
+  .app{display:flex;min-height:100vh}
 
-  /* Hero */
-  .hero{text-align:center;padding:46px 0 14px;animation:fadeUp .6s ease}
-  .hero .tag{display:inline-block;font-size:12px;color:var(--acc);border:1px solid rgba(56,189,248,.35);background:rgba(56,189,248,.08);padding:4px 13px;border-radius:999px;margin-bottom:16px}
-  .hero h1{font-size:34px;letter-spacing:.5px;background:linear-gradient(120deg,#fff,var(--acc));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .hero p{color:var(--sub);font-size:14px;margin-top:10px}
-  .stats{display:flex;justify-content:center;gap:14px;margin:26px 0 8px;flex-wrap:wrap}
-  .stat{min-width:110px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 18px;backdrop-filter:blur(8px)}
-  .stat b{display:block;font-size:26px;color:var(--acc);font-weight:800}
-  .stat span{font-size:12px;color:var(--sub)}
+  /* ===== Sidebar ===== */
+  .side{
+    width:238px;flex:none;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;
+    background:linear-gradient(180deg,rgba(13,20,35,.9),rgba(7,11,20,.95));
+    border-right:1px solid var(--line);backdrop-filter:blur(16px);z-index:40;
+  }
+  .side .logo{display:flex;align-items:center;gap:10px;padding:22px 20px 18px;font-weight:800;font-size:15.5px}
+  .side .logo .ic{width:34px;height:34px;border-radius:10px;flex:none;display:grid;place-items:center;font-size:17px;
+    background:linear-gradient(135deg,var(--acc),var(--acc2));box-shadow:0 6px 18px rgba(56,189,248,.35)}
+  .side .logo small{display:block;font-size:10.5px;color:var(--sub);font-weight:400;margin-top:1px}
+  .nav{flex:1;padding:8px 12px;display:flex;flex-direction:column;gap:4px}
+  .nav .grp{font-size:10.5px;color:#5b6b82;letter-spacing:1px;padding:14px 10px 6px;text-transform:uppercase}
+  .nav a{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:11px;color:var(--sub);
+    font-size:14px;cursor:pointer;text-decoration:none;transition:.18s;position:relative}
+  .nav a:hover{color:var(--txt);background:rgba(148,163,184,.08)}
+  .nav a.active{color:#fff;background:linear-gradient(90deg,rgba(56,189,248,.16),rgba(99,102,241,.10));
+    box-shadow:inset 0 0 0 1px rgba(56,189,248,.25)}
+  .nav a.active::before{content:"";position:absolute;left:0;top:22%;height:56%;width:3px;border-radius:99px;
+    background:linear-gradient(var(--acc),var(--acc2))}
+  .side-foot{padding:14px 16px;border-top:1px solid var(--line)}
+  .side-foot .mini{display:flex;justify-content:space-between;font-size:11.5px;color:var(--sub);margin-bottom:10px}
+  .side-foot .mini b{color:var(--acc)}
+  .side-foot .gh{display:block;text-align:center;font-size:12.5px;color:var(--txt);text-decoration:none;
+    padding:9px;border-radius:10px;border:1px solid var(--line);transition:.2s;background:rgba(148,163,184,.06)}
+  .side-foot .gh:hover{border-color:var(--acc);box-shadow:0 0 18px rgba(56,189,248,.25)}
 
-  /* Mode cards */
-  .modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:22px 0}
-  .mode{position:relative;overflow:hidden;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;cursor:pointer;transition:.25s;backdrop-filter:blur(8px)}
-  .mode:hover{transform:translateY(-3px);border-color:var(--acc);box-shadow:0 12px 32px rgba(56,189,248,.15)}
-  .mode .ic{font-size:26px;margin-bottom:8px}
-  .mode h3{font-size:16px;margin-bottom:4px}
+  /* ===== Main ===== */
+  .main{flex:1;min-width:0;padding:26px 30px 60px}
+  .view{max-width:840px;margin:0 auto;display:none;animation:fadeUp .45s ease}
+  .view.show{display:block}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  .hero{padding:10px 0 6px}
+  .hero .tag{display:inline-block;font-size:12px;color:var(--acc);border:1px solid rgba(56,189,248,.35);
+    background:rgba(56,189,248,.08);padding:4px 13px;border-radius:999px;margin-bottom:16px}
+  .hero h1{font-size:30px;letter-spacing:.5px;line-height:1.3;
+    background:linear-gradient(120deg,#fff 20%,var(--acc) 70%,var(--acc2));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p{color:var(--sub);font-size:14px;margin-top:10px;max-width:560px}
+
+  .dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:13px;margin:24px 0 26px}
+  .dstat{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;position:relative;overflow:hidden}
+  .dstat::after{content:"";position:absolute;right:-22px;top:-22px;width:70px;height:70px;border-radius:50%;
+    background:radial-gradient(circle,rgba(56,189,248,.18),transparent 70%)}
+  .dstat .lab{font-size:12px;color:var(--sub);display:flex;align-items:center;gap:6px}
+  .dstat b{display:block;font-size:24px;font-weight:800;color:#fff;margin-top:4px}
+  .dstat b em{font-style:normal;color:var(--acc)}
+
+  .modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+  .mode{position:relative;overflow:hidden;text-align:left;background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--r);padding:20px;cursor:pointer;transition:.25s}
+  .mode:hover{transform:translateY(-4px);border-color:var(--acc);box-shadow:0 14px 34px rgba(56,189,248,.14)}
+  .mode .ic{font-size:26px;margin-bottom:9px}
+  .mode h3{font-size:16px;margin-bottom:5px}
   .mode p{font-size:12.5px;color:var(--sub)}
-  .mode .go{position:absolute;right:16px;bottom:16px;color:var(--acc);font-size:18px;opacity:0;transition:.25s}
+  .mode .go{position:absolute;right:16px;bottom:14px;color:var(--acc);font-size:19px;opacity:0;transition:.25s}
   .mode:hover .go{opacity:1}
 
-  /* Chips */
-  .cats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:6px 0 30px}
-  .chip{background:var(--card);border:1px solid var(--line);color:var(--sub);border-radius:999px;padding:7px 15px;font-size:13px;cursor:pointer;transition:.2s}
+  .cats{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 6px}
+  .chip{background:var(--panel);border:1px solid var(--line);color:var(--sub);border-radius:999px;
+    padding:7px 15px;font-size:13px;cursor:pointer;transition:.2s}
   .chip:hover{color:#fff;border-color:var(--acc)}
-  .chip.active{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(56,189,248,.35)}
+  .chip.active{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-color:transparent;
+    box-shadow:0 4px 16px rgba(56,189,248,.35)}
 
-  /* Card */
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;backdrop-filter:blur(10px);animation:fadeUp .4s ease}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:26px;backdrop-filter:blur(12px)}
   .hidden{display:none!important}
 
-  /* Quiz */
-  .qbar{display:flex;align-items:center;gap:14px;margin-bottom:18px}
-  .qbar .meta{font-size:12px;color:var(--sub);white-space:nowrap}
+  /* quiz */
+  .qbar{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+  .qbar .meta{font-size:12.5px;color:var(--sub);white-space:nowrap}
   .track{flex:1;height:8px;background:rgba(148,163,184,.15);border-radius:99px;overflow:hidden}
-  .track>div{height:100%;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:99px;transition:width .4s ease}
-  .timer{font-size:13px;color:var(--sub);font-variant-numeric:tabular-nums}
-  .timer.warn{color:var(--err);font-weight:700}
-  .qtag{display:inline-block;font-size:11.5px;background:rgba(56,189,248,.12);color:var(--acc);border-radius:6px;padding:2px 9px;margin-bottom:10px}
-  .qtext{font-size:17px;line-height:1.75;margin-bottom:18px;font-weight:500}
+  .track>div{height:100%;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:99px;transition:width .4s}
+  .timer{font-size:13.5px;color:var(--sub);font-variant-numeric:tabular-nums;min-width:64px;text-align:right}
+  .timer.warn{color:var(--err);font-weight:800;animation:pulse .6s infinite alternate}
+  @keyframes pulse{from{opacity:1}to{opacity:.55}}
+  .qtag{display:inline-block;font-size:11.5px;background:rgba(99,102,241,.16);color:#a5b4fc;border-radius:7px;padding:3px 10px;margin-bottom:12px}
+  .qtext{font-size:17.5px;line-height:1.75;margin-bottom:20px;font-weight:500}
   .opts{display:flex;flex-direction:column;gap:10px}
-  .opt{display:flex;align-items:center;gap:12px;background:rgba(15,23,42,.55);border:1px solid var(--line);border-radius:12px;padding:13px 16px;cursor:pointer;transition:.18s;font-size:15px}
-  .opt .k{width:26px;height:26px;flex:none;border-radius:7px;background:rgba(148,163,184,.12);display:grid;place-items:center;font-size:13px;color:var(--sub)}
+  .opt{display:flex;align-items:center;gap:12px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;
+    padding:13px 16px;cursor:pointer;transition:.18s;font-size:15px}
+  .opt .k{width:27px;height:27px;flex:none;border-radius:8px;background:rgba(148,163,184,.13);display:grid;place-items:center;
+    font-size:13px;color:var(--sub);transition:.18s}
   .opt:hover{border-color:var(--acc);transform:translateX(3px)}
-  .opt.correct{border-color:var(--ok);background:rgba(34,197,94,.12)}
-  .opt.correct .k{background:var(--ok);color:#fff}
-  .opt.wrong{border-color:var(--err);background:rgba(239,68,68,.12)}
+  .opt:hover .k{background:rgba(56,189,248,.25);color:#fff}
+  .opt.correct{border-color:var(--ok);background:rgba(52,211,153,.10)}
+  .opt.correct .k{background:var(--ok);color:#062}
+  .opt.wrong{border-color:var(--err);background:rgba(248,113,113,.10)}
   .opt.wrong .k{background:var(--err);color:#fff}
   .opt.locked{pointer-events:none}
   .jbtn{display:flex;gap:12px}
-  .jbtn button{flex:1;padding:14px;border-radius:12px;font-size:16px;cursor:pointer;border:1px solid var(--line);background:rgba(15,23,42,.55);color:var(--txt);transition:.18s}
+  .jbtn button{flex:1;padding:14px;border-radius:12px;font-size:16px;cursor:pointer;border:1px solid var(--line);
+    background:var(--panel2);color:var(--txt);transition:.18s}
   .jbtn button:hover{border-color:var(--acc)}
   .jbtn button:disabled{opacity:.5;cursor:default}
-  textarea{width:100%;min-height:90px;background:rgba(15,23,42,.55);border:1px solid var(--line);border-radius:12px;color:var(--txt);padding:12px;font-size:14px;font-family:inherit;resize:vertical}
+  textarea{width:100%;min-height:90px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;
+    color:var(--txt);padding:12px;font-size:14px;font-family:inherit;resize:vertical;outline:none}
+  textarea:focus{border-color:var(--acc)}
   .grade{display:flex;gap:8px;justify-content:center;margin-top:12px}
-  .grade button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(15,23,42,.55);color:var(--txt);font-size:15px;cursor:pointer;transition:.15s}
+  .grade button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--panel2);
+    color:var(--txt);font-size:15px;cursor:pointer;transition:.15s}
   .grade button:hover{border-color:var(--acc)}
   .grade button.sel{background:var(--acc2);border-color:var(--acc2);color:#fff}
-  .feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-size:14px;line-height:1.8;animation:fadeUp .3s ease}
-  .feedback.ok{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.4)}
-  .feedback.no{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.4)}
-  .feedback b{font-size:14.5px}
+  .feedback{margin-top:16px;padding:14px 16px;border-radius:12px;font-size:14px;line-height:1.8;animation:fadeUp .3s}
+  .feedback.ok{background:rgba(52,211,153,.09);border:1px solid rgba(52,211,153,.35)}
+  .feedback.no{background:rgba(248,113,113,.09);border:1px solid rgba(248,113,113,.35)}
   .next{margin-top:18px;text-align:right}
   .btn{border:none;border-radius:11px;padding:11px 24px;font-size:15px;cursor:pointer;font-weight:600;transition:.2s}
-  .btn-p{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;box-shadow:0 6px 18px rgba(56,189,248,.3)}
-  .btn-p:hover{filter:brightness(1.1);transform:translateY(-1px)}
+  .btn-p{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;box-shadow:0 6px 20px rgba(56,189,248,.3)}
+  .btn-p:hover{filter:brightness(1.12);transform:translateY(-1px)}
   .btn-g{background:rgba(148,163,184,.12);color:var(--txt);border:1px solid var(--line)}
   .btn-g:hover{border-color:var(--acc)}
 
-  /* Result */
-  .res-wrap{display:flex;flex-direction:column;align-items:center;gap:18px;padding:14px 0}
-  .ring{--p:0;width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--acc) calc(var(--p)*1%),rgba(148,163,184,.12) 0);display:grid;place-items:center;position:relative;transition:.6s}
-  .ring::after{content:"";position:absolute;inset:12px;border-radius:50%;background:var(--bg2)}
+  /* result */
+  .res-wrap{display:flex;flex-direction:column;align-items:center;gap:20px;padding:12px 0}
+  .ring{--p:0;width:158px;height:158px;border-radius:50%;background:conic-gradient(var(--acc) calc(var(--p)*1%),rgba(148,163,184,.12) 0);
+    display:grid;place-items:center;position:relative;transition:.6s}
+  .ring::after{content:"";position:absolute;inset:13px;border-radius:50%;background:var(--bg2);box-shadow:inset 0 0 30px rgba(56,189,248,.08)}
   .ring .val{position:relative;z-index:2;text-align:center}
-  .ring .val b{font-size:32px;color:#fff}
+  .ring .val b{font-size:34px;color:#fff}
   .ring .val span{display:block;font-size:12px;color:var(--sub)}
-  .res-stats{display:flex;gap:22px;text-align:center}
-  .res-stats div b{display:block;font-size:22px}
+  .res-stats{display:flex;gap:26px;text-align:center}
+  .res-stats div b{display:block;font-size:22px;color:#fff}
   .res-stats div span{font-size:12px;color:var(--sub)}
   .res-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 
-  /* Weak */
-  .weak-list{display:flex;flex-direction:column;gap:16px;margin-top:8px}
+  /* weak */
+  .weak-list{display:flex;flex-direction:column;gap:16px;margin-top:10px}
   .weak-row .lbl{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
-  .weak-row .lbl span:first-child{color:var(--txt)}
   .weak-row .lbl span:last-child{color:var(--sub);font-variant-numeric:tabular-nums}
   .bar{height:12px;background:rgba(148,163,184,.12);border-radius:99px;overflow:hidden}
   .bar>div{height:100%;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:99px;transition:width 1s ease}
-  .tip{background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.25);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--sub);margin-top:18px;line-height:1.8}
+  .tip{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.3);border-radius:12px;padding:14px 16px;
+    font-size:13.5px;color:var(--sub);margin-top:20px;line-height:1.8}
 
-  /* footer */
-  footer{text-align:center;color:#475569;font-size:12px;margin-top:44px}
-  footer a{color:var(--acc);text-decoration:none}
+  /* bank */
+  .search{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:12px;color:var(--txt);
+    padding:12px 16px;font-size:14px;font-family:inherit;margin-bottom:14px;outline:none}
+  .search:focus{border-color:var(--acc)}
+  .bank-group{margin-bottom:18px}
+  .bank-group>h3{font-size:15px;color:#a5b4fc;margin-bottom:9px;display:flex;justify-content:space-between;align-items:baseline}
+  .bank-group>h3 span{font-size:12px;color:var(--sub);font-weight:400}
+  .bank-item{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:11px 14px;margin-bottom:8px;
+    cursor:pointer;font-size:14px;transition:.15s}
+  .bank-item:hover{border-color:var(--acc)}
+  .bank-item .detail{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);
+    font-size:13.5px;color:var(--sub);line-height:1.75}
+  .bank-item.open{border-color:var(--acc);background:rgba(56,189,248,.05)}
+  .bank-item.open .detail{display:block}
+  .bank-item .detail .ans{color:var(--ok);font-weight:600}
+  .bank-item .detail .exp{color:var(--txt)}
 
-  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  @media(max-width:560px){.hero h1{font-size:26px}.modes{grid-template-columns:1fr}}
+  .view-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .view-head h2{font-size:20px}
+  .bank-empty{color:var(--sub);text-align:center;padding:30px 0}
+
+  @media(max-width:820px){
+    .app{flex-direction:column}
+    .side{position:static;width:100%;height:auto;border-right:none;border-bottom:1px solid var(--line)}
+    .side .logo{padding:14px 16px 10px}
+    .nav{flex-direction:row;overflow-x:auto;padding:6px 10px 10px;gap:6px}
+    .nav .grp{display:none}
+    .nav a{white-space:nowrap;padding:9px 13px}
+    .nav a.active::before{display:none}
+    .side-foot{display:none}
+    .main{padding:20px 16px 50px}
+    .hero h1{font-size:24px}
+  }
 </style>
 </head>
 <body>
-<nav><div class="nav-in">
-  <div class="logo"><span class="dot">⚡</span>嵌入式面试 AI Agent</div>
-  <a href="https://github.com/AM10086/embedded-interview-agent" target="_blank">GitHub ⭐</a>
-</div></nav>
+<div class="app">
 
-<div class="wrap">
+  <!-- SIDEBAR -->
+  <aside class="side">
+    <div class="logo"><span class="ic">⚡</span><span>嵌入式面试 Agent<small>Embedded Interview AI</small></span></div>
+    <nav class="nav">
+      <div class="grp">Menu</div>
+      <a id="nav-home" class="active" onclick="go('home')">🏠 首页</a>
+      <a id="nav-practice" onclick="startQuiz('practice')">🧠 智能练习</a>
+      <a id="nav-mock" onclick="startQuiz('mock')">⏱️ 面试模拟</a>
+      <a id="nav-bank" onclick="go('bank')">📚 题库目录</a>
+      <a id="nav-weak" onclick="showWeak()">📊 薄弱点分析</a>
+    </nav>
+    <div class="side-foot">
+      <div class="mini"><span>📚 题库</span><b id="miniTotal">0</b></div>
+      <div class="mini"><span>🗂 分类</span><b id="miniCats">0</b></div>
+      <a class="gh" href="https://github.com/AM10086/embedded-interview-agent" target="_blank">⭐ Star on GitHub</a>
+    </div>
+  </aside>
 
-  <!-- HOME -->
-  <section id="home">
-    <div class="hero">
-      <div class="tag">🎯 求职冲刺 · 智能出题 · 薄弱点分析</div>
-      <h1>嵌入式面试 AI Agent</h1>
-      <p>按你的薄弱点智能出题 · 自动判分讲解 · 为工作与面试做好准备</p>
-      <div class="stats" id="stats"></div>
-    </div>
-    <div class="modes">
-      <div class="mode" onclick="startQuiz('practice')"><div class="ic">🧠</div><h3>智能练习</h3><p>按历史正确率加权出题，专攻薄弱点</p><span class="go">→</span></div>
-      <div class="mode" onclick="startQuiz('mock')"><div class="ic">⏱️</div><h3>面试模拟</h3><p>限时 60 秒/题，还原真实面试节奏</p><span class="go">→</span></div>
-      <div class="mode" onclick="showWeak()"><div class="ic">📊</div><h3>薄弱点分析</h3><p>查看各知识点正确率与建议</p><span class="go">→</span></div>
-    </div>
-    <div class="cats" id="cats"></div>
-  </section>
+  <!-- MAIN -->
+  <main class="main">
 
-  <!-- QUIZ -->
-  <section id="quiz" class="card hidden">
-    <div class="qbar">
-      <span class="meta" id="qMeta"></span>
-      <div class="track"><div id="pbar"></div></div>
-      <span class="timer" id="qTimer"></span>
-    </div>
-    <span class="qtag" id="qCat"></span>
-    <div class="qtext" id="qText"></div>
-    <div class="opts" id="qOpts"></div>
-    <div class="jbtn hidden" id="qJudge"></div>
-    <div class="hidden" id="qShort">
-      <textarea id="shortInput" placeholder="输入你的答案，尽量用要点作答..."></textarea>
-      <div class="grade" id="gradeBox"></div>
-    </div>
-    <div class="feedback hidden" id="feedback"></div>
-    <div class="next"><button class="btn btn-g" onclick="quitQuiz()" style="margin-right:10px">退出</button><button class="btn btn-p" id="nextBtn" onclick="next()" style="display:none">下一题 →</button></div>
-  </section>
-
-  <!-- RESULT -->
-  <section id="result" class="card hidden">
-    <div class="res-wrap">
-      <div class="ring" id="ring"><div class="val"><b id="rScore">0</b><span id="rPct"></span></div></div>
-      <div class="res-stats">
-        <div><b id="rCorrect">0</b><span>答对</span></div>
-        <div><b id="rTotal">0</b><span>总题数</span></div>
-        <div><b id="rStreak">0</b><span>最佳连续</span></div>
+    <!-- HOME -->
+    <section id="home" class="view show">
+      <div class="hero">
+        <span class="tag">🎯 求职冲刺 · 智能出题 · 面试模拟</span>
+        <h1>嵌入式面试 AI Agent</h1>
+        <p>按你的薄弱点智能出题 · 大厂审问式面试模拟 · 自动判分讲解，为工作与面试做好准备</p>
       </div>
-      <div class="res-actions">
-        <button class="btn btn-p" onclick="startQuiz('practice')">再来一轮</button>
-        <button class="btn btn-g" onclick="showWeak()">查看薄弱点</button>
-        <button class="btn btn-g" onclick="backHome()">返回首页</button>
+      <div class="dash" id="stats"></div>
+      <div class="modes">
+        <div class="mode" onclick="startQuiz('practice')"><div class="ic">🧠</div><h3>智能练习</h3><p>按历史正确率加权出题，专攻薄弱点</p><span class="go">→</span></div>
+        <div class="mode" onclick="startQuiz('mock')"><div class="ic">⏱️</div><h3>面试模拟</h3><p>限时 60 秒/题，还原真实面试节奏</p><span class="go">→</span></div>
+        <div class="mode" onclick="showWeak()"><div class="ic">📊</div><h3>薄弱点分析</h3><p>查看各知识点正确率与建议</p><span class="go">→</span></div>
+        <div class="mode" onclick="go('bank')"><div class="ic">📚</div><h3>题库目录</h3><p>按分类浏览全部题目，快速查阅</p><span class="go">→</span></div>
       </div>
-    </div>
-  </section>
+      <div class="cats" id="cats"></div>
+    </section>
 
-  <!-- WEAK -->
-  <section id="weak" class="card hidden">
-    <h2 style="font-size:18px;margin-bottom:6px">📊 薄弱点分析</h2>
-    <p style="color:var(--sub);font-size:13px;margin-bottom:14px">正确率从低到高 · 数据保存在本机浏览器</p>
-    <div class="weak-list" id="weakList"></div>
-    <div class="tip" id="weakTip"></div>
-    <div class="next"><button class="btn btn-g" onclick="backHome()">← 返回首页</button></div>
-  </section>
+    <!-- QUIZ -->
+    <section id="quiz" class="view">
+      <div class="card">
+        <div class="qbar">
+          <span class="meta" id="qMeta"></span>
+          <div class="track"><div id="pbar"></div></div>
+          <span class="timer" id="qTimer"></span>
+        </div>
+        <span class="qtag" id="qCat"></span>
+        <div class="qtext" id="qText"></div>
+        <div class="opts" id="qOpts"></div>
+        <div class="jbtn hidden" id="qJudge"></div>
+        <div class="hidden" id="qShort">
+          <textarea id="shortInput" placeholder="输入你的答案，尽量用要点作答..."></textarea>
+          <div class="grade" id="gradeBox"></div>
+        </div>
+        <div class="feedback hidden" id="feedback"></div>
+        <div class="next">
+          <button class="btn btn-g" onclick="quitQuiz()" style="margin-right:10px">退出</button>
+          <button class="btn btn-p" id="nextBtn" onclick="next()" style="display:none">下一题 →</button>
+        </div>
+      </div>
+    </section>
 
+    <!-- RESULT -->
+    <section id="result" class="view">
+      <div class="card">
+        <div class="res-wrap">
+          <div class="ring" id="ring"><div class="val"><b id="rScore">0</b><span id="rPct"></span></div></div>
+          <div class="res-stats">
+            <div><b id="rCorrect">0</b><span>答对</span></div>
+            <div><b id="rTotal">0</b><span>总题数</span></div>
+            <div><b id="rStreak">0</b><span>最佳连续</span></div>
+          </div>
+          <div class="res-actions">
+            <button class="btn btn-p" onclick="startQuiz('practice')">再来一轮</button>
+            <button class="btn btn-g" onclick="showWeak()">查看薄弱点</button>
+            <button class="btn btn-g" onclick="backHome()">返回首页</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WEAK -->
+    <section id="weak" class="view">
+      <div class="card">
+        <div class="view-head"><h2>📊 薄弱点分析</h2><button class="btn btn-g" onclick="backHome()">← 返回</button></div>
+        <p style="color:var(--sub);font-size:13px;margin-bottom:6px">正确率从低到高 · 数据保存在本机浏览器</p>
+        <div class="weak-list" id="weakList"></div>
+        <div class="tip" id="weakTip"></div>
+      </div>
+    </section>
+
+    <!-- BANK -->
+    <section id="bank" class="view">
+      <div class="view-head">
+        <h2>📚 题库目录</h2>
+        <button class="btn btn-g" onclick="backHome()">← 返回首页</button>
+      </div>
+      <input class="search" id="bankSearch" placeholder="🔍 输入关键词搜索题目（如：volatile / 信号量 / 设备树）..." oninput="renderBank()">
+      <div class="cats" id="bankCats"></div>
+      <div id="bankList"></div>
+    </section>
+
+  </main>
 </div>
-
-<footer>开源项目 · <a href="https://github.com/AM10086/embedded-interview-agent" target="_blank">github.com/AM10086/embedded-interview-agent</a> · 祝你面试顺利 🚀</footer>
 
 <script src="questions.js"></script>
 <script>
@@ -208,39 +310,58 @@ var QS = window.QUESTIONS || [];
 var CATS = [...new Set(QS.map(q => q.category))];
 var state = {mode:'practice', cat:'all', pool:[], idx:0, score:0, streak:0, best:0, timer:null, timeLeft:0};
 var current = null;
+var bankCat = 'all';
 
 /* ---------- storage ---------- */
 function stats(){ try{return JSON.parse(localStorage.getItem('agent_stats')||'{}');}catch(e){return {};} }
 function saveStats(s){ localStorage.setItem('agent_stats', JSON.stringify(s)); }
 function meta(){ try{return JSON.parse(localStorage.getItem('agent_meta')||'{}');}catch(e){return {};} }
 function saveMeta(m){ localStorage.setItem('agent_meta', JSON.stringify(m)); }
-function record(cat, ok){
-  var s = stats(); s[cat] = s[cat] || {correct:0,total:0}; s[cat].total++; if(ok) s[cat].correct++; saveStats(s);
-}
+function record(cat, ok){ var s=stats(); s[cat]=s[cat]||{correct:0,total:0}; s[cat].total++; if(ok) s[cat].correct++; saveStats(s); }
 function catWeight(c){ var s=stats()[c]; if(!s||!s.total) return 1; return 1+(1-s.correct/s.total)*2; }
+
+/* ---------- views ---------- */
+function show(id){ document.getElementById(id).classList.add('show'); }
+function hide(id){ document.getElementById(id).classList.remove('show'); }
+function setActive(navId){
+  ['home','practice','mock','bank','weak'].forEach(function(n){
+    var el=document.getElementById('nav-'+n); if(el) el.classList.toggle('active', n===navId);
+  });
+}
+function go(id){
+  ['home','quiz','result','weak','bank'].forEach(function(v){ hide(v); });
+  show(id);
+  var map={home:'home',bank:'bank',weak:'weak'};
+  setActive(map[id]||'home');
+  if(id==='home') init();
+  if(id==='bank'){ bankCat='all'; document.getElementById('bankSearch').value=''; renderBank(); }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function backHome(){ go('home'); }
 
 /* ---------- home ---------- */
 function init(){
-  var m = meta(), s = stats();
-  var done = 0; for(var c in s) done += s[c].total;
+  var m=meta(), s=stats(), done=0; for(var c in s) done+=s[c].total;
   document.getElementById('stats').innerHTML =
-    '<div class="stat"><b>'+QS.length+'</b><span>总题量</span></div>'+
-    '<div class="stat"><b>'+CATS.length+'</b><span>知识点</span></div>'+
-    '<div class="stat"><b>'+(m.best||0)+'</b><span>最佳成绩</span></div>'+
-    '<div class="stat"><b>'+done+'</b><span>累计练习</span></div>';
-  var chips = '<div class="chip active" onclick="setCat(this,\'all\')">全部 ('+QS.length+')</div>';
+    '<div class="dstat"><span class="lab">📚 总题量</span><b><em>'+QS.length+'</em></b></div>'+
+    '<div class="dstat"><span class="lab">🗂 知识点</span><b><em>'+CATS.length+'</em></b></div>'+
+    '<div class="dstat"><span class="lab">🏆 最佳成绩</span><b>'+(m.best||0)+'</b></div>'+
+    '<div class="dstat"><span class="lab">📈 累计练习</span><b>'+(done||0)+'</b></div>';
+  document.getElementById('miniTotal').textContent=QS.length;
+  document.getElementById('miniCats').textContent=CATS.length;
+  var chips='<div class="chip active" onclick="setCat(this,\'all\')">全部 ('+QS.length+')</div>';
   CATS.forEach(function(c){ var n=QS.filter(q=>q.category===c).length;
-    chips += '<div class="chip" onclick="setCat(this,\''+c+'\')">'+c+' ('+n+')</div>'; });
-  document.getElementById('cats').innerHTML = chips;
+    chips+='<div class="chip" onclick="setCat(this,\''+c+'\')">'+c+' ('+n+')</div>'; });
+  document.getElementById('cats').innerHTML=chips;
 }
-function setCat(el,c){ document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active')); el.classList.add('active'); state.cat=c; }
+function setCat(el,c){ document.querySelectorAll('#cats .chip').forEach(x=>x.classList.remove('active')); el.classList.add('active'); state.cat=c; }
 function shuffle(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
 function weightedPool(n){
   var pool = state.cat==='all' ? QS.slice() : QS.filter(q=>q.category===state.cat);
   if(!pool.length) return [];
-  var has = Object.keys(stats()).length>0;
+  var has=Object.keys(stats()).length>0;
   if(state.cat==='all' && has){
-    var w = pool.map(q=>catWeight(q.category)), tw = w.reduce((a,b)=>a+b,0), res=[];
+    var w=pool.map(q=>catWeight(q.category)), tw=w.reduce((a,b)=>a+b,0), res=[];
     for(var i=0;i<Math.min(n,pool.length);i++){
       var r=Math.random()*tw, acc=0, pick=pool[0];
       for(var j=0;j<pool.length;j++){ acc+=w[j]; if(r<=acc){pick=pool[j];break;} }
@@ -253,18 +374,19 @@ function weightedPool(n){
 
 /* ---------- quiz ---------- */
 function startQuiz(mode){
-  state.mode = mode; state.score=0; state.streak=0; state.best=0;
-  state.pool = weightedPool(10);
+  state.mode=mode; state.score=0; state.streak=0; state.best=0;
+  state.pool=weightedPool(10);
   if(!state.pool.length){ alert('该分类暂无题目'); return; }
-  show('quiz'); hide('home'); hide('result'); hide('weak');
+  ['home','result','weak','bank'].forEach(hide); show('quiz');
+  setActive(mode==='mock'?'mock':'practice');
   state.idx=0; showQuestion();
 }
 function showQuestion(){
-  current = state.pool[state.idx];
-  document.getElementById('qMeta').textContent = (state.idx+1)+' / '+state.pool.length;
-  document.getElementById('pbar').style.width = (state.idx/state.pool.length*100)+'%';
-  document.getElementById('qCat').textContent = '['+current.category+']';
-  document.getElementById('qText').textContent = current.question;
+  current=state.pool[state.idx];
+  document.getElementById('qMeta').textContent=(state.idx+1)+' / '+state.pool.length;
+  document.getElementById('pbar').style.width=(state.idx/state.pool.length*100)+'%';
+  document.getElementById('qCat').textContent='['+current.category+']';
+  document.getElementById('qText').textContent=current.question;
   var fb=document.getElementById('feedback'); fb.className='feedback hidden';
   document.getElementById('nextBtn').style.display='none';
   document.getElementById('qShort').classList.add('hidden');
@@ -293,37 +415,28 @@ function showQuestion(){
   if(state.mode==='mock'){ startTimer(); } else { document.getElementById('qTimer').textContent=''; }
   window.scrollTo({top:0,behavior:'smooth'});
 }
-function startTimer(){
-  state.timeLeft=60; tick();
-  clearInterval(state.timer);
-  state.timer=setInterval(tick,1000);
-}
+function startTimer(){ state.timeLeft=60; tick(); clearInterval(state.timer); state.timer=setInterval(tick,1000); }
 function tick(){
   var el=document.getElementById('qTimer');
   el.textContent='⏱ '+state.timeLeft+'s';
   el.classList.toggle('warn', state.timeLeft<=10);
-  if(state.timeLeft<=0){ clearInterval(state.timer); if(current && !current._answered) judgeTimeout(); }
+  if(state.timeLeft<=0){ clearInterval(state.timer); if(current && !current._answered) answer(-1); }
   state.timeLeft--;
 }
-function judgeTimeout(){ answer(-1); }
 function stopTimer(){ clearInterval(state.timer); }
-
 function submitShort(g){
-  var ok = g>=4;
+  var ok=g>=4;
   var fb=document.getElementById('feedback');
   fb.className='feedback '+(ok?'ok':'no');
   fb.innerHTML='<b>[参考答案]</b> '+(current.answer||'')+'<br><b>[讲解]</b> '+(current.explanation||'');
-  record(current.category, ok); state.score+=ok?1:0;
-  if(ok) state.streak++; else state.streak=0;
+  record(current.category,ok); state.score+=ok?1:0; if(ok) state.streak++; else state.streak=0;
   endCheck();
 }
 function answer(i){
-  if(current._answered) return; current._answered=true;
-  stopTimer();
+  if(current._answered) return; current._answered=true; stopTimer();
   var ok=false;
   if(current.type==='single'){
-    var letter='ABCD'[i];
-    if(i<0){ ok=false; } else { ok = letter===current.answer; }
+    var letter='ABCD'[i]; if(i>=0) ok=(letter===current.answer);
     document.querySelectorAll('#qOpts .opt').forEach(function(d,idx){
       d.classList.add('locked');
       if('ABCD'[idx]===current.answer) d.classList.add('correct');
@@ -337,39 +450,35 @@ function answer(i){
   fb.className='feedback '+(ok?'ok':'no');
   fb.innerHTML = ok ? '<b>✅ 正确</b><br>'+(current.explanation||'')
                     : '<b>❌ 正确答案：'+(current.answer||'')+'</b><br>'+(current.explanation||'');
-  record(current.category, ok);
-  state.score += ok?1:0;
-  state.streak = ok ? state.streak+1 : 0;
-  state.best = Math.max(state.best, state.streak);
+  record(current.category,ok);
+  state.score+=ok?1:0;
+  state.streak=ok?state.streak+1:0;
+  state.best=Math.max(state.best,state.streak);
   endCheck();
 }
 function endCheck(){
   document.getElementById('nextBtn').style.display='inline-block';
-  if(state.idx+1>=state.pool.length) document.getElementById('nextBtn').textContent='查看结果 🏁';
-  else document.getElementById('nextBtn').textContent='下一题 →';
+  document.getElementById('nextBtn').textContent = state.idx+1>=state.pool.length ? '查看结果 🏁' : '下一题 →';
 }
-function next(){
-  state.idx++;
-  if(state.idx>=state.pool.length){ endQuiz(); return; }
-  showQuestion();
-}
+function next(){ state.idx++; if(state.idx>=state.pool.length){ endQuiz(); return; } showQuestion(); }
 function endQuiz(){
   stopTimer();
   var m=meta(); m.best=Math.max(m.best||0,state.score); saveMeta(m);
   var pct=Math.round(state.score/state.pool.length*100);
   document.getElementById('ring').style.setProperty('--p', pct);
-  document.getElementById('rScore').textContent = pct+'%';
-  document.getElementById('rPct').textContent = state.score+' / '+state.pool.length;
-  document.getElementById('rCorrect').textContent = state.score;
-  document.getElementById('rTotal').textContent = state.pool.length;
-  document.getElementById('rStreak').textContent = state.best;
-  show('result'); hide('quiz');
+  document.getElementById('rScore').textContent=pct+'%';
+  document.getElementById('rPct').textContent=state.score+' / '+state.pool.length;
+  document.getElementById('rCorrect').textContent=state.score;
+  document.getElementById('rTotal').textContent=state.pool.length;
+  document.getElementById('rStreak').textContent=state.best;
+  ['home','quiz','weak','bank'].forEach(hide); show('result');
+  setActive('home');
 }
 function quitQuiz(){ stopTimer(); backHome(); }
 
 /* ---------- weak ---------- */
 function showWeak(){
-  show('weak'); hide('quiz'); hide('result'); hide('home');
+  ['home','quiz','result','bank'].forEach(hide); show('weak'); setActive('weak');
   var s=stats(), rows=[];
   for(var c in s) if(s[c].total>0) rows.push({c:c,rate:s[c].correct/s[c].total});
   rows.sort((a,b)=>a.rate-b.rate);
@@ -380,28 +489,49 @@ function showWeak(){
     '<div class="bar"><div data-w="'+p+'"></div></div></div>'; });
   document.getElementById('weakList').innerHTML=html;
   setTimeout(function(){ document.querySelectorAll('.bar>div').forEach(b=>b.style.width=b.getAttribute('data-w')+'%'); },100);
-  var worst = rows.length ? rows[0] : null;
-  var tip = worst
-    ? '💡 <b>建议：</b>你的最薄弱点是 <b style="color:var(--acc)">'+worst.c+'</b>（正确率 '+Math.round(worst.rate*100)+'%）。<br>'
-      + '先用"专项练习"锁定该分类刷 20 题，再配合 Python 版的 <b>AI 智能诊断</b>（需配置 API Key）获得针对性学习目标和面试建议。'
+  var worst=rows.length?rows[0]:null;
+  document.getElementById('weakTip').innerHTML = worst
+    ? '💡 <b>建议：</b>你的最薄弱点是 <b style="color:var(--acc)">'+worst.c+'</b>（正确率 '+Math.round(worst.rate*100)+'%）。<br>先用"智能练习"锁定该分类刷题，再配合 Python 版的 <b>AI 智能诊断</b>（需配置 API Key）获得针对性学习目标和面试建议。'
     : '💡 完成几轮练习后，这里会展示你的知识短板和针对性建议。';
-  document.getElementById('weakTip').innerHTML=tip;
 }
 
-/* ---------- nav ---------- */
-function show(id){ document.getElementById(id).classList.remove('hidden'); }
-function hide(id){ document.getElementById(id).classList.add('hidden'); }
-function backHome(){ show('home'); hide('quiz'); hide('result'); hide('weak'); init(); }
+/* ---------- bank ---------- */
+function renderBank(){
+  var kw=(document.getElementById('bankSearch').value||'').trim().toLowerCase();
+  var chips='<div class="chip'+(bankCat==='all'?' active':'')+'" onclick="bankSetCat(\'all\')">全部 ('+QS.length+')</div>';
+  CATS.forEach(function(c){ var n=QS.filter(q=>q.category===c).length;
+    chips+='<div class="chip'+(bankCat===c?' active':'')+'" onclick="bankSetCat(\''+c+'\')">'+c+' ('+n+')</div>'; });
+  document.getElementById('bankCats').innerHTML=chips;
+  var groups={};
+  QS.forEach(function(q){
+    if(bankCat!=='all' && q.category!==bankCat) return;
+    if(kw){ var hay=(q.question+' '+(q.explanation||'')).toLowerCase(); if(hay.indexOf(kw)<0) return; }
+    (groups[q.category]=groups[q.category]||[]).push(q);
+  });
+  var html='';
+  Object.keys(groups).forEach(function(c){
+    var items=groups[c];
+    html+='<div class="bank-group"><h3>'+c+' <span>'+items.length+' 题</span></h3>';
+    items.forEach(function(q){
+      html+='<div class="bank-item" onclick="toggleBank(this)"><div class="qt"><span>'+q.question+'</span></div>'+
+        '<div class="detail">'+(q.options?'<div style="margin-bottom:4px">'+q.options.join('<br>')+'</div>':'')+
+        '<div class="ans">答案：'+(q.answer||'')+'</div>'+
+        '<div class="exp" style="margin-top:4px">'+(q.explanation||'')+'</div></div></div>';
+    });
+    html+='</div>';
+  });
+  document.getElementById('bankList').innerHTML=html||'<div class="bank-empty">没有找到匹配的题目，换个关键词试试</div>';
+}
+function bankSetCat(c){ bankCat=c; renderBank(); }
+function toggleBank(el){ el.classList.toggle('open'); }
 
 /* keyboard */
 document.addEventListener('keydown',function(e){
-  if(document.getElementById('quiz').classList.contains('hidden')) return;
+  if(document.getElementById('quiz').classList.contains('show')===false) return;
   if(current && !current._answered && current.type==='single' && 'abcd'.indexOf(e.key.toLowerCase())>=0){
     answer('abcd'.indexOf(e.key.toLowerCase()));
   }
-  if(e.key==='Enter' && !document.getElementById('nextBtn').style.display==='none' && !document.getElementById('nextBtn').classList.contains('hidden')){
-    if(document.getElementById('nextBtn').style.display==='inline-block') next();
-  }
+  if(e.key==='Enter' && document.getElementById('nextBtn').style.display==='inline-block') next();
 });
 
 init();

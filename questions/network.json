@@ -1,116 +1,113 @@
-﻿{
-    "category":  "网络与协议",
-    "questions":  [
-                      {
-                          "type":  "single",
-                          "question":  "TCP 建立连接的三次握手顺序是？",
-                          "options":  [
-                                          "A. SYN → SYN+ACK → ACK",
-                                          "B. SYN → ACK → SYN",
-                                          "C. ACK → SYN → ACK",
-                                          "D. FIN → ACK → FIN"
-                                      ],
-                          "answer":  "A",
-                          "explanation":  "客户端发 SYN，服务端回 SYN+ACK，客户端再回 ACK，连接建立。"
-                      },
-                      {
-                          "type":  "single",
-                          "question":  "TCP 和 UDP 的主要区别？",
-                          "options":  [
-                                          "A. TCP 无连接，UDP 有连接",
-                                          "B. TCP 可靠有序，UDP 不可靠但快",
-                                          "C. 两者一样",
-                                          "D. UDP 保证不丢包"
-                                      ],
-                          "answer":  "B",
-                          "explanation":  "TCP 面向连接、可靠、有序、有流量/拥塞控制；UDP 无连接、尽力而为、开销小、低延迟。"
-                      },
-                      {
-                          "type":  "short",
-                          "question":  "什么是 TCP 粘包？如何解决？",
-                          "answer":  "TCP 是字节流，多个应用报文可能被合并/拆分，接收方无法区分边界（粘包/拆包）。解决：固定长度、分隔符、或自定义协议头（长度字段 + 校验）。",
-                          "explanation":  "嵌入式通信同理：你项目里的 UART 协议（帧头+长度+数据+校验和）就是解决边界问题。"
-                      },
-                      {
-                          "type":  "short",
-                          "question":  "如何设计一个可靠的串口（UART）通信协议？",
-                          "answer":  "帧格式：帧头（如 0xAA 0x55）+ 长度 + 命令/数据 + 校验和（或 CRC）+ 帧尾。接收端按状态机解析，校验失败丢弃或请求重发。",
-                          "explanation":  "对应你简历里的自定义串口协议（帧头+手势ID+置信度+校验和）。"
-                      },
-                      {
-                          "type":  "single",
-                          "question":  "MQTT 协议基于哪种传输层协议？",
-                          "options":  [
-                                          "A. UDP",
-                                          "B. TCP",
-                                          "C. ICMP",
-                                          "D. 直接基于 IP"
-                                      ],
-                          "answer":  "B",
-                          "explanation":  "MQTT 基于 TCP，采用发布/订阅模型，适合物联网低带宽场景。"
-                      },
-                      {
-                          "type":  "single",
-                          "question":  "网络字节序是大端还是小端？",
-                          "options":  [
-                                          "A. 大端",
-                                          "B. 小端",
-                                          "C. 由 CPU 决定",
-                                          "D. 随机"
-                                      ],
-                          "answer":  "A",
-                          "explanation":  "网络字节序统一为大端（big-endian），发送前用 htonl/htons 转换，接收用 ntohl/ntohs。"
-                      },
-                      {
-                          "type":  "short",
-                          "question":  "DHCP 的作用是什么？",
-                          "answer":  "动态主机配置协议：自动为设备分配 IP 地址、子网掩码、网关、DNS 等网络参数，无需手动配置。",
-                          "explanation":  "物联网设备接入局域网常用 DHCP 自动获取 IP。"
-                      },
-                      {
-                          "type":  "judge",
-                          "question":  "HTTP 基于 TCP，所以 HTTP 传输一定是可靠的。",
-                          "answer":  "对",
-                          "explanation":  "HTTP 跑在 TCP 之上，TCP 的可靠传输保证了 HTTP 数据不丢不错（但应用层超时/断连仍可能发生）。"
-                      },
-                      {
-                          "explanation":  "四层模型：应用层(HTTP/MQTT) → 传输层(TCP/UDP) → 网络层(IP) → 链路层(以太网/WiFi)。",
-                          "answer":  "A",
-                          "question":  "TCP/IP 四层模型从上到下是？",
-                          "type":  "single",
-                          "options":  [
-                                          "A. 应用层-传输层-网络层-链路层",
-                                          "B. 网络层-传输层-应用层-链路层",
-                                          "C. 应用层-网络层-传输层-链路层",
-                                          "D. 传输层-应用层-链路层-网络层"
-                                      ]
-                      },
-                      {
-                          "explanation":  "数据链路层靠 MAC 通信，所以要先知道目标 MAC。",
-                          "answer":  "ARP 把 IP 地址解析为 MAC 地址，用于同一局域网内的数据帧转发。发送方广播 ARP 请求，目标主机单播回复自己的 MAC。",
-                          "question":  "ARP 协议的作用是什么？",
-                          "type":  "short",
-                          "options":  [
-
-                                      ]
-                      },
-                      {
-                          "explanation":  "HTTP=80，HTTPS=443，FTP=21，SSH=22，DNS=53。",
-                          "answer":  "C",
-                          "question":  "以下哪个端口对应 HTTPS？",
-                          "type":  "single",
-                          "options":  [
-                                          "A. 21",
-                                          "B. 80",
-                                          "C. 443",
-                                          "D. 8080"
-                                      ]
-                      },
-                      {
-                          "explanation":  "TCP 是全双工协议，双方可同时发送数据。",
-                          "question":  "TCP 连接建立后，数据可以双向同时传输。",
-                          "type":  "judge",
-                          "answer":  "对"
-                      }
-                  ]
+{
+ "category": "网络与协议",
+ "questions": [
+  {
+   "explanation": "【解析】客户端发 SYN（我要连）→ 服务端回 SYN+ACK（收到，我也要连）→ 客户端回 ACK（确认）。双方确认收发能力后建立连接。【易错点】第三次 ACK 已可携带数据；握手失败常见原因是端口不通或半连接队列满。【面试追问】为什么不是两次？——两次无法确认双方收发都正常，三次最少。",
+   "answer": "A",
+   "question": "TCP 建立连接的三次握手顺序是？",
+   "type": "single",
+   "options": [
+    "A. SYN → SYN+ACK → ACK",
+    "B. SYN → ACK → SYN",
+    "C. ACK → SYN → ACK",
+    "D. FIN → ACK → FIN"
+   ]
+  },
+  {
+   "explanation": "【解析】TCP 面向连接、可靠、有序、有流量/拥塞控制，开销大；UDP 无连接、尽力而为、头部小、低延迟，适合实时音视频/传感器上报。【易错点】UDP 不保证不丢、不保证顺序，应用层要自己处理；MQTT 基于 TCP 保证可靠。【面试追问】你的设备上报数据选 TCP 还是 UDP？——对可靠性要求高选 TCP（MQTT），实时性强可容忍丢包选 UDP。",
+   "answer": "B",
+   "question": "TCP 和 UDP 的主要区别？",
+   "type": "single",
+   "options": [
+    "A. TCP 无连接，UDP 有连接",
+    "B. TCP 可靠有序，UDP 不可靠但快",
+    "C. 两者一样",
+    "D. UDP 保证不丢包"
+   ]
+  },
+  {
+   "explanation": "【解析】粘包是字节流协议的边界问题，不是 TCP 缺陷。解决思路：①固定长度；②分隔符（如 \\\\r\\\\n）；③协议头带长度字段+校验。【易错点】嵌入式串口/网络通信同样存在，要写状态机解析完整帧再处理。【面试追问】你的 UART 协议（帧头+ID+校验和）怎么防粘包？——按帧头定位、按长度收够、校验和验错、不对就丢弃。",
+   "question": "什么是 TCP 粘包？如何解决？",
+   "type": "short",
+   "answer": "TCP 是字节流，多个应用报文可能被合并/拆分，接收方无法区分边界（粘包/拆包）。解决：固定长度、分隔符、或自定义协议头（长度字段 + 校验）。"
+  },
+  {
+   "explanation": "【解析】可靠协议三要素：边界（帧头/帧尾/长度）、完整性（校验和/CRC）、容错（超时、重发、状态机复位）。【易错点】校验和只能防随机错误，不防丢帧/乱序，必要时加序号和重传机制。【面试追问】你项目里怎么设计的？——帧头+手势ID+置信度+校验和，OpenMV 与 STM32 状态机解析。",
+   "question": "如何设计一个可靠的串口（UART）通信协议？",
+   "type": "short",
+   "answer": "帧格式：帧头（如 0xAA 0x55）+ 长度 + 命令/数据 + 校验和（或 CRC）+ 帧尾。接收端按状态机解析，校验失败丢弃或请求重发。"
+  },
+  {
+   "explanation": "【解析】MQTT 基于 TCP，采用发布/订阅模型，支持 QoS 等级，适合物联网低带宽场景。【易错点】MQTT 的 broker（服务器）负责消息路由；QoS 越高越可靠但开销越大。【面试追问】你的物联网项目用 MQTT 做什么？——设备上报传感器数据、订阅控制指令，通过 broker 解耦。",
+   "answer": "B",
+   "question": "MQTT 协议基于哪种传输层协议？",
+   "type": "single",
+   "options": [
+    "A. UDP",
+    "B. TCP",
+    "C. ICMP",
+    "D. 直接基于 IP"
+   ]
+  },
+  {
+   "explanation": "【解析】网络字节序统一为大端（big-endian）。发送前用 htonl/htons 把主机序转网络序，接收用 ntohl/ntohs。【易错点】x86/ARM 默认小端，直接收发多字节数据会字节错乱；结构体直接网络传输还涉及对齐。【面试追问】自定义协议怎么定字节序？——协议规范里统一用网络序（大端）。",
+   "answer": "A",
+   "question": "网络字节序是大端还是小端？",
+   "type": "single",
+   "options": [
+    "A. 大端",
+    "B. 小端",
+    "C. 由 CPU 决定",
+    "D. 随机"
+   ]
+  },
+  {
+   "explanation": "【解析】DHCP 四步：Discover → Offer → Request → ACK（DORA）。设备接入即自动获得网络配置。【易错点】嵌入式设备固定 IP 场景要静态配置；DHCP 获取失败要设超时回退。【面试追问】你的开发板怎么联网调试？——DHCP 自动获取 IP，或静态配 IP 通过 SSH/串口调试。",
+   "question": "DHCP 的作用是什么？",
+   "type": "short",
+   "answer": "动态主机配置协议：自动为设备分配 IP 地址、子网掩码、网关、DNS 等网络参数，无需手动配置。"
+  },
+  {
+   "explanation": "【解析】HTTP 跑在 TCP 之上，TCP 的确认重传保证了字节流不丢不错，所以 HTTP 数据是可靠到达的。【易错点】'可靠'指传输层不丢包，不代表应用一定成功（如服务器返回 500）；HTTP/3 改用 QUIC（基于 UDP）。【面试追问】HTTPS 比 HTTP 多做了什么？——TLS 加密+证书校验，防窃听防篡改。",
+   "question": "HTTP 基于 TCP，所以 HTTP 传输一定是可靠的。",
+   "type": "judge",
+   "answer": "对"
+  },
+  {
+   "explanation": "【解析】四层：应用层(HTTP/MQTT/DNS) → 传输层(TCP/UDP/端口) → 网络层(IP/路由) → 链路层(以太网/MAC/ARP)。【易错点】OSI 七层是参考模型，实际 TCP/IP 用四层；封装是逐层加头。【面试追问】数据发送时各层加什么？——传输层加端口、网络层加 IP、链路层加 MAC。",
+   "answer": "A",
+   "question": "TCP/IP 四层模型从上到下是？",
+   "type": "single",
+   "options": [
+    "A. 应用层-传输层-网络层-链路层",
+    "B. 网络层-传输层-应用层-链路层",
+    "C. 应用层-网络层-传输层-链路层",
+    "D. 传输层-应用层-链路层-网络层"
+   ]
+  },
+  {
+   "explanation": "【解析】二层帧靠 MAC 转发，所以要知道目标 MAC。ARP 请求广播、响应单播，结果缓存在 ARP 表。【易错点】ARP 只在同一网段内有效，跨网段靠网关转发；ARP 欺骗是常见安全风险。【面试追问】ping 不通但 IP 能通？——反过来想：先查 ARP 表是否解析到 MAC。",
+   "question": "ARP 协议的作用是什么？",
+   "type": "short",
+   "answer": "ARP 把 IP 地址解析为 MAC 地址，用于同一局域网内的数据帧转发。发送方广播 ARP 请求，目标主机单播回复自己的 MAC。"
+  },
+  {
+   "explanation": "【解析】HTTP=80、HTTPS=443、FTP=21、SSH=22、DNS=53。【易错点】端口号 0-1023 是知名端口；HTTPS 是 HTTP+TLS。【面试追问】设备 OTA 走 HTTPS 有什么好处？——加密防篡改、证书校验防中间人。",
+   "answer": "C",
+   "question": "以下哪个端口对应 HTTPS？",
+   "type": "single",
+   "options": [
+    "A. 21",
+    "B. 80",
+    "C. 443",
+    "D. 8080"
+   ]
+  },
+  {
+   "explanation": "【解析】TCP 是全双工协议，双方可同时发送和接收数据（两个独立方向的字节流）。【易错点】半双工协议（如 I2C）同一时刻只能一个方向；全双工（TCP、SPI）可同时双向。【面试追问】全双工对嵌入式有什么意义？——设备可同时上报数据又接收指令，交互更实时。",
+   "question": "TCP 连接建立后，数据可以双向同时传输。",
+   "type": "judge",
+   "answer": "对"
+  }
+ ]
 }

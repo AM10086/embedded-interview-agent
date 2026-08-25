@@ -1,113 +1,107 @@
-﻿{
-    "category":  "嵌入式 Linux",
-    "questions":  [
-                      {
-                          "type":  "short",
-                          "question":  "设备树（Device Tree）是什么？有什么作用？",
-                          "answer":  "设备树是一种描述硬件信息的数据结构（dts/dtsi 编译成 dtb），内核启动时解析它来知道有哪些设备、资源地址、中断号等，实现内核与硬件配置解耦。",
-                          "explanation":  "对应你实习的 6818 平台：改硬件配置通常改设备树 + 编译 dtb，不必重新编译内核。"
-                      },
-                      {
-                          "type":  "single",
-                          "question":  "在 x86 主机上编译 ARM 目标程序的过程叫？",
-                          "options":  [
-                                          "A. 本地编译",
-                                          "B. 交叉编译",
-                                          "C. 动态编译",
-                                          "D. 即时编译"
-                                      ],
-                          "answer":  "B",
-                          "explanation":  "交叉编译 = 在一种架构上编译另一种架构的程序，需要交叉工具链（arm-linux-gnueabihf-gcc 等）。"
-                      },
-                      {
-                          "type":  "short",
-                          "question":  "Linux 字符设备驱动的基本框架？",
-                          "answer":  "① 注册设备号（register_chrdev）；② 实现 file_operations（open/read/write/ioctl）；③ 初始化/退出函数（module_init/module_exit）；④ 创建设备节点（mknod 或自动创建）。",
-                          "explanation":  "了解框架即可，重点说清楚 file_operations 和模块加载。"
-                      },
-                      {
-                          "type":  "single",
-                          "question":  "文件 I/O（read/write）与标准 I/O（fread/fwrite）的区别？",
-                          "options":  [
-                                          "A. 没有区别",
-                                          "B. 文件 I/O 是系统调用无缓冲，标准 I/O 有用户态缓冲",
-                                          "C. 标准 I/O 更慢",
-                                          "D. 文件 I/O 有缓冲"
-                                      ],
-                          "answer":  "B",
-                          "explanation":  "read/write 直接进内核（无缓冲），fread/fwrite 有 stdio 缓冲，适合大量小数据。"
-                      },
-                      {
-                          "type":  "short",
-                          "question":  "多线程和多进程有什么区别？如何选择？",
-                          "answer":  "进程资源隔离、开销大、通信靠 IPC；线程共享地址空间、开销小、通信方便但需同步保护。嵌入式里频繁协作选线程，强隔离选进程。",
-                          "explanation":  "对应你实习项目：手势识别/UI/控制用多线程 + 信号量/消息队列同步。"
-                      },
-                      {
-                          "type":  "single",
-                          "question":  "以下哪个不是 Linux 进程间通信（IPC）方式？",
-                          "options":  [
-                                          "A. 管道",
-                                          "B. 共享内存",
-                                          "C. 消息队列",
-                                          "D. GPIO"
-                                      ],
-                          "answer":  "D",
-                          "explanation":  "IPC 包括管道、信号、共享内存、消息队列、信号量、Socket 等；GPIO 是硬件接口不是 IPC。"
-                      },
-                      {
-                          "type":  "short",
-                          "question":  "嵌入式 Linux 系统移植大概包括哪些步骤？",
-                          "answer":  "① 交叉编译工具链；② Bootloader（U-Boot）移植；③ 内核配置/裁剪/编译；④ 设备树适配；⑤ 根文件系统构建（BusyBox）；⑥ 烧录与调试。",
-                          "explanation":  "对应你实习的 Cortex-A53 板级移植。"
-                      },
-                      {
-                          "type":  "judge",
-                          "question":  "修改设备树（dts）后，必须重新编译整个内核才能生效。",
-                          "answer":  "错",
-                          "explanation":  "只需重新编译设备树生成 dtb（或单独编译 dtb），无需重编内核。"
-                      },
-                      {
-                          "explanation":  "644 = 所有者 rw-（6），组 r--（4），其他 r--（4）。常见的文件默认权限。",
-                          "answer":  "A",
-                          "question":  "Linux 中 chmod 644 表示什么权限？",
-                          "type":  "single",
-                          "options":  [
-                                          "A. 所有者可读写，组和其他可读",
-                                          "B. 所有人可读写执行",
-                                          "C. 所有者可执行",
-                                          "D. 组可写"
-                                      ]
-                      },
-                      {
-                          "explanation":  "嵌入式 Linux 调试必会的基础命令。",
-                          "answer":  "进程：ps / top / htop；内存：free -h；磁盘：df -h；端口：netstat -tulnp / ss。",
-                          "question":  "查看系统进程、内存、磁盘的命令分别是什么？",
-                          "type":  "short",
-                          "options":  [
-
-                                      ]
-                      },
-                      {
-                          "explanation":  "硬链接是同一 inode 的多个名字（引用计数），软链接是独立文件存目标路径，可跨文件系统、可指向目录。",
-                          "answer":  "B",
-                          "question":  "软链接（symbolic link）和硬链接（hard link）的区别？",
-                          "type":  "single",
-                          "options":  [
-                                          "A. 两者完全一样",
-                                          "B. 软链接可跨文件系统且指向路径，硬链接指向 inode 不能跨文件系统",
-                                          "C. 硬链接可以指向目录",
-                                          "D. 软链接删除后原文件也删除"
-                                      ]
-                      },
-                      {
-                          "explanation":  "嵌入式常因体积和部署简单选静态库，桌面/服务器多用动态库。",
-                          "answer":  "静态库编译时链接进可执行文件，体积大、部署简单；动态库运行时加载，多个程序共享一份，省内存、更新方便，但有依赖问题。",
-                          "question":  "静态库（.a）和动态库（.so）有什么区别？",
-                          "type":  "short",
-                          "options":  [
-
-                                      ]
-                      }
-                  ]
+{
+ "category": "嵌入式 Linux",
+ "questions": [
+  {
+   "explanation": "【解析】设备树把'硬件长什么样'从内核源码里剥离出来：改硬件（换芯片、改引脚）改 dts 编译 dtb 即可，不用重编内核。【易错点】设备树描述硬件，不是设备驱动逻辑；dtb 要随内核一起烧录。【面试追问】你的 6818 实习里设备树做了什么？——适配 LCD、触摸屏、串口等外设节点。",
+   "question": "设备树（Device Tree）是什么？有什么作用？",
+   "type": "short",
+   "answer": "设备树是一种描述硬件信息的数据结构（dts/dtsi 编译成 dtb），内核启动时解析它来知道有哪些设备、资源地址、中断号等，实现内核与硬件配置解耦。"
+  },
+  {
+   "explanation": "【解析】交叉编译 = 在一种架构（x86 主机）上编译另一种架构（ARM 目标板）的程序，需要交叉工具链如 arm-linux-gnueabihf-gcc。【易错点】交叉编译出来的程序只能在目标架构上运行；动态库也要是目标架构的。【面试追问】你实习的交叉编译流程？——装工具链 → 配环境变量 → make 生成 ARM 可执行文件 → 通过网络/串口传到开发板运行。",
+   "answer": "B",
+   "question": "在 x86 主机上编译 ARM 目标程序的过程叫？",
+   "type": "single",
+   "options": [
+    "A. 本地编译",
+    "B. 交叉编译",
+    "C. 动态编译",
+    "D. 即时编译"
+   ]
+  },
+  {
+   "explanation": "【解析】字符设备按字节流访问：核心是 file_operations 结构体里的回调函数，用户层 open/read/write 会映射到这些回调。【易错点】驱动跑在内核态，不能用用户态库函数（printf 用 printk）；要处理并发访问（信号量/互斥）。【面试追问】你实习写的 LCD 驱动属于哪类？——字符设备，实现了显示相关 ioctl 或 mmap。",
+   "question": "Linux 字符设备驱动的基本框架？",
+   "type": "short",
+   "answer": "① 注册设备号（register_chrdev）；② 实现 file_operations（open/read/write/ioctl）；③ 初始化/退出函数（module_init/module_exit）；④ 创建设备节点（mknod 或自动创建）。"
+  },
+  {
+   "explanation": "【解析】read/write 直接进内核（无用户态缓冲），每次调用都有系统调用开销；fread/fwrite 有 stdio 缓冲，攒一批再进内核。【易错点】频繁小数据读写用标准 I/O 更快，大数据流式读写直接 read/write 更可控。【面试追问】嵌入式里串口/网络读写用哪种？——常用 read/write 直接操作，因为要控制时序和超时。",
+   "answer": "B",
+   "question": "文件 I/O（read/write）与标准 I/O（fread/fwrite）的区别？",
+   "type": "single",
+   "options": [
+    "A. 没有区别",
+    "B. 文件 I/O 是系统调用无缓冲，标准 I/O 有用户态缓冲",
+    "C. 标准 I/O 更慢",
+    "D. 文件 I/O 有缓冲"
+   ]
+  },
+  {
+   "explanation": "【解析】进程是资源分配单位，线程是调度单位。线程共享全局变量（方便也危险，需要锁），进程隔离（一个崩了不影响其他）。【易错点】多线程共享数据不保护 = 数据竞争；多进程共享数据要 IPC（共享内存/消息队列）。【面试追问】你实习项目为什么用多线程？——手势识别/UI/设备控制需要高频协作共享状态，线程更轻。",
+   "question": "多线程和多进程有什么区别？如何选择？",
+   "type": "short",
+   "answer": "进程资源隔离、开销大、通信靠 IPC；线程共享地址空间、开销小、通信方便但需同步保护。嵌入式里频繁协作选线程，强隔离选进程。"
+  },
+  {
+   "explanation": "【解析】IPC 包括：管道、信号、共享内存、消息队列、信号量、Socket；GPIO 是硬件接口不是 IPC。【易错点】消息队列既是 RTOS 概念也是 Linux IPC，别混淆；Socket 既能本机 IPC 也能跨网络。【面试追问】共享内存和消息队列怎么选？——共享内存快但需同步，消息队列有内核缓冲、自带同步。",
+   "answer": "D",
+   "question": "以下哪个不是 Linux 进程间通信（IPC）方式？",
+   "type": "single",
+   "options": [
+    "A. 管道",
+    "B. 共享内存",
+    "C. 消息队列",
+    "D. GPIO"
+   ]
+  },
+  {
+   "explanation": "【解析】移植 = 让一套 Linux 跑在特定硬件上。核心是引导链：Bootloader → 内核 → 根文件系统 → 应用。【易错点】内核裁剪要保留所需驱动；根文件系统要含运行时库和工具；烧录方式有 SD/TFTP/串口。【面试追问】你实习做了哪些？——环境搭建、Cortex-A53 板级移植、SecureCRT 调试、LCD/触摸屏驱动。",
+   "question": "嵌入式 Linux 系统移植大概包括哪些步骤？",
+   "type": "short",
+   "answer": "① 交叉编译工具链；② Bootloader（U-Boot）移植；③ 内核配置/裁剪/编译；④ 设备树适配；⑤ 根文件系统构建（BusyBox）；⑥ 烧录与调试。"
+  },
+  {
+   "explanation": "【解析】只需重新编译设备树生成 dtb（或单独编译 dtb）并更新到启动分区即可，无需重编内核。【易错点】dtb 要和内核版本匹配；改 dts 不重编内核是设备树的核心优势。【面试追问】怎么单独编译 dtb？——dtc 工具或内核 make dtbs 目标。",
+   "question": "修改设备树（dts）后，必须重新编译整个内核才能生效。",
+   "type": "judge",
+   "answer": "错"
+  },
+  {
+   "explanation": "【解析】三位数字分别表示所有者/组/其他：6=rw(4+2)，4=r。644 = 所有者可读写、组和其他只读。【易错点】权限位：r=4、w=2、x=1；755 是常见可执行文件权限。【面试追问】脚本文件执行不了先查什么？——是否有 x 权限、shebang 是否正确。",
+   "answer": "A",
+   "question": "Linux 中 chmod 644 表示什么权限？",
+   "type": "single",
+   "options": [
+    "A. 所有者可读写，组和其他可读",
+    "B. 所有人可读写执行",
+    "C. 所有者可执行",
+    "D. 组可写"
+   ]
+  },
+  {
+   "explanation": "【解析】ps 静态快照、top 动态刷新；free 看物理内存和 swap；df 看文件系统占用；netstat/ss 看端口监听。【易错点】嵌入式板子资源紧张，top/df 是排查内存和 flash 占用的第一工具。【面试追问】怎么找哪个进程占 CPU 最高？——top 按 P 排序（CPU），按 M 排序（内存）。",
+   "question": "查看系统进程、内存、磁盘的命令分别是什么？",
+   "type": "short",
+   "answer": "进程：ps / top / htop；内存：free -h；磁盘：df -h；端口：netstat -tulnp / ss。"
+  },
+  {
+   "explanation": "【解析】硬链接 = 同一 inode 的多个名字（引用计数+1），不能跨文件系统、不能指向目录；软链接 = 存目标路径的独立小文件，可跨文件系统、可指向目录。【易错点】删原文件：硬链接的另一个名字仍有效，软链接失效（悬空链接）。【面试追问】嵌入式里常把库做成软链接（libc.so → libc.so.6），为什么？——方便版本切换。",
+   "answer": "B",
+   "question": "软链接（symbolic link）和硬链接（hard link）的区别？",
+   "type": "single",
+   "options": [
+    "A. 两者完全一样",
+    "B. 软链接可跨文件系统且指向路径，硬链接指向 inode 不能跨文件系统",
+    "C. 硬链接可以指向目录",
+    "D. 软链接删除后原文件也删除"
+   ]
+  },
+  {
+   "explanation": "【解析】静态库把目标代码拷进可执行文件（部署简单但每个程序都带一份）；动态库在运行时由动态链接器加载（共享、省内存，但缺库就跑不了）。【易错点】交叉编译时动态库必须是目标架构的；嵌入式精简系统常全静态编译避免依赖问题。【面试追问】你嵌入式里偏好哪种？——资源紧张/部署简单选静态；多个应用共享选动态。",
+   "question": "静态库（.a）和动态库（.so）有什么区别？",
+   "type": "short",
+   "answer": "静态库编译时链接进可执行文件，体积大、部署简单；动态库运行时加载，多个程序共享一份，省内存、更新方便，但有依赖问题。"
+  }
+ ]
 }

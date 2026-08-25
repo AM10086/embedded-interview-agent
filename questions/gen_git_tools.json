@@ -5,481 +5,481 @@
    "type": "single",
    "question": "下列哪个概念是指：分布式版本控制系统，跟踪文件变更并支持协作？",
    "options": [
-    "A. Git",
-    "B. 函数指针",
-    "C. 内核",
-    "D. 波特率"
+    "A. 交叉工具链",
+    "B. 低功耗Tickless",
+    "C. Git",
+    "D. 仓库"
    ],
-   "answer": "A",
-   "explanation": "Git：分布式版本控制系统，跟踪文件变更并支持协作"
+   "answer": "C",
+   "explanation": "【解析】Git 是指：分布式版本控制系统，跟踪文件变更并支持协作。干扰项辨析：交叉工具链、低功耗Tickless、仓库 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：Git 的含义是“分布式版本控制系统，跟踪文件变更并支持协作”。",
    "answer": "对",
-   "explanation": "正确。Git：分布式版本控制系统，跟踪文件变更并支持协作"
+   "explanation": "【解析】判断正确。Git 的定义：分布式版本控制系统，跟踪文件变更并支持协作。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：Git 的含义是“硬件计数装置，可产生定时中断、PWM、输入捕获等”。",
+   "question": "判断：Git 的含义是“指向整个数组的指针，如 int (*p)[5]，步长为整个数组大小”。",
    "answer": "错",
-   "explanation": "错误。“硬件计数装置，可产生定时中断、PWM、输入捕获等”描述的是 定时器。Git 的正确含义是：分布式版本控制系统，跟踪文件变更并支持协作"
+   "explanation": "【解析】判断错误。题干描述“指向整个数组的指针，如 int (*p)[5]，步长为整个数组大小”指的是 数组指针，不是 Git。Git 的正确含义是：分布式版本控制系统，跟踪文件变更并支持协作。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：Git 保存版本历史的地方，含 .git 目录？",
    "options": [
-    "A. 仓库",
-    "B. 图",
-    "C. 交叉编译",
-    "D. 归并排序"
+    "A. 上下文切换",
+    "B. 仓库",
+    "C. 块设备",
+    "D. 二叉树"
    ],
-   "answer": "A",
-   "explanation": "仓库：Git 保存版本历史的地方，含 .git 目录"
+   "answer": "B",
+   "explanation": "【解析】仓库 是指：Git 保存版本历史的地方，含 .git 目录。干扰项辨析：上下文切换、块设备、二叉树 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：仓库 的含义是“Git 保存版本历史的地方，含 .git 目录”。",
    "answer": "对",
-   "explanation": "正确。仓库：Git 保存版本历史的地方，含 .git 目录"
+   "explanation": "【解析】判断正确。仓库 的定义：Git 保存版本历史的地方，含 .git 目录。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：仓库 的含义是“外设寄存器在内存中的地址布局，通过地址访问外设”。",
+   "question": "判断：仓库 的含义是“数组的数组，按行优先连续存储”。",
    "answer": "错",
-   "explanation": "错误。“外设寄存器在内存中的地址布局，通过地址访问外设”描述的是 寄存器映射。仓库 的正确含义是：Git 保存版本历史的地方，含 .git 目录"
+   "explanation": "【解析】判断错误。题干描述“数组的数组，按行优先连续存储”指的是 二维数组，不是 仓库。仓库 的正确含义是：Git 保存版本历史的地方，含 .git 目录。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：把暂存区内容保存为一个版本快照？",
    "options": [
-    "A. 字符设备",
-    "B. typedef",
-    "C. 堆heap",
-    "D. 提交commit"
+    "A. 三次握手",
+    "B. 提交commit",
+    "C. 选择排序",
+    "D. 信号"
    ],
-   "answer": "D",
-   "explanation": "提交commit：把暂存区内容保存为一个版本快照"
+   "answer": "B",
+   "explanation": "【解析】提交commit 是指：把暂存区内容保存为一个版本快照。干扰项辨析：三次握手、选择排序、信号 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：提交commit 的含义是“把暂存区内容保存为一个版本快照”。",
    "answer": "对",
-   "explanation": "正确。提交commit：把暂存区内容保存为一个版本快照"
+   "explanation": "【解析】判断正确。提交commit 的定义：把暂存区内容保存为一个版本快照。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：提交commit 的含义是“低速短距离无线 Mesh 网络协议，适合智能家居”。",
+   "question": "判断：提交commit 的含义是“自动分配释放的内存区，后进先出，存局部变量和返回地址，速度快空间有限”。",
    "answer": "错",
-   "explanation": "错误。“低速短距离无线 Mesh 网络协议，适合智能家居”描述的是 ZigBee。提交commit 的正确含义是：把暂存区内容保存为一个版本快照"
+   "explanation": "【解析】判断错误。题干描述“自动分配释放的内存区，后进先出，存局部变量和返回地址，速度快空间有限”指的是 栈stack，不是 提交commit。提交commit 的正确含义是：把暂存区内容保存为一个版本快照。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：独立的开发线，默认主分支 main？",
    "options": [
-    "A. 位域",
-    "B. 状态机",
-    "C. LoRa",
-    "D. 分支"
+    "A. 分支",
+    "B. 字符设备",
+    "C. 归并排序",
+    "D. L298N"
    ],
-   "answer": "D",
-   "explanation": "分支：独立的开发线，默认主分支 main"
+   "answer": "A",
+   "explanation": "【解析】分支 是指：独立的开发线，默认主分支 main。干扰项辨析：字符设备、归并排序、L298N 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：分支 的含义是“独立的开发线，默认主分支 main”。",
    "answer": "对",
-   "explanation": "正确。分支：独立的开发线，默认主分支 main"
+   "explanation": "【解析】判断正确。分支 的定义：独立的开发线，默认主分支 main。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：分支 的含义是“数模转换器，把数字量转为模拟电压”。",
+   "question": "判断：分支 的含义是“每个节点最多两个子节点的树形结构”。",
    "answer": "错",
-   "explanation": "错误。“数模转换器，把数字量转为模拟电压”描述的是 DAC。分支 的正确含义是：独立的开发线，默认主分支 main"
+   "explanation": "【解析】判断错误。题干描述“每个节点最多两个子节点的树形结构”指的是 二叉树，不是 分支。分支 的正确含义是：独立的开发线，默认主分支 main。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：把一个分支的改动合入另一个分支？",
    "options": [
-    "A. ARP",
-    "B. goto",
-    "C. 合并merge",
-    "D. sizeof"
+    "A. 合并merge",
+    "B. 高水位",
+    "C. 栈溢出",
+    "D. ICMP"
    ],
-   "answer": "C",
-   "explanation": "合并merge：把一个分支的改动合入另一个分支"
+   "answer": "A",
+   "explanation": "【解析】合并merge 是指：把一个分支的改动合入另一个分支。干扰项辨析：高水位、栈溢出、ICMP 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：合并merge 的含义是“把一个分支的改动合入另一个分支”。",
    "answer": "对",
-   "explanation": "正确。合并merge：把一个分支的改动合入另一个分支"
+   "explanation": "【解析】判断正确。合并merge 的定义：把一个分支的改动合入另一个分支。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：合并merge 的含义是“同优先级任务按时间片轮流使用 CPU”。",
+   "question": "判断：合并merge 的含义是“直接内存访问，外设与内存间搬运数据无需 CPU 逐字节干预”。",
    "answer": "错",
-   "explanation": "错误。“同优先级任务按时间片轮流使用 CPU”描述的是 时间片轮转。合并merge 的正确含义是：把一个分支的改动合入另一个分支"
+   "explanation": "【解析】判断错误。题干描述“直接内存访问，外设与内存间搬运数据无需 CPU 逐字节干预”指的是 DMA，不是 合并merge。合并merge 的正确含义是：把一个分支的改动合入另一个分支。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：两个分支修改同一处导致的合并冲突，需手动解决？",
    "options": [
     "A. 冲突",
-    "B. 头文件守卫",
-    "C. 输入子系统",
-    "D. 外部中断EXTI"
+    "B. CMake",
+    "C. 大小端",
+    "D. 内核对象"
    ],
    "answer": "A",
-   "explanation": "冲突：两个分支修改同一处导致的合并冲突，需手动解决"
+   "explanation": "【解析】冲突 是指：两个分支修改同一处导致的合并冲突，需手动解决。干扰项辨析：CMake、大小端、内核对象 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：冲突 的含义是“两个分支修改同一处导致的合并冲突，需手动解决”。",
    "answer": "对",
-   "explanation": "正确。冲突：两个分支修改同一处导致的合并冲突，需手动解决"
+   "explanation": "【解析】判断正确。冲突 的定义：两个分支修改同一处导致的合并冲突，需手动解决。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：冲突 的含义是“决定任务调度先后顺序的数值，数值越大优先级越高”。",
+   "question": "判断：冲突 的含义是“值为 NULL 的指针，不指向任何有效内存，用于初始化指针”。",
    "answer": "错",
-   "explanation": "错误。“决定任务调度先后顺序的数值，数值越大优先级越高”描述的是 任务优先级。冲突 的正确含义是：两个分支修改同一处导致的合并冲突，需手动解决"
+   "explanation": "【解析】判断错误。题干描述“值为 NULL 的指针，不指向任何有效内存，用于初始化指针”指的是 空指针，不是 冲突。冲突 的正确含义是：两个分支修改同一处导致的合并冲突，需手动解决。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：git add 后提交前存放改动的地方？",
    "options": [
-    "A. 开漏输出",
-    "B. 位图",
-    "C. HTTP",
-    "D. 暂存区"
+    "A. 暂存区",
+    "B. 结构体对齐",
+    "C. 图",
+    "D. 数组指针"
    ],
-   "answer": "D",
-   "explanation": "暂存区：git add 后提交前存放改动的地方"
+   "answer": "A",
+   "explanation": "【解析】暂存区 是指：git add 后提交前存放改动的地方。干扰项辨析：结构体对齐、图、数组指针 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：暂存区 的含义是“git add 后提交前存放改动的地方”。",
    "answer": "对",
-   "explanation": "正确。暂存区：git add 后提交前存放改动的地方"
+   "explanation": "【解析】判断正确。暂存区 的定义：git add 后提交前存放改动的地方。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：暂存区 的含义是“变量可见的范围，分为局部作用域、文件作用域等”。",
+   "question": "判断：暂存区 的含义是“面向连接的可靠传输协议，有确认重传、流量控制，有序”。",
    "answer": "错",
-   "explanation": "错误。“变量可见的范围，分为局部作用域、文件作用域等”描述的是 作用域。暂存区 的正确含义是：git add 后提交前存放改动的地方"
+   "explanation": "【解析】判断错误。题干描述“面向连接的可靠传输协议，有确认重传、流量控制，有序”指的是 TCP，不是 暂存区。暂存区 的正确含义是：git add 后提交前存放改动的地方。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：当前编辑的文件目录？",
    "options": [
-    "A. 指针",
+    "A. 波特率",
     "B. 工作区",
-    "C. 子网掩码",
-    "D. 环形缓冲区"
+    "C. 上拉电阻",
+    "D. 优先级反转"
    ],
    "answer": "B",
-   "explanation": "工作区：当前编辑的文件目录"
+   "explanation": "【解析】工作区 是指：当前编辑的文件目录。干扰项辨析：波特率、上拉电阻、优先级反转 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：工作区 的含义是“当前编辑的文件目录”。",
    "answer": "对",
-   "explanation": "正确。工作区：当前编辑的文件目录"
+   "explanation": "【解析】判断正确。工作区 的定义：当前编辑的文件目录。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：工作区 的含义是“自动分配释放的内存区，后进先出，存局部变量和返回地址，速度快空间有限”。",
+   "question": "判断：工作区 的含义是“独立定时器，超时未喂狗则复位系统，防止程序跑飞”。",
    "answer": "错",
-   "explanation": "错误。“自动分配释放的内存区，后进先出，存局部变量和返回地址，速度快空间有限”描述的是 栈stack。工作区 的正确含义是：当前编辑的文件目录"
+   "explanation": "【解析】判断错误。题干描述“独立定时器，超时未喂狗则复位系统，防止程序跑飞”指的是 看门狗，不是 工作区。工作区 的正确含义是：当前编辑的文件目录。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：把远程仓库完整复制到本地？",
    "options": [
-    "A. 信号量",
-    "B. ICMP",
+    "A. OSI七层",
+    "B. 读改写",
     "C. 克隆clone",
-    "D. 三次握手"
+    "D. 内核"
    ],
    "answer": "C",
-   "explanation": "克隆clone：把远程仓库完整复制到本地"
+   "explanation": "【解析】克隆clone 是指：把远程仓库完整复制到本地。干扰项辨析：OSI七层、读改写、内核 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：克隆clone 的含义是“把远程仓库完整复制到本地”。",
    "answer": "对",
-   "explanation": "正确。克隆clone：把远程仓库完整复制到本地"
+   "explanation": "【解析】判断正确。克隆clone 的定义：把远程仓库完整复制到本地。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：克隆clone 的含义是“用于任务间同步或资源计数的内核对象，二值/计数两种”。",
+   "question": "判断：克隆clone 的含义是“算法运行时间随输入规模增长的趋势，用大O表示”。",
    "answer": "错",
-   "explanation": "错误。“用于任务间同步或资源计数的内核对象，二值/计数两种”描述的是 信号量。克隆clone 的正确含义是：把远程仓库完整复制到本地"
+   "explanation": "【解析】判断错误。题干描述“算法运行时间随输入规模增长的趋势，用大O表示”指的是 时间复杂度，不是 克隆clone。克隆clone 的正确含义是：把远程仓库完整复制到本地。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：获取远程更新并合并到当前分支？",
    "options": [
-    "A. 输入子系统",
-    "B. 数组",
-    "C. 粘包",
-    "D. 拉取pull"
+    "A. 拉取pull",
+    "B. 链表",
+    "C. OSI七层",
+    "D. 端口"
    ],
-   "answer": "D",
-   "explanation": "拉取pull：获取远程更新并合并到当前分支"
+   "answer": "A",
+   "explanation": "【解析】拉取pull 是指：获取远程更新并合并到当前分支。干扰项辨析：链表、OSI七层、端口 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：拉取pull 的含义是“获取远程更新并合并到当前分支”。",
    "answer": "对",
-   "explanation": "正确。拉取pull：获取远程更新并合并到当前分支"
+   "explanation": "【解析】判断正确。拉取pull 的定义：获取远程更新并合并到当前分支。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：拉取pull 的含义是“RTOS 中独立调度的执行单元，有独立的栈和状态”。",
+   "question": "判断：拉取pull 的含义是“变量可见的范围，分为局部作用域、文件作用域等”。",
    "answer": "错",
-   "explanation": "错误。“RTOS 中独立调度的执行单元，有独立的栈和状态”描述的是 任务。拉取pull 的正确含义是：获取远程更新并合并到当前分支"
+   "explanation": "【解析】判断错误。题干描述“变量可见的范围，分为局部作用域、文件作用域等”指的是 作用域，不是 拉取pull。拉取pull 的正确含义是：获取远程更新并合并到当前分支。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：把本地提交上传到远程仓库？",
    "options": [
-    "A. 文件I/O",
-    "B. 位图",
-    "C. 推送push",
-    "D. 位域"
+    "A. 提交commit",
+    "B. 推送push",
+    "C. 喂狗",
+    "D. UDP"
    ],
-   "answer": "C",
-   "explanation": "推送push：把本地提交上传到远程仓库"
+   "answer": "B",
+   "explanation": "【解析】推送push 是指：把本地提交上传到远程仓库。干扰项辨析：提交commit、喂狗、UDP 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：推送push 的含义是“把本地提交上传到远程仓库”。",
    "answer": "对",
-   "explanation": "正确。推送push：把本地提交上传到远程仓库"
+   "explanation": "【解析】判断正确。推送push 的定义：把本地提交上传到远程仓库。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：推送push 的含义是“单向数据传输的 IPC 机制，有匿名管道和命名管道”。",
+   "question": "判断：推送push 的含义是“面向连接的可靠传输协议，有确认重传、流量控制，有序”。",
    "answer": "错",
-   "explanation": "错误。“单向数据传输的 IPC 机制，有匿名管道和命名管道”描述的是 管道。推送push 的正确含义是：把本地提交上传到远程仓库"
+   "explanation": "【解析】判断错误。题干描述“面向连接的可靠传输协议，有确认重传、流量控制，有序”指的是 TCP，不是 推送push。推送push 的正确含义是：把本地提交上传到远程仓库。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：撤销某次提交的改动？",
    "options": [
-    "A. 作用域",
-    "B. 回退revert",
-    "C. GitHub Pages",
-    "D. 排序稳定性"
+    "A. 回退revert",
+    "B. 上下文切换",
+    "C. 状态机",
+    "D. 优先级继承"
    ],
-   "answer": "B",
-   "explanation": "回退revert：撤销某次提交的改动"
+   "answer": "A",
+   "explanation": "【解析】回退revert 是指：撤销某次提交的改动。干扰项辨析：上下文切换、状态机、优先级继承 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：回退revert 的含义是“撤销某次提交的改动”。",
    "answer": "对",
-   "explanation": "正确。回退revert：撤销某次提交的改动"
+   "explanation": "【解析】判断正确。回退revert 的定义：撤销某次提交的改动。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：回退revert 的含义是“描述编译规则的构建脚本”。",
+   "question": "判断：回退revert 的含义是“Cortex-M 的中断控制器，管理中断优先级和使能”。",
    "answer": "错",
-   "explanation": "错误。“描述编译规则的构建脚本”描述的是 Makefile。回退revert 的正确含义是：撤销某次提交的改动"
+   "explanation": "【解析】判断错误。题干描述“Cortex-M 的中断控制器，管理中断优先级和使能”指的是 NVIC，不是 回退revert。回退revert 的正确含义是：撤销某次提交的改动。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：暂存未提交的改动，稍后恢复？",
    "options": [
-    "A. stash",
-    "B. UART",
-    "C. 硬链接",
-    "D. 阻塞"
+    "A. DHCP",
+    "B. stash",
+    "C. I2C",
+    "D. lwIP"
    ],
-   "answer": "A",
-   "explanation": "stash：暂存未提交的改动，稍后恢复"
+   "answer": "B",
+   "explanation": "【解析】stash 是指：暂存未提交的改动，稍后恢复。干扰项辨析：DHCP、I2C、lwIP 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：stash 的含义是“暂存未提交的改动，稍后恢复”。",
    "answer": "对",
-   "explanation": "正确。stash：暂存未提交的改动，稍后恢复"
+   "explanation": "【解析】判断正确。stash 的定义：暂存未提交的改动，稍后恢复。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：stash 的含义是“按字节流访问的设备，如串口、LED，实现 file_operations”。",
+   "question": "判断：stash 的含义是“统一为大端序，发送用 htonl/htons，接收用 ntohl/ntohs”。",
    "answer": "错",
-   "explanation": "错误。“按字节流访问的设备，如串口、LED，实现 file_operations”描述的是 字符设备。stash 的正确含义是：暂存未提交的改动，稍后恢复"
+   "explanation": "【解析】判断错误。题干描述“统一为大端序，发送用 htonl/htons，接收用 ntohl/ntohs”指的是 网络字节序，不是 stash。stash 的正确含义是：暂存未提交的改动，稍后恢复。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：指定哪些文件/目录不被 Git 跟踪？",
    "options": [
-    "A. 三次握手",
-    "B. gitignore",
-    "C. CMake",
-    "D. 阻塞"
+    "A. 指针数组",
+    "B. 环形缓冲区",
+    "C. gitignore",
+    "D. BLE"
    ],
-   "answer": "B",
-   "explanation": "gitignore：指定哪些文件/目录不被 Git 跟踪"
+   "answer": "C",
+   "explanation": "【解析】gitignore 是指：指定哪些文件/目录不被 Git 跟踪。干扰项辨析：指针数组、环形缓冲区、BLE 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：gitignore 的含义是“指定哪些文件/目录不被 Git 跟踪”。",
    "answer": "对",
-   "explanation": "正确。gitignore：指定哪些文件/目录不被 Git 跟踪"
+   "explanation": "【解析】判断正确。gitignore 的定义：指定哪些文件/目录不被 Git 跟踪。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：gitignore 的含义是“频繁 malloc/free 产生的不连续小空闲块，导致大块分配失败”。",
+   "question": "判断：gitignore 的含义是“由顶点和边组成的结构，表示网络关系”。",
    "answer": "错",
-   "explanation": "错误。“频繁 malloc/free 产生的不连续小空闲块，导致大块分配失败”描述的是 内存碎片。gitignore 的正确含义是：指定哪些文件/目录不被 Git 跟踪"
+   "explanation": "【解析】判断错误。题干描述“由顶点和边组成的结构，表示网络关系”指的是 图，不是 gitignore。gitignore 的正确含义是：指定哪些文件/目录不被 Git 跟踪。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：基于 Git 的代码托管平台，支持开源协作？",
    "options": [
-    "A. GitHub",
-    "B. HAL库",
-    "C. 设备树",
-    "D. 时钟树"
+    "A. 下拉电阻",
+    "B. 内核对象",
+    "C. GitHub",
+    "D. 回退revert"
    ],
-   "answer": "A",
-   "explanation": "GitHub：基于 Git 的代码托管平台，支持开源协作"
+   "answer": "C",
+   "explanation": "【解析】GitHub 是指：基于 Git 的代码托管平台，支持开源协作。干扰项辨析：下拉电阻、内核对象、回退revert 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：GitHub 的含义是“基于 Git 的代码托管平台，支持开源协作”。",
    "answer": "对",
-   "explanation": "正确。GitHub：基于 Git 的代码托管平台，支持开源协作"
+   "explanation": "【解析】判断正确。GitHub 的定义：基于 Git 的代码托管平台，支持开源协作。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：GitHub 的含义是“分治合并两个有序序列，稳定 O(n log n)”。",
+   "question": "判断：GitHub 的含义是“进程内的执行单元，共享进程地址空间，通信方便”。",
    "answer": "错",
-   "explanation": "错误。“分治合并两个有序序列，稳定 O(n log n)”描述的是 归并排序。GitHub 的正确含义是：基于 Git 的代码托管平台，支持开源协作"
+   "explanation": "【解析】判断错误。题干描述“进程内的执行单元，共享进程地址空间，通信方便”指的是 线程，不是 GitHub。GitHub 的正确含义是：基于 Git 的代码托管平台，支持开源协作。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：GitHub 提供的静态网站托管服务？",
    "options": [
-    "A. 管道",
-    "B. GitHub Pages",
-    "C. 图",
-    "D. 空指针"
+    "A. GitHub Pages",
+    "B. 归并排序",
+    "C. 内核对象",
+    "D. 数组"
    ],
-   "answer": "B",
-   "explanation": "GitHub Pages：GitHub 提供的静态网站托管服务"
+   "answer": "A",
+   "explanation": "【解析】GitHub Pages 是指：GitHub 提供的静态网站托管服务。干扰项辨析：归并排序、内核对象、数组 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：GitHub Pages 的含义是“GitHub 提供的静态网站托管服务”。",
    "answer": "对",
-   "explanation": "正确。GitHub Pages：GitHub 提供的静态网站托管服务"
+   "explanation": "【解析】判断正确。GitHub Pages 的定义：GitHub 提供的静态网站托管服务。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：GitHub Pages 的含义是“函数调用自身的编程技巧，需终止条件”。",
+   "question": "判断：GitHub Pages 的含义是“设备树源文件，编译后生成 DTB 供内核使用”。",
    "answer": "错",
-   "explanation": "错误。“函数调用自身的编程技巧，需终止条件”描述的是 递归。GitHub Pages 的正确含义是：GitHub 提供的静态网站托管服务"
+   "explanation": "【解析】判断错误。题干描述“设备树源文件，编译后生成 DTB 供内核使用”指的是 DTS，不是 GitHub Pages。GitHub Pages 的正确含义是：GitHub 提供的静态网站托管服务。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：跨平台构建系统，生成 Makefile 或工程？",
    "options": [
-    "A. 按键消抖",
-    "B. CMake",
-    "C. HAL库",
-    "D. 堆排序"
+    "A. CMake",
+    "B. 指针遍历",
+    "C. 暂存区",
+    "D. 大小端"
    ],
-   "answer": "B",
-   "explanation": "CMake：跨平台构建系统，生成 Makefile 或工程"
+   "answer": "A",
+   "explanation": "【解析】CMake 是指：跨平台构建系统，生成 Makefile 或工程。干扰项辨析：指针遍历、暂存区、大小端 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：CMake 的含义是“跨平台构建系统，生成 Makefile 或工程”。",
    "answer": "对",
-   "explanation": "正确。CMake：跨平台构建系统，生成 Makefile 或工程"
+   "explanation": "【解析】判断正确。CMake 的定义：跨平台构建系统，生成 Makefile 或工程。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：CMake 的含义是“指向同一 inode 的多个名字，不能跨文件系统”。",
+   "question": "判断：CMake 的含义是“传输层标识应用进程的编号，HTTP 80、HTTPS 443”。",
    "answer": "错",
-   "explanation": "错误。“指向同一 inode 的多个名字，不能跨文件系统”描述的是 硬链接。CMake 的正确含义是：跨平台构建系统，生成 Makefile 或工程"
+   "explanation": "【解析】判断错误。题干描述“传输层标识应用进程的编号，HTTP 80、HTTPS 443”指的是 端口，不是 CMake。CMake 的正确含义是：跨平台构建系统，生成 Makefile 或工程。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：描述编译规则的构建脚本？",
    "options": [
-    "A. 内存泄漏",
+    "A. 提交commit",
     "B. Makefile",
-    "C. I2C",
-    "D. RTC"
+    "C. Git",
+    "D. OSI七层"
    ],
    "answer": "B",
-   "explanation": "Makefile：描述编译规则的构建脚本"
+   "explanation": "【解析】Makefile 是指：描述编译规则的构建脚本。干扰项辨析：提交commit、Git、OSI七层 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：Makefile 的含义是“描述编译规则的构建脚本”。",
    "answer": "对",
-   "explanation": "正确。Makefile：描述编译规则的构建脚本"
+   "explanation": "【解析】判断正确。Makefile 的定义：描述编译规则的构建脚本。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：Makefile 的含义是“保护共享资源的锁，具有优先级继承、递归获取、持有者释放特性”。",
+   "question": "判断：Makefile 的含义是“远距离低速率 LPWAN 无线技术，适合物联网广域连接”。",
    "answer": "错",
-   "explanation": "错误。“保护共享资源的锁，具有优先级继承、递归获取、持有者释放特性”描述的是 互斥量。Makefile 的正确含义是：描述编译规则的构建脚本"
+   "explanation": "【解析】判断错误。题干描述“远距离低速率 LPWAN 无线技术，适合物联网广域连接”指的是 LoRa，不是 Makefile。Makefile 的正确含义是：描述编译规则的构建脚本。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：GNU 调试器，可设断点、查看变量、单步执行？",
    "options": [
-    "A. BLE",
-    "B. GDB",
-    "C. 块设备",
-    "D. 任务通知"
+    "A. 内核",
+    "B. lwIP",
+    "C. GDB",
+    "D. 枚举enum"
    ],
-   "answer": "B",
-   "explanation": "GDB：GNU 调试器，可设断点、查看变量、单步执行"
+   "answer": "C",
+   "explanation": "【解析】GDB 是指：GNU 调试器，可设断点、查看变量、单步执行。干扰项辨析：内核、lwIP、枚举enum 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：GDB 的含义是“GNU 调试器，可设断点、查看变量、单步执行”。",
    "answer": "对",
-   "explanation": "正确。GDB：GNU 调试器，可设断点、查看变量、单步执行"
+   "explanation": "【解析】判断正确。GDB 的定义：GNU 调试器，可设断点、查看变量、单步执行。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：GDB 的含义是“多字节数据在内存中的字节排列顺序，小端低字节在低地址，网络字节序为大端”。",
+   "question": "判断：GDB 的含义是“后进先出的线性结构，函数调用、表达式求值使用”。",
    "answer": "错",
-   "explanation": "错误。“多字节数据在内存中的字节排列顺序，小端低字节在低地址，网络字节序为大端”描述的是 大小端。GDB 的正确含义是：GNU 调试器，可设断点、查看变量、单步执行"
+   "explanation": "【解析】判断错误。题干描述“后进先出的线性结构，函数调用、表达式求值使用”指的是 栈，不是 GDB。GDB 的正确含义是：GNU 调试器，可设断点、查看变量、单步执行。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "single",
    "question": "下列哪个概念是指：开源片上调试器，配合 GDB 调试 MCU？",
    "options": [
     "A. OpenOCD",
-    "B. NVIC",
-    "C. 克隆clone",
-    "D. 数组"
+    "B. 管道",
+    "C. 宏定义",
+    "D. 头文件守卫"
    ],
    "answer": "A",
-   "explanation": "OpenOCD：开源片上调试器，配合 GDB 调试 MCU"
+   "explanation": "【解析】OpenOCD 是指：开源片上调试器，配合 GDB 调试 MCU。干扰项辨析：管道、宏定义、头文件守卫 分别是其他概念，注意不要混淆。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
    "question": "判断：OpenOCD 的含义是“开源片上调试器，配合 GDB 调试 MCU”。",
    "answer": "对",
-   "explanation": "正确。OpenOCD：开源片上调试器，配合 GDB 调试 MCU"
+   "explanation": "【解析】判断正确。OpenOCD 的定义：开源片上调试器，配合 GDB 调试 MCU。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   },
   {
    "type": "judge",
-   "question": "判断：OpenOCD 的含义是“应用程序进入内核的接口，如 open/read/write”。",
+   "question": "判断：OpenOCD 的含义是“TCP 建立连接：SYN → SYN+ACK → ACK”。",
    "answer": "错",
-   "explanation": "错误。“应用程序进入内核的接口，如 open/read/write”描述的是 系统调用。OpenOCD 的正确含义是：开源片上调试器，配合 GDB 调试 MCU"
+   "explanation": "【解析】判断错误。题干描述“TCP 建立连接：SYN → SYN+ACK → ACK”指的是 三次握手，不是 OpenOCD。OpenOCD 的正确含义是：开源片上调试器，配合 GDB 调试 MCU。面试提示：工具链题常考 Git 工作流、构建调试流程（CMake/GDB），体现工程规范意识；易错点是混淆工作区/暂存区/版本库。"
   }
  ]
 }

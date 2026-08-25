@@ -79,6 +79,39 @@ def mock_interview(questions, history, count=10):
     print(f"[得分] 模拟得分：{score}/{len(pool)}")
 
 
+
+def ai_diagnose(history, cfg):
+    """AI 智能诊断：分析薄弱点 → 解决方案 → 学习目标 → 面试准备。"""
+    stats = history.data
+    if not stats or all(e.get("total", 0) == 0 for e in stats.values()):
+        print("[!] 还没有答题数据。请先选 1 练习几轮，再回来做 AI 诊断。")
+        return
+    rows = []
+    for cat, e in stats.items():
+        total = e.get("total", 0)
+        if total == 0:
+            continue
+        rate = e.get("correct", 0) / total
+        rows.append((cat, e.get("correct", 0), total, rate))
+    rows.sort(key=lambda r: r[3])
+    lines = [f"- {cat}: 正确 {c}/{t}（{rate * 100:.0f}%）" for cat, c, t, rate in rows]
+    prompt = (
+        "你是嵌入式软件面试辅导专家。请根据用户的答题数据做一次完整的求职诊断，严格按下面的结构输出：\n\n"
+        "## 一、薄弱点诊断\n对正确率低的分类逐一分析可能的原因（概念不清/经验不足/易混淆）。\n"
+        "## 二、针对性解决方案\n每个薄弱点给出 2-3 条具体、可当天执行的行动建议（含学习资源和练习方法）。\n"
+        "## 三、学习目标\n按时间拆分：本周目标、本月目标，具体到知识点和可量化成果。\n"
+        "## 四、面试准备建议\n给出高频考点清单，并结合简历项目（FreeRTOS/STM32/ARM-Linux/TinyML/PID）给出项目深挖方向和可能被追问的问题。\n\n"
+        "### 用户答题数据（按正确率从低到高）\n"
+        + "\n".join(lines) +
+        "\n\n目标岗位：嵌入式软件工程师（实习）"
+    )
+    ans = ai_ask(prompt, cfg)
+    if ans is None:
+        print("[!] 未启用 AI。请在 config.json 里把 ai.enabled 改为 true 并填写 api_key（支持 DeepSeek/OpenAI/通义/智谱/Kimi/Ollama）。")
+        return
+    print("\n===== AI 智能诊断报告 =====\n")
+    print(ans)
+
 def menu(categories):
     print("\n===== [AI] 嵌入式面试 AI Agent =====")
     print("1. 开始练习（按薄弱点智能出题）")
@@ -86,6 +119,7 @@ def menu(categories):
     print("3. 面试模拟（随机题连答）")
     print("4. 薄弱点分析报告")
     print("5. AI 自由提问（需配置 API Key）")
+    print("6. AI 智能诊断（薄弱点+方案+学习目标）")
     print("0. 退出")
     print("知识点分类：" + " / ".join(categories))
     return input("请选择: ").strip()
@@ -119,6 +153,8 @@ def main():
             mock_interview(questions, history, count=cfg.get("questions_per_session", 10))
         elif choice == "4":
             print(history.report())
+        elif choice == "6":
+            ai_diagnose(history, cfg)
         elif choice == "5":
             q_text = input("请输入你的问题: ").strip()
             if not q_text:
@@ -140,5 +176,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 

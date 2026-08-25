@@ -9,6 +9,12 @@
 - **薄弱点分析**：自动统计各知识点正确率，生成 Top 薄弱点
 - **AI 自由问答**（可选）：配置 API Key 后，可让大模型讲解任意面试题
 
+
+## 🌐 网页版（无需安装，浏览器直接玩）
+👉 **https://am10086.github.io/embedded-interview-agent/**
+
+> 纯前端实现，支持按薄弱点出题、面试模拟、薄弱点分析（本地存储），数据与 Python 版共用同一题库。
+
 ## 🚀 快速开始
 ```bash
 # 1. 需要 Python 3.8+
@@ -59,4 +65,5 @@ embedded-interview-agent/
 
 ## 📄 License
 MIT
+
 
